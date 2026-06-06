@@ -600,7 +600,7 @@ void App::saveCurrentResult()
 {
     auto result = engine.buildResult(currentPlayerName);
     result.timestamp = nowDate();
-    result.mode = "одиночная игра";
+    result.mode = "SOLO";
     DataStore::saveResult("results.txt", result);
     loadRankingData();
 }
@@ -688,7 +688,7 @@ void App::advanceMultiplayerTurn(bool answeredCorrectly)
             result.maxScore = static_cast<int>(multiplayerQuestions.size() * 2);
             result.timestamp = nowDate();
             result.difficulty = currentFilters.difficulty.value_or("any");
-            result.mode = "дуэль";
+            result.mode = "DUO";
             DataStore::saveResult("results.txt", result);
             loadRankingData();
             return;

@@ -1,6 +1,7 @@
 CMakeFiles/quiz_sfml.dir/App.cpp.obj: \
  C:\Users\Polina_\Desktop\MIEM\AiP\Proekt2.0\App.cpp \
  C:\Users\Polina_\Desktop\MIEM\AiP\Proekt2.0\App.h \
+ C:\Users\Polina_\Desktop\MIEM\AiP\Proekt2.0\Button.h \
  C:/Users/Polina_/vcpkg/installed/x64-mingw-dynamic/include/SFML/Graphics.hpp \
  C:/Users/Polina_/vcpkg/installed/x64-mingw-dynamic/include/SFML/Graphics/BlendMode.hpp \
  C:/Users/Polina_/vcpkg/installed/x64-mingw-dynamic/include/SFML/Graphics/Export.hpp \
@@ -304,11 +305,10 @@ CMakeFiles/quiz_sfml.dir/App.cpp.obj: \
  C:/Users/Polina_/vcpkg/installed/x64-mingw-dynamic/include/SFML/System/MemoryInputStream.hpp \
  C:/Users/Polina_/vcpkg/installed/x64-mingw-dynamic/include/SFML/System/Sleep.hpp \
  C:\Users\Polina_\Desktop\MIEM\AiP\Proekt2.0\Data.h \
- C:\Users\Polina_\Desktop\MIEM\AiP\Proekt2.0\QuizEngine.h \
  C:\Users\Polina_\Desktop\MIEM\AiP\Proekt2.0\QuestionEditor.h \
+ C:\Users\Polina_\Desktop\MIEM\AiP\Proekt2.0\QuizEngine.h \
  C:\Users\Polina_\Desktop\MIEM\AiP\Proekt2.0\RankingView.h \
- C:\Users\Polina_\Desktop\MIEM\AiP\Proekt2.0\Button.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/iostream \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/algorithm \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/ranges_algo.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/pstl/glue_algorithm_defs.h
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/pstl/glue_algorithm_defs.h \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/iostream

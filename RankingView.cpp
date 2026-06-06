@@ -33,7 +33,7 @@ std::string RankingView::buildText() const
 
     for (const auto& r : allResults)
     {
-        if (r.mode == "duo")
+        if (r.mode == "DUO")
             duo.push_back(r);
         else
             solo.push_back(r);
@@ -41,7 +41,7 @@ std::string RankingView::buildText() const
 
     std::ostringstream oss;
 
-    oss << "=== Одиночная игра ===\n";
+    oss << "=== SOLO ===\n";
     if (solo.empty())
     {
         oss << "Нет результатов\n";
@@ -58,7 +58,7 @@ std::string RankingView::buildText() const
         }
     }
 
-    oss << "\n=== Дуэль ===\n";
+    oss << "\n=== DUO ===\n";
     if (duo.empty())
     {
         oss << "Нет результатов\n";

@@ -1,12 +1,14 @@
 CMakeFiles/quiz_tests.dir/tests/quiz_core_tests.cpp.obj: \
  C:\Users\Polina_\Desktop\MIEM\AiP\Proekt2.0\tests\quiz_core_tests.cpp \
  C:/Users/Polina_/Desktop/MIEM/AiP/Proekt2.0/doctest.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/ctime \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/climits \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/os_defines.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/pstl/pstl_config.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/time.h \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/limits.h \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/limits.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/corecrt.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/_mingw.h \
@@ -14,10 +16,6 @@ CMakeFiles/quiz_tests.dir/tests/quiz_core_tests.cpp.obj: \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/vadefs.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/sys/timeb.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/_timeval.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/pthread_time.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/cmath \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/requires_hosted.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/cpp_type_traits.h \
@@ -26,9 +24,6 @@ CMakeFiles/quiz_tests.dir/tests/quiz_core_tests.cpp.obj: \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/std_abs.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/stdlib.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/limits.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/limits.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/stdlib.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/malloc.h \
@@ -72,7 +67,12 @@ CMakeFiles/quiz_tests.dir/tests/quiz_core_tests.cpp.obj: \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/tr1/poly_hermite.tcc \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/tr1/poly_laguerre.tcc \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/tr1/riemann_zeta.tcc \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/climits \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/ctime \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/time.h \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/sys/timeb.h \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/_timeval.h \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/pthread_time.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/cstdio \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/stdio.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
@@ -83,9 +83,6 @@ CMakeFiles/quiz_tests.dir/tests/quiz_core_tests.cpp.obj: \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/cstring \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/string.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/utility \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/stl_relops.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/initializer_list \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/fstream \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/istream \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/ios \
@@ -137,6 +134,7 @@ CMakeFiles/quiz_tests.dir/tests/quiz_core_tests.cpp.obj: \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/refwrap.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/invoke.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/range_access.h \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/initializer_list \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/basic_string.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/ext/alloc_traits.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/alloc_traits.h \
@@ -180,6 +178,8 @@ CMakeFiles/quiz_tests.dir/tests/quiz_core_tests.cpp.obj: \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/fstream.tcc \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/sstream \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/sstream.tcc \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/utility \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/stl_relops.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/iostream \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/algorithm \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/stl_algo.h \
@@ -217,16 +217,16 @@ CMakeFiles/quiz_tests.dir/tests/quiz_core_tests.cpp.obj: \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/cstdint \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/parse_numbers.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/unique_lock.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/set \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/map \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/stl_tree.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/ext/aligned_buffer.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/node_handle.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/stl_set.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/stl_multiset.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/erase_if.h \
- C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/map \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/stl_map.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/stl_multimap.h \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/erase_if.h \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/set \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/stl_set.h \
+ C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/stl_multiset.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/unordered_set \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/unordered_set.h \
  C:/Users/Polina_/Downloads/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3/mingw64/include/c++/13.2.0/bits/hashtable.h \
