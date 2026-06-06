@@ -1,0 +1,434 @@
+\doxysection{Quiz\+Engine Class Reference}
+\hypertarget{class_quiz_engine}{}\label{class_quiz_engine}\index{QuizEngine@{QuizEngine}}
+
+
+Управляет ходом викторины, подсчетом баллов, таймером и созданием результата.  
+
+
+
+
+{\ttfamily \#include $<$Quiz\+Engine.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_quiz_engine_a3972106dba0f9e9c5810dbb343b01f05}{set\+Questions}} (const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&questions)
+\begin{DoxyCompactList}\small\item\em Заменяет текущий набор вопросов и сбрасывает прогресс викторины. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_quiz_engine_a29d050f4dccd9297b5766f17879844ec}{set\+Questions\+With\+Filter}} (const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&all\+Questions, const \mbox{\hyperlink{struct_question_filters}{Question\+Filters}} \&filters)
+\begin{DoxyCompactList}\small\item\em Фильтрует полный набор вопросов, сохраняет подходящие вопросы и сбрасывает прогресс. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_quiz_engine_a98ad2cf42218eddf9dbb5536fb7e801b}{set\+Difficulty}} (const std\+::string \&diff)
+\begin{DoxyCompactList}\small\item\em Устанавливает метку сложности, которая будет записана в результат игрока. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_quiz_engine_a09378bd2cd09a5518e78a060c38fd7b4}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Возвращает викторину к первому вопросу и очищает счетчики баллов. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{struct_question}{Question}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_quiz_engine_a577c499079b8f298138166034c21ee41}{current\+Question}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает текущий активный вопрос. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_quiz_engine_adec33865d8f2396d7219a66f73c70c49}{answer}} (\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std\+::size\+\_\+t}} index)
+\begin{DoxyCompactList}\small\item\em Проверяет ответ на текущий вопрос и обновляет счетчики баллов. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_quiz_engine_a80b749da321263eaaa8b854732805d64}{next\+Question}} ()
+\begin{DoxyCompactList}\small\item\em Переключает викторину на следующий вопрос. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_quiz_engine_addee0bb0a091b28e7af48963c131fe73}{finished}} () const
+\begin{DoxyCompactList}\small\item\em Проверяет, остались ли активные вопросы. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_quiz_engine_a25263f6faf463a231e55fa25b9819ec7}{score}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает количество баллов, набранных на текущий момент. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_quiz_engine_a22a7b7d22fae8acc5049a793f42215e7}{max\+Score}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает максимум баллов по уже отвеченным вопросам. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_quiz_engine_afe0ece91968b6b29006e03c1827dd718}{time\+Left}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает оставшееся время для текущего вопроса. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_quiz_engine_aa72ac8faf05e4cd7580f4a2c1dbdda47}{tick}} ()
+\begin{DoxyCompactList}\small\item\em Обновляет оставшееся время с учетом реально прошедшего времени. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_player_result}{Player\+Result}} \mbox{\hyperlink{class_quiz_engine_a0de35b455121384091f0b2c1eb5006f7}{build\+Result}} (const std\+::string \&player\+Name) const
+\begin{DoxyCompactList}\small\item\em Создает запись результата для текущего состояния викторины. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std\+::size\+\_\+t}} \mbox{\hyperlink{class_quiz_engine_a74cce23f8c29ad37040f0aad655a8ab1}{total\+Questions}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает количество загруженных вопросов. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Управляет ходом викторины, подсчетом баллов, таймером и созданием результата. 
+
+Definition at line \mbox{\hyperlink{_quiz_engine_8h_source_l00010}{10}} of file \mbox{\hyperlink{_quiz_engine_8h_source}{Quiz\+Engine.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_quiz_engine_adec33865d8f2396d7219a66f73c70c49}\label{class_quiz_engine_adec33865d8f2396d7219a66f73c70c49} 
+\index{QuizEngine@{QuizEngine}!answer@{answer}}
+\index{answer@{answer}!QuizEngine@{QuizEngine}}
+\doxysubsubsection{\texorpdfstring{answer()}{answer()}}
+{\footnotesize\ttfamily bool Quiz\+Engine\+::answer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std\+::size\+\_\+t}}}]{index }\end{DoxyParamCaption})}
+
+
+
+Проверяет ответ на текущий вопрос и обновляет счетчики баллов. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Индекс ответа, выбранного игроком, начиная с нуля. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, если ответ правильный; false, если ответ неправильный или активного вопроса нет. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_quiz_engine_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{_quiz_engine_8cpp_source}{Quiz\+Engine.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_question}{Question}}*\ q\ =\ \mbox{\hyperlink{class_quiz_engine_a577c499079b8f298138166034c21ee41}{currentQuestion}}();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (!q)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00033\ \ \ \ \ maxScore\_\ +=\ q-\/>\mbox{\hyperlink{struct_question_a2b3eb226f5b979cac450710a453d3006}{points}};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ ==\ q-\/>\mbox{\hyperlink{struct_question_a5d7284577f5b576fb248379ca95fa14b}{correctIndex}})\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ score\_\ +=\ q-\/>\mbox{\hyperlink{struct_question_a2b3eb226f5b979cac450710a453d3006}{points}};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00039\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_quiz_engine_a0de35b455121384091f0b2c1eb5006f7}\label{class_quiz_engine_a0de35b455121384091f0b2c1eb5006f7} 
+\index{QuizEngine@{QuizEngine}!buildResult@{buildResult}}
+\index{buildResult@{buildResult}!QuizEngine@{QuizEngine}}
+\doxysubsubsection{\texorpdfstring{buildResult()}{buildResult()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_player_result}{Player\+Result}} Quiz\+Engine\+::build\+Result (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{player\+Name }\end{DoxyParamCaption}) const}
+
+
+
+Создает запись результата для текущего состояния викторины. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Name} & Имя игрока, которое нужно сохранить в результате. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_player_result}{Player\+Result} с именем игрока, счетом, максимальным счетом, сложностью и датой. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_quiz_engine_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_quiz_engine_8cpp_source}{Quiz\+Engine.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{struct_player_result}{PlayerResult}}\ r;}
+\DoxyCodeLine{00073\ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_a90e6a1338e4ccb7b4d2bb6611241d902}{playerName}}\ =\ playerName;}
+\DoxyCodeLine{00074\ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_a6c7b9611ad2ca3d50f09d9cb60ce94fb}{score}}\ =\ score\_;}
+\DoxyCodeLine{00075\ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_a5620cbd5446a1283b82b960946e17a0d}{maxScore}}\ =\ maxScore\_;}
+\DoxyCodeLine{00076\ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_acab5e22f0333d3575972780dd5ac1516}{difficulty}}\ =\ difficulty\_;}
+\DoxyCodeLine{00077\ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_aa6277499131f6228d94a9a48de06fdbb}{timestamp}}\ =\ \textcolor{stringliteral}{"{}2026-\/06-\/03"{}};}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{00079\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_quiz_engine_a577c499079b8f298138166034c21ee41}\label{class_quiz_engine_a577c499079b8f298138166034c21ee41} 
+\index{QuizEngine@{QuizEngine}!currentQuestion@{currentQuestion}}
+\index{currentQuestion@{currentQuestion}!QuizEngine@{QuizEngine}}
+\doxysubsubsection{\texorpdfstring{currentQuestion()}{currentQuestion()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_question}{Question}} \texorpdfstring{$\ast$}{*} Quiz\+Engine\+::current\+Question (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает текущий активный вопрос. 
+
+\begin{DoxyReturn}{Returns}
+Указатель на текущий вопрос или nullptr, если викторина завершена либо пуста. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_quiz_engine_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{_quiz_engine_8cpp_source}{Quiz\+Engine.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_quiz_engine_addee0bb0a091b28e7af48963c131fe73}{finished}}())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{return}\ \&questions\_[currentIndex\_];}
+\DoxyCodeLine{00028\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_quiz_engine_addee0bb0a091b28e7af48963c131fe73}\label{class_quiz_engine_addee0bb0a091b28e7af48963c131fe73} 
+\index{QuizEngine@{QuizEngine}!finished@{finished}}
+\index{finished@{finished}!QuizEngine@{QuizEngine}}
+\doxysubsubsection{\texorpdfstring{finished()}{finished()}}
+{\footnotesize\ttfamily bool Quiz\+Engine\+::finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Проверяет, остались ли активные вопросы. 
+
+\begin{DoxyReturn}{Returns}
+true, если викторина пуста или current\+Index\+\_\+ указывает за последний вопрос. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_quiz_engine_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_quiz_engine_8cpp_source}{Quiz\+Engine.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{return}\ questions\_.empty()\ ||\ currentIndex\_\ >=\ questions\_.size();}
+\DoxyCodeLine{00054\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_quiz_engine_a22a7b7d22fae8acc5049a793f42215e7}\label{class_quiz_engine_a22a7b7d22fae8acc5049a793f42215e7} 
+\index{QuizEngine@{QuizEngine}!maxScore@{maxScore}}
+\index{maxScore@{maxScore}!QuizEngine@{QuizEngine}}
+\doxysubsubsection{\texorpdfstring{maxScore()}{maxScore()}}
+{\footnotesize\ttfamily int Quiz\+Engine\+::max\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает максимум баллов по уже отвеченным вопросам. 
+
+\begin{DoxyReturn}{Returns}
+Максимально доступный счет, накопленный на текущий момент. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_quiz_engine_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_quiz_engine_8cpp_source}{Quiz\+Engine.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00057\ \{\ \textcolor{keywordflow}{return}\ maxScore\_;\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_quiz_engine_a80b749da321263eaaa8b854732805d64}\label{class_quiz_engine_a80b749da321263eaaa8b854732805d64} 
+\index{QuizEngine@{QuizEngine}!nextQuestion@{nextQuestion}}
+\index{nextQuestion@{nextQuestion}!QuizEngine@{QuizEngine}}
+\doxysubsubsection{\texorpdfstring{nextQuestion()}{nextQuestion()}}
+{\footnotesize\ttfamily bool Quiz\+Engine\+::next\+Question (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Переключает викторину на следующий вопрос. 
+
+\begin{DoxyReturn}{Returns}
+true, если следующий вопрос стал активным; false, если викторина завершена. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_quiz_engine_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_quiz_engine_8cpp_source}{Quiz\+Engine.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentIndex\_\ +\ 1\ <\ questions\_.size())\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ ++currentIndex\_;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ timeLeft\_\ =\ questions\_[currentIndex\_].timeLimitSec;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ lastTick\_\ =\ std::chrono::steady\_clock::now();}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00047\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ currentIndex\_\ =\ questions\_.size();}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00050\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_quiz_engine_a09378bd2cd09a5518e78a060c38fd7b4}\label{class_quiz_engine_a09378bd2cd09a5518e78a060c38fd7b4} 
+\index{QuizEngine@{QuizEngine}!reset@{reset}}
+\index{reset@{reset}!QuizEngine@{QuizEngine}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Quiz\+Engine\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Возвращает викторину к первому вопросу и очищает счетчики баллов. 
+
+
+
+Definition at line \mbox{\hyperlink{_quiz_engine_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{_quiz_engine_8cpp_source}{Quiz\+Engine.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ currentIndex\_\ =\ 0;}
+\DoxyCodeLine{00019\ \ \ \ \ score\_\ =\ 0;}
+\DoxyCodeLine{00020\ \ \ \ \ maxScore\_\ =\ 0;}
+\DoxyCodeLine{00021\ \ \ \ \ timeLeft\_\ =\ questions\_.empty()\ ?\ 0\ :\ questions\_[0].timeLimitSec;}
+\DoxyCodeLine{00022\ \ \ \ \ lastTick\_\ =\ std::chrono::steady\_clock::now();}
+\DoxyCodeLine{00023\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_quiz_engine_a25263f6faf463a231e55fa25b9819ec7}\label{class_quiz_engine_a25263f6faf463a231e55fa25b9819ec7} 
+\index{QuizEngine@{QuizEngine}!score@{score}}
+\index{score@{score}!QuizEngine@{QuizEngine}}
+\doxysubsubsection{\texorpdfstring{score()}{score()}}
+{\footnotesize\ttfamily int Quiz\+Engine\+::score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает количество баллов, набранных на текущий момент. 
+
+\begin{DoxyReturn}{Returns}
+Текущий счет игрока. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_quiz_engine_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{_quiz_engine_8cpp_source}{Quiz\+Engine.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \{\ \textcolor{keywordflow}{return}\ score\_;\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_quiz_engine_a98ad2cf42218eddf9dbb5536fb7e801b}\label{class_quiz_engine_a98ad2cf42218eddf9dbb5536fb7e801b} 
+\index{QuizEngine@{QuizEngine}!setDifficulty@{setDifficulty}}
+\index{setDifficulty@{setDifficulty}!QuizEngine@{QuizEngine}}
+\doxysubsubsection{\texorpdfstring{setDifficulty()}{setDifficulty()}}
+{\footnotesize\ttfamily void Quiz\+Engine\+::set\+Difficulty (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{diff }\end{DoxyParamCaption})}
+
+
+
+Устанавливает метку сложности, которая будет записана в результат игрока. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em diff} & Метка сложности для сохранения. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_quiz_engine_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{_quiz_engine_8cpp_source}{Quiz\+Engine.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ difficulty\_\ =\ diff;}
+\DoxyCodeLine{00015\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_quiz_engine_a3972106dba0f9e9c5810dbb343b01f05}\label{class_quiz_engine_a3972106dba0f9e9c5810dbb343b01f05} 
+\index{QuizEngine@{QuizEngine}!setQuestions@{setQuestions}}
+\index{setQuestions@{setQuestions}!QuizEngine@{QuizEngine}}
+\doxysubsubsection{\texorpdfstring{setQuestions()}{setQuestions()}}
+{\footnotesize\ttfamily void Quiz\+Engine\+::set\+Questions (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&}]{questions }\end{DoxyParamCaption})}
+
+
+
+Заменяет текущий набор вопросов и сбрасывает прогресс викторины. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em questions} & Вопросы, которые будут использоваться в викторине. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_quiz_engine_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_quiz_engine_8cpp_source}{Quiz\+Engine.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00004\ \ \ \ \ questions\_\ =\ questions;}
+\DoxyCodeLine{00005\ \ \ \ \ \mbox{\hyperlink{class_quiz_engine_a09378bd2cd09a5518e78a060c38fd7b4}{reset}}();}
+\DoxyCodeLine{00006\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_quiz_engine_a29d050f4dccd9297b5766f17879844ec}\label{class_quiz_engine_a29d050f4dccd9297b5766f17879844ec} 
+\index{QuizEngine@{QuizEngine}!setQuestionsWithFilter@{setQuestionsWithFilter}}
+\index{setQuestionsWithFilter@{setQuestionsWithFilter}!QuizEngine@{QuizEngine}}
+\doxysubsubsection{\texorpdfstring{setQuestionsWithFilter()}{setQuestionsWithFilter()}}
+{\footnotesize\ttfamily void Quiz\+Engine\+::set\+Questions\+With\+Filter (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&}]{all\+Questions,  }\item[{const \mbox{\hyperlink{struct_question_filters}{Question\+Filters}} \&}]{filters }\end{DoxyParamCaption})}
+
+
+
+Фильтрует полный набор вопросов, сохраняет подходящие вопросы и сбрасывает прогресс. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em all\+Questions} & Исходная коллекция вопросов до фильтрации. \\
+\hline
+{\em filters} & Фильтры по теме и сложности, которые нужно применить. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_quiz_engine_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{_quiz_engine_8cpp_source}{Quiz\+Engine.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00009\ \ \ \ \ questions\_\ =\ \mbox{\hyperlink{namespace_data_store_a085b013cdbe46aed8baad46cb4160a8e}{DataStore::filterQuestions}}(allQuestions,\ filters);}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_quiz_engine_a09378bd2cd09a5518e78a060c38fd7b4}{reset}}();}
+\DoxyCodeLine{00011\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_quiz_engine_aa72ac8faf05e4cd7580f4a2c1dbdda47}\label{class_quiz_engine_aa72ac8faf05e4cd7580f4a2c1dbdda47} 
+\index{QuizEngine@{QuizEngine}!tick@{tick}}
+\index{tick@{tick}!QuizEngine@{QuizEngine}}
+\doxysubsubsection{\texorpdfstring{tick()}{tick()}}
+{\footnotesize\ttfamily void Quiz\+Engine\+::tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Обновляет оставшееся время с учетом реально прошедшего времени. 
+
+
+
+Definition at line \mbox{\hyperlink{_quiz_engine_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{_quiz_engine_8cpp_source}{Quiz\+Engine.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }std::chrono;}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{auto}\ now\ =\ steady\_clock::now();}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{auto}\ sec\ =\ duration\_cast<seconds>(now\ -\/\ lastTick\_).count();}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (sec\ >\ 0)\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ timeLeft\_\ -\/=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(sec);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ lastTick\_\ =\ now;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timeLeft\_\ <\ 0)\ timeLeft\_\ =\ 0;}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_quiz_engine_afe0ece91968b6b29006e03c1827dd718}\label{class_quiz_engine_afe0ece91968b6b29006e03c1827dd718} 
+\index{QuizEngine@{QuizEngine}!timeLeft@{timeLeft}}
+\index{timeLeft@{timeLeft}!QuizEngine@{QuizEngine}}
+\doxysubsubsection{\texorpdfstring{timeLeft()}{timeLeft()}}
+{\footnotesize\ttfamily int Quiz\+Engine\+::time\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает оставшееся время для текущего вопроса. 
+
+\begin{DoxyReturn}{Returns}
+Оставшееся время в секундах, не меньше нуля. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_quiz_engine_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{_quiz_engine_8cpp_source}{Quiz\+Engine.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00058\ \{\ \textcolor{keywordflow}{return}\ timeLeft\_;\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_quiz_engine_a74cce23f8c29ad37040f0aad655a8ab1}\label{class_quiz_engine_a74cce23f8c29ad37040f0aad655a8ab1} 
+\index{QuizEngine@{QuizEngine}!totalQuestions@{totalQuestions}}
+\index{totalQuestions@{totalQuestions}!QuizEngine@{QuizEngine}}
+\doxysubsubsection{\texorpdfstring{totalQuestions()}{totalQuestions()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std\+::size\+\_\+t}} Quiz\+Engine\+::total\+Questions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает количество загруженных вопросов. 
+
+\begin{DoxyReturn}{Returns}
+Общее число вопросов в текущей викторине. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_quiz_engine_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{_quiz_engine_8cpp_source}{Quiz\+Engine.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{return}\ questions\_.size();}
+\DoxyCodeLine{00083\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_quiz_engine_8h}{Quiz\+Engine.\+h}}\item 
+\mbox{\hyperlink{_quiz_engine_8cpp}{Quiz\+Engine.\+cpp}}\end{DoxyCompactItemize}

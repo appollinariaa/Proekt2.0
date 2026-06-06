@@ -1,0 +1,222 @@
+\doxysection{App.\+h File Reference}
+\hypertarget{_app_8h}{}\label{_app_8h}\index{App.h@{App.h}}
+{\ttfamily \#include $<$SFML/\+Graphics.\+hpp$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$optional$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}Data.\+h"{}}\newline
+{\ttfamily \#include "{}Quiz\+Engine.\+h"{}}\newline
+{\ttfamily \#include "{}Question\+Editor.\+h"{}}\newline
+{\ttfamily \#include "{}Ranking\+View.\+h"{}}\newline
+{\ttfamily \#include "{}Button.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_app}{App}}
+\begin{DoxyCompactList}\small\item\em Главное SFML-\/приложение, связывающее интерфейс, логику викторины, редактор и рейтинг. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9b}{Screen\+State}} \{ \newline
+\mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9bab61541208db7fa7dba42c85224405911}{Menu}}
+, \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba1547b5c15a800a6e43fff139f30ba8a9}{Name\+Input}}
+, \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba3fefcf2a639893e3ac9168f772f4d09d}{Topic\+Select}}
+, \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba823021ca06a2d18b807cb00d7cc10e44}{Difficulty\+Select}}
+, \newline
+\mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9baab458f4b361834dd802e4f40d31b5ebc}{Quiz}}
+, \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8eea62084ca7e541d918e823422bd82e}{Result}}
+, \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba37ae66f03261bd62844188f7e28092ff}{Ranking}}
+, \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba9ddb6c49bc47d6412aed87762fecaf16}{Password\+Input}}
+, \newline
+\mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba344a7f427fb765610ef96eb7bce95257}{Editor}}
+, \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}{Multiplayer\+Name\+Input1}}
+, \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8d06cdca5b59a722bf38c842125a22e2}{Multiplayer\+Name\+Input2}}
+, \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba09908026c7f96c1c1ce54ee80deb8910}{Multiplayer\+Topic\+Select}}
+, \newline
+\mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba08b34babd1430dab609ab91996ee3a53}{Multiplayer\+Difficulty\+Select}}
+, \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba836ccbe6c108aa045e961818a68321a5}{Multiplayer\+Quiz}}
+, \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba860bbc9dc1f71826fb32ce26a3b2638e}{Multiplayer\+Result}}
+ \}
+\begin{DoxyCompactList}\small\item\em Определяет экран, который сейчас отображается приложением. \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5}{Editor\+Field}} \{ \newline
+\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{None}}
+, \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa97ea56b0e00b2379736ae60869ff66a}{Question}}
+, \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a3779706d050437e0ce3ac709b5048525}{Answer0}}
+, \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a94bfe6a0489461ebd70898c04c9d3ece}{Answer1}}
+, \newline
+\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6db0fc92c65cf8b6b71199084f41c9a1}{Answer2}}
+, \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a32b48eac71a1d5fff78511407ef66a03}{Answer3}}
+, \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa76d4ef5f3f6a672bbfab2865563e530}{Time}}
+, \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a25812bf456959aa5f28dc570f341a3ba}{Topic}}
+, \newline
+\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a7b29ca96ada2afa3aadbcf55cd61a1ed}{Difficulty}}
+ \}
+\begin{DoxyCompactList}\small\item\em Определяет поле, выбранное для редактирования в редакторе вопросов. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5}\label{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5} 
+\index{App.h@{App.h}!EditorField@{EditorField}}
+\index{EditorField@{EditorField}!App.h@{App.h}}
+\doxysubsubsection{\texorpdfstring{EditorField}{EditorField}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5}{Editor\+Field}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Определяет поле, выбранное для редактирования в редакторе вопросов. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{None@{None}!App.h@{App.h}}\index{App.h@{App.h}!None@{None}}}\Hypertarget{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}\label{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754} 
+None&Поле редактора не выбрано. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Question@{Question}!App.h@{App.h}}\index{App.h@{App.h}!Question@{Question}}}\Hypertarget{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa97ea56b0e00b2379736ae60869ff66a}\label{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa97ea56b0e00b2379736ae60869ff66a} 
+Question&Поле текста вопроса. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Answer0@{Answer0}!App.h@{App.h}}\index{App.h@{App.h}!Answer0@{Answer0}}}\Hypertarget{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a3779706d050437e0ce3ac709b5048525}\label{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a3779706d050437e0ce3ac709b5048525} 
+Answer0&Поле первого ответа. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Answer1@{Answer1}!App.h@{App.h}}\index{App.h@{App.h}!Answer1@{Answer1}}}\Hypertarget{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a94bfe6a0489461ebd70898c04c9d3ece}\label{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a94bfe6a0489461ebd70898c04c9d3ece} 
+Answer1&Поле второго ответа. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Answer2@{Answer2}!App.h@{App.h}}\index{App.h@{App.h}!Answer2@{Answer2}}}\Hypertarget{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6db0fc92c65cf8b6b71199084f41c9a1}\label{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6db0fc92c65cf8b6b71199084f41c9a1} 
+Answer2&Поле третьего ответа. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Answer3@{Answer3}!App.h@{App.h}}\index{App.h@{App.h}!Answer3@{Answer3}}}\Hypertarget{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a32b48eac71a1d5fff78511407ef66a03}\label{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a32b48eac71a1d5fff78511407ef66a03} 
+Answer3&Поле четвертого ответа. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Time@{Time}!App.h@{App.h}}\index{App.h@{App.h}!Time@{Time}}}\Hypertarget{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa76d4ef5f3f6a672bbfab2865563e530}\label{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa76d4ef5f3f6a672bbfab2865563e530} 
+Time&Поле ограничения времени. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Topic@{Topic}!App.h@{App.h}}\index{App.h@{App.h}!Topic@{Topic}}}\Hypertarget{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a25812bf456959aa5f28dc570f341a3ba}\label{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a25812bf456959aa5f28dc570f341a3ba} 
+Topic&Поле темы вопроса. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Difficulty@{Difficulty}!App.h@{App.h}}\index{App.h@{App.h}!Difficulty@{Difficulty}}}\Hypertarget{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a7b29ca96ada2afa3aadbcf55cd61a1ed}\label{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a7b29ca96ada2afa3aadbcf55cd61a1ed} 
+Difficulty&Поле сложности вопроса. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_app_8h_source_l00053}{53}} of file \mbox{\hyperlink{_app_8h_source}{App.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{None}},}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa97ea56b0e00b2379736ae60869ff66a}{Question}},}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a3779706d050437e0ce3ac709b5048525}{Answer0}},}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a94bfe6a0489461ebd70898c04c9d3ece}{Answer1}},}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6db0fc92c65cf8b6b71199084f41c9a1}{Answer2}},}
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a32b48eac71a1d5fff78511407ef66a03}{Answer3}},}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa76d4ef5f3f6a672bbfab2865563e530}{Time}},}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a25812bf456959aa5f28dc570f341a3ba}{Topic}},}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a7b29ca96ada2afa3aadbcf55cd61a1ed}{Difficulty}}}
+\DoxyCodeLine{00072\ \};}
+
+\end{DoxyCode}
+\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9b}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9b} 
+\index{App.h@{App.h}!ScreenState@{ScreenState}}
+\index{ScreenState@{ScreenState}!App.h@{App.h}}
+\doxysubsubsection{\texorpdfstring{ScreenState}{ScreenState}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9b}{Screen\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Определяет экран, который сейчас отображается приложением. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Menu@{Menu}!App.h@{App.h}}\index{App.h@{App.h}!Menu@{Menu}}}\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9bab61541208db7fa7dba42c85224405911}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9bab61541208db7fa7dba42c85224405911} 
+Menu&Экран главного меню. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NameInput@{NameInput}!App.h@{App.h}}\index{App.h@{App.h}!NameInput@{NameInput}}}\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba1547b5c15a800a6e43fff139f30ba8a9}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba1547b5c15a800a6e43fff139f30ba8a9} 
+Name\+Input&Экран ввода имени для одиночной игры. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TopicSelect@{TopicSelect}!App.h@{App.h}}\index{App.h@{App.h}!TopicSelect@{TopicSelect}}}\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba3fefcf2a639893e3ac9168f772f4d09d}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba3fefcf2a639893e3ac9168f772f4d09d} 
+Topic\+Select&Экран выбора темы для одиночной игры. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DifficultySelect@{DifficultySelect}!App.h@{App.h}}\index{App.h@{App.h}!DifficultySelect@{DifficultySelect}}}\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba823021ca06a2d18b807cb00d7cc10e44}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba823021ca06a2d18b807cb00d7cc10e44} 
+Difficulty\+Select&Экран выбора сложности для одиночной игры. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Quiz@{Quiz}!App.h@{App.h}}\index{App.h@{App.h}!Quiz@{Quiz}}}\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9baab458f4b361834dd802e4f40d31b5ebc}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9baab458f4b361834dd802e4f40d31b5ebc} 
+Quiz&Экран одиночной викторины. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Result@{Result}!App.h@{App.h}}\index{App.h@{App.h}!Result@{Result}}}\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8eea62084ca7e541d918e823422bd82e}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8eea62084ca7e541d918e823422bd82e} 
+Result&Экран результата одиночной игры. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Ranking@{Ranking}!App.h@{App.h}}\index{App.h@{App.h}!Ranking@{Ranking}}}\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba37ae66f03261bd62844188f7e28092ff}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba37ae66f03261bd62844188f7e28092ff} 
+Ranking&Экран таблицы рейтинга. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PasswordInput@{PasswordInput}!App.h@{App.h}}\index{App.h@{App.h}!PasswordInput@{PasswordInput}}}\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba9ddb6c49bc47d6412aed87762fecaf16}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba9ddb6c49bc47d6412aed87762fecaf16} 
+Password\+Input&Экран ввода пароля перед открытием редактора. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Editor@{Editor}!App.h@{App.h}}\index{App.h@{App.h}!Editor@{Editor}}}\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba344a7f427fb765610ef96eb7bce95257}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba344a7f427fb765610ef96eb7bce95257} 
+Editor&Экран редактора вопросов. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MultiplayerNameInput1@{MultiplayerNameInput1}!App.h@{App.h}}\index{App.h@{App.h}!MultiplayerNameInput1@{MultiplayerNameInput1}}}\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4} 
+Multiplayer\+Name\+Input1&Экран ввода имени первого игрока в многопользовательском режиме. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MultiplayerNameInput2@{MultiplayerNameInput2}!App.h@{App.h}}\index{App.h@{App.h}!MultiplayerNameInput2@{MultiplayerNameInput2}}}\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8d06cdca5b59a722bf38c842125a22e2}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8d06cdca5b59a722bf38c842125a22e2} 
+Multiplayer\+Name\+Input2&Экран ввода имени второго игрока в многопользовательском режиме. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MultiplayerTopicSelect@{MultiplayerTopicSelect}!App.h@{App.h}}\index{App.h@{App.h}!MultiplayerTopicSelect@{MultiplayerTopicSelect}}}\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba09908026c7f96c1c1ce54ee80deb8910}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba09908026c7f96c1c1ce54ee80deb8910} 
+Multiplayer\+Topic\+Select&Экран выбора темы для многопользовательского режима. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MultiplayerDifficultySelect@{MultiplayerDifficultySelect}!App.h@{App.h}}\index{App.h@{App.h}!MultiplayerDifficultySelect@{MultiplayerDifficultySelect}}}\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba08b34babd1430dab609ab91996ee3a53}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba08b34babd1430dab609ab91996ee3a53} 
+Multiplayer\+Difficulty\+Select&Экран выбора сложности для многопользовательского режима. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MultiplayerQuiz@{MultiplayerQuiz}!App.h@{App.h}}\index{App.h@{App.h}!MultiplayerQuiz@{MultiplayerQuiz}}}\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba836ccbe6c108aa045e961818a68321a5}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba836ccbe6c108aa045e961818a68321a5} 
+Multiplayer\+Quiz&Экран многопользовательской викторины. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MultiplayerResult@{MultiplayerResult}!App.h@{App.h}}\index{App.h@{App.h}!MultiplayerResult@{MultiplayerResult}}}\Hypertarget{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba860bbc9dc1f71826fb32ce26a3b2638e}\label{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba860bbc9dc1f71826fb32ce26a3b2638e} 
+Multiplayer\+Result&Экран результата многопользовательской игры. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_app_8h_source_l00017}{17}} of file \mbox{\hyperlink{_app_8h_source}{App.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9bab61541208db7fa7dba42c85224405911}{Menu}},}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba1547b5c15a800a6e43fff139f30ba8a9}{NameInput}},}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba3fefcf2a639893e3ac9168f772f4d09d}{TopicSelect}},}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba823021ca06a2d18b807cb00d7cc10e44}{DifficultySelect}},}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9baab458f4b361834dd802e4f40d31b5ebc}{Quiz}},}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8eea62084ca7e541d918e823422bd82e}{Result}},}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba37ae66f03261bd62844188f7e28092ff}{Ranking}},}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba9ddb6c49bc47d6412aed87762fecaf16}{PasswordInput}},}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba344a7f427fb765610ef96eb7bce95257}{Editor}},}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}{MultiplayerNameInput1}},}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8d06cdca5b59a722bf38c842125a22e2}{MultiplayerNameInput2}},}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba09908026c7f96c1c1ce54ee80deb8910}{MultiplayerTopicSelect}},}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba08b34babd1430dab609ab91996ee3a53}{MultiplayerDifficultySelect}},}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba836ccbe6c108aa045e961818a68321a5}{MultiplayerQuiz}},}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba860bbc9dc1f71826fb32ce26a3b2638e}{MultiplayerResult}}}
+\DoxyCodeLine{00048\ \};}
+
+\end{DoxyCode}

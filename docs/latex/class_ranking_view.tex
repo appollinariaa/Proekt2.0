@@ -1,0 +1,194 @@
+\doxysection{Ranking\+View Class Reference}
+\hypertarget{class_ranking_view}{}\label{class_ranking_view}\index{RankingView@{RankingView}}
+
+
+Форматирует данные рейтинга и хранит состояние прокрутки экрана рейтинга.  
+
+
+
+
+{\ttfamily \#include $<$Ranking\+View.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_ranking_view_a6741050702c8a25011ae4aefb0023f73}{set\+Ranking}} (const std\+::vector$<$ \mbox{\hyperlink{struct_player_result}{Player\+Result}} $>$ \&results)
+\begin{DoxyCompactList}\small\item\em Заменяет отображаемые данные рейтинга и сбрасывает смещение прокрутки. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ranking_view_ac9dac18f614fbf1a2a7fddea59b14efe}{scroll\+Up}} ()
+\begin{DoxyCompactList}\small\item\em Перемещает видимую страницу вверх на одну страницу, если это возможно. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ranking_view_ac14196e5b6841a52ce2a4beabc0f3b9c}{scroll\+Down}} ()
+\begin{DoxyCompactList}\small\item\em Перемещает видимую страницу вниз на одну страницу, если это возможно. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ranking_view_a4ee230f23a88b0049b5d17f02b015316}{reset\+Scroll}} ()
+\begin{DoxyCompactList}\small\item\em Возвращает видимую страницу к началу рейтинга. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_ranking_view_abbeee77645ca510719694e84310aa3db}{build\+Text}} () const
+\begin{DoxyCompactList}\small\item\em Создает форматированный текст для разделов одиночной игры и дуэли. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Форматирует данные рейтинга и хранит состояние прокрутки экрана рейтинга. 
+
+Definition at line \mbox{\hyperlink{_ranking_view_8h_source_l00010}{10}} of file \mbox{\hyperlink{_ranking_view_8h_source}{Ranking\+View.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ranking_view_abbeee77645ca510719694e84310aa3db}\label{class_ranking_view_abbeee77645ca510719694e84310aa3db} 
+\index{RankingView@{RankingView}!buildText@{buildText}}
+\index{buildText@{buildText}!RankingView@{RankingView}}
+\doxysubsubsection{\texorpdfstring{buildText()}{buildText()}}
+{\footnotesize\ttfamily std\+::string Ranking\+View\+::build\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Создает форматированный текст для разделов одиночной игры и дуэли. 
+
+\begin{DoxyReturn}{Returns}
+Многострочный текст с текущей страницей рейтинга. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_ranking_view_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{_ranking_view_8cpp_source}{Ranking\+View.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ std::vector<PlayerResult>\ solo;}
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<PlayerResult>\ duo;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ r\ :\ allResults)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r.mode\ ==\ \textcolor{stringliteral}{"{}duo"{}})\ duo.push\_back(r);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ solo.push\_back(r);}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ std::ostringstream\ oss;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ oss\ <<\ \textcolor{stringliteral}{"{}===\ Одиночная\ игра\ ===\(\backslash\)n"{}};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (solo.empty())\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ oss\ <<\ \textcolor{stringliteral}{"{}Нет\ результатов\(\backslash\)n"{}};}
+\DoxyCodeLine{00038\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ soloOffset\ =\ std::min(offset,\ std::max(0,\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(solo.size())\ -\/\ pageSize));}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ limit\ =\ std::min(pageSize,\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(solo.size())\ -\/\ soloOffset);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ limit;\ ++i)\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ r\ =\ solo[soloOffset\ +\ i];}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ oss\ <<\ (soloOffset\ +\ i\ +\ 1)\ <<\ \textcolor{stringliteral}{"{}.\ "{}}\ <<\ r.playerName}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ |\ "{}}\ <<\ r.score\ <<\ \textcolor{stringliteral}{"{}/"{}}\ <<\ r.maxScore}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ |\ "{}}\ <<\ r.timestamp\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ oss\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n===\ Дуэль\ ===\(\backslash\)n"{}};}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (duo.empty())\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ oss\ <<\ \textcolor{stringliteral}{"{}Нет\ результатов\(\backslash\)n"{}};}
+\DoxyCodeLine{00052\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ duoOffset\ =\ std::min(offset,\ std::max(0,\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(duo.size())\ -\/\ pageSize));}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ limit\ =\ std::min(pageSize,\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(duo.size())\ -\/\ duoOffset);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ limit;\ ++i)\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ r\ =\ duo[duoOffset\ +\ i];}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ oss\ <<\ (duoOffset\ +\ i\ +\ 1)\ <<\ \textcolor{stringliteral}{"{}.\ "{}}\ <<\ r.playerName}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ |\ "{}}\ <<\ r.score\ <<\ \textcolor{stringliteral}{"{}/"{}}\ <<\ r.maxScore}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ |\ "{}}\ <<\ r.timestamp\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{return}\ oss.str();}
+\DoxyCodeLine{00064\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_ranking_view_a4ee230f23a88b0049b5d17f02b015316}\label{class_ranking_view_a4ee230f23a88b0049b5d17f02b015316} 
+\index{RankingView@{RankingView}!resetScroll@{resetScroll}}
+\index{resetScroll@{resetScroll}!RankingView@{RankingView}}
+\doxysubsubsection{\texorpdfstring{resetScroll()}{resetScroll()}}
+{\footnotesize\ttfamily void Ranking\+View\+::reset\+Scroll (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Возвращает видимую страницу к началу рейтинга. 
+
+
+
+Definition at line \mbox{\hyperlink{_ranking_view_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_ranking_view_8cpp_source}{Ranking\+View.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ offset\ =\ 0;}
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_ranking_view_ac14196e5b6841a52ce2a4beabc0f3b9c}\label{class_ranking_view_ac14196e5b6841a52ce2a4beabc0f3b9c} 
+\index{RankingView@{RankingView}!scrollDown@{scrollDown}}
+\index{scrollDown@{scrollDown}!RankingView@{RankingView}}
+\doxysubsubsection{\texorpdfstring{scrollDown()}{scrollDown()}}
+{\footnotesize\ttfamily void Ranking\+View\+::scroll\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Перемещает видимую страницу вниз на одну страницу, если это возможно. 
+
+
+
+Definition at line \mbox{\hyperlink{_ranking_view_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{_ranking_view_8cpp_source}{Ranking\+View.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordflow}{if}\ (offset\ +\ pageSize\ <\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(allResults.size()))\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ offset\ +=\ pageSize;}
+\DoxyCodeLine{00017\ \ \ \ \ \}}
+\DoxyCodeLine{00018\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_ranking_view_ac9dac18f614fbf1a2a7fddea59b14efe}\label{class_ranking_view_ac9dac18f614fbf1a2a7fddea59b14efe} 
+\index{RankingView@{RankingView}!scrollUp@{scrollUp}}
+\index{scrollUp@{scrollUp}!RankingView@{RankingView}}
+\doxysubsubsection{\texorpdfstring{scrollUp()}{scrollUp()}}
+{\footnotesize\ttfamily void Ranking\+View\+::scroll\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Перемещает видимую страницу вверх на одну страницу, если это возможно. 
+
+
+
+Definition at line \mbox{\hyperlink{_ranking_view_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{_ranking_view_8cpp_source}{Ranking\+View.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00011\ \ \ \ \ offset\ =\ std::max(0,\ offset\ -\/\ pageSize);}
+\DoxyCodeLine{00012\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_ranking_view_a6741050702c8a25011ae4aefb0023f73}\label{class_ranking_view_a6741050702c8a25011ae4aefb0023f73} 
+\index{RankingView@{RankingView}!setRanking@{setRanking}}
+\index{setRanking@{setRanking}!RankingView@{RankingView}}
+\doxysubsubsection{\texorpdfstring{setRanking()}{setRanking()}}
+{\footnotesize\ttfamily void Ranking\+View\+::set\+Ranking (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_player_result}{Player\+Result}} $>$ \&}]{results }\end{DoxyParamCaption})}
+
+
+
+Заменяет отображаемые данные рейтинга и сбрасывает смещение прокрутки. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em results} & Результаты рейтинга для отображения. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_ranking_view_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_ranking_view_8cpp_source}{Ranking\+View.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00006\ \ \ \ \ allResults\ =\ results;}
+\DoxyCodeLine{00007\ \ \ \ \ offset\ =\ 0;}
+\DoxyCodeLine{00008\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_ranking_view_8h}{Ranking\+View.\+h}}\item 
+\mbox{\hyperlink{_ranking_view_8cpp}{Ranking\+View.\+cpp}}\end{DoxyCompactItemize}

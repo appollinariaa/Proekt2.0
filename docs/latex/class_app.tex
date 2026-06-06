@@ -1,0 +1,90 @@
+\doxysection{App Class Reference}
+\hypertarget{class_app}{}\label{class_app}\index{App@{App}}
+
+
+Главное SFML-\/приложение, связывающее интерфейс, логику викторины, редактор и рейтинг.  
+
+
+
+
+{\ttfamily \#include $<$App.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_app_acb8cbf3e285b91d0170ffe87df5989c5}{App}} ()
+\begin{DoxyCompactList}\small\item\em Создает окно, инициализирует ресурсы, элементы интерфейса и данные. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_app_ae09dc71078b64c56c673b1ad1d25b5d1}{run}} ()
+\begin{DoxyCompactList}\small\item\em Запускает главный цикл приложения до закрытия окна. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Главное SFML-\/приложение, связывающее интерфейс, логику викторины, редактор и рейтинг. 
+
+Definition at line \mbox{\hyperlink{_app_8h_source_l00077}{77}} of file \mbox{\hyperlink{_app_8h_source}{App.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_app_acb8cbf3e285b91d0170ffe87df5989c5}\label{class_app_acb8cbf3e285b91d0170ffe87df5989c5} 
+\index{App@{App}!App@{App}}
+\index{App@{App}!App@{App}}
+\doxysubsubsection{\texorpdfstring{App()}{App()}}
+{\footnotesize\ttfamily App\+::\+App (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Создает окно, инициализирует ресурсы, элементы интерфейса и данные. 
+
+
+
+Definition at line \mbox{\hyperlink{_app_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_app_8cpp_source}{App.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \ \ \ \ :\ window(sf::VideoMode(\{1200u,\ 800u\}),\ \textcolor{stringliteral}{"{}Mini\ Quiz\ SFML"{}}) }
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ window.setVerticalSyncEnabled(\textcolor{keyword}{true});}
+\DoxyCodeLine{00041\ \ \ \ \ currentFilters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}\ =\ std::nullopt;}
+\DoxyCodeLine{00042\ \ \ \ \ currentFilters.\mbox{\hyperlink{struct_question_filters_aac123945cd0d2ea8c77187a1f5aa16e5}{difficulty}}\ =\ std::nullopt;}
+\DoxyCodeLine{00043\ \ \ \ \ loadResources();}
+\DoxyCodeLine{00044\ \ \ \ \ editor.emplace(password);}
+\DoxyCodeLine{00045\ \ \ \ \ setupUI();}
+\DoxyCodeLine{00046\ \ \ \ \ loadRankingData();}
+\DoxyCodeLine{00047\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_app_ae09dc71078b64c56c673b1ad1d25b5d1}\label{class_app_ae09dc71078b64c56c673b1ad1d25b5d1} 
+\index{App@{App}!run@{run}}
+\index{run@{run}!App@{App}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void App\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Запускает главный цикл приложения до закрытия окна. 
+
+
+
+Definition at line \mbox{\hyperlink{_app_8cpp_source_l00514}{514}} of file \mbox{\hyperlink{_app_8cpp_source}{App.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00515\ \ \ \ \ \textcolor{keywordflow}{while}\ (window.isOpen())\ \{}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ processEvents();}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ update();}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ render();}
+\DoxyCodeLine{00519\ \ \ \ \ \}}
+\DoxyCodeLine{00520\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_app_8h}{App.\+h}}\item 
+\mbox{\hyperlink{_app_8cpp}{App.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,34 @@
+\doxysection{Player\+Manager.\+h}
+\hypertarget{_player_manager_8h_source}{}\label{_player_manager_8h_source}\mbox{\hyperlink{_player_manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00008}\mbox{\hyperlink{struct_player}{00008}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_player}{Player}}\ \{}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00010}\mbox{\hyperlink{struct_player_af9c920fabaafdeb7961a645315b521ff}{00010}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_player_af9c920fabaafdeb7961a645315b521ff}{name}};}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00013}\mbox{\hyperlink{struct_player_a53898a8fdb84e2c6d95684cdfe49323e}{00013}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_player_a53898a8fdb84e2c6d95684cdfe49323e}{totalScore}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00014}00014\ \};}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00019}\mbox{\hyperlink{class_player_manager}{00019}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_player_manager}{PlayerManager}}\ \{}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00020}00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_manager_a45bccb35ec14cfa67ef2073e10ce52e3}{addPlayer}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00030}00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_manager_a89207bedbf219a9c26bf0cb27b593e74}{clear}}();}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Player>\&\ \mbox{\hyperlink{class_player_manager_a54e7dbe23a7ac92e85c5d6d945a762aa}{players}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{struct_player}{Player}}\&\ \mbox{\hyperlink{class_player_manager_acdb1e8be7b08fdaa0be324beabf1e859}{current}}();}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00049}00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_player_manager_a39f48f24099736a4074783f4d77805b0}{next}}();}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_player_manager_ae9c8da4889ffd37f864efb46cf500873}{empty}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00057}00057\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00059}00059\ \ \ \ \ std::vector<Player>\ players\_;}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00062}00062\ \ \ \ \ \mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ currentIndex\_\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_player_manager_8h_source_l00063}00063\ \};}
+
+\end{DoxyCode}

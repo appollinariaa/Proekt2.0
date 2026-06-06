@@ -1,0 +1,53 @@
+\doxysection{Question\+Editor.\+h}
+\hypertarget{_question_editor_8h_source}{}\label{_question_editor_8h_source}\mbox{\hyperlink{_question_editor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_data_8h}{Data.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00009}\mbox{\hyperlink{class_question_editor}{00009}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_question_editor}{QuestionEditor}}\ \{}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00010}00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_question_editor}{QuestionEditor}}(\textcolor{keyword}{const}\ std::string\&\ password);}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00022}00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_question_editor_a664767c85419a9150cc61c27bf484bb2}{login}}(\textcolor{keyword}{const}\ std::string\&\ input)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00028}00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_question_editor_ad79e6d90f94474eee5aa3ce2a7c7021c}{setQuestions}}(std::vector<Question>\ \mbox{\hyperlink{class_question_editor_a58ddd7a7f969c1e152c843297e017dc1}{questions}});}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00034}00034\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Question>\&\ \mbox{\hyperlink{class_question_editor_a58ddd7a7f969c1e152c843297e017dc1}{questions}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00041}00041\ \ \ \ \ \mbox{\hyperlink{struct_question}{Question}}\&\ \mbox{\hyperlink{class_question_editor_a7922f989e4355c3af31593f2e398c25c}{currentQuestion}}();}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00048}00048\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_question}{Question}}\&\ \mbox{\hyperlink{class_question_editor_a7922f989e4355c3af31593f2e398c25c}{currentQuestion}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_question_editor_a2fe490a209c58ac2fc8199e867d8c3bc}{save}}(\textcolor{keyword}{const}\ std::string\&\ path)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00060}00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_question_editor_af5e1c66648e648ef0779d6128b660804}{addQuestion}}();}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00066}00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_question_editor_a1717476961f3bcc5c9b4b2a92aa3d2b1}{deleteQuestion}}(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00073}00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_question_editor_a6ca5ad09f2522c96d7c7d00917415c39}{updateQuestionText}}(\textcolor{keywordtype}{int}\ index,\ \textcolor{keyword}{const}\ std::string\&\ text);}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00081}00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_question_editor_a6e08bf1dbbfdccedb1723b1c26c83d6b}{updateAnswer}}(\textcolor{keywordtype}{int}\ index,\ \textcolor{keywordtype}{int}\ answerIndex,\ \textcolor{keyword}{const}\ std::string\&\ answer);}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_question_editor_a9539c71766284565e70517dcaba3c7fa}{setTime}}(\textcolor{keywordtype}{int}\ index,\ \textcolor{keywordtype}{int}\ time);}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00095}00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_question_editor_a7287d82f36399edd3bd2c95cdbacb410}{setTopic}}(\textcolor{keywordtype}{int}\ index,\ \textcolor{keyword}{const}\ std::string\&\ topic);}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00102}00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_question_editor_acec321a88bc311d1fe854ad141a3462c}{setDifficulty}}(\textcolor{keywordtype}{int}\ index,\ \textcolor{keyword}{const}\ std::string\&\ difficulty);}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00109}00109\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_question_editor_a60f1249dc1ba1d8579c9268ab0df2e2d}{setCorrectAnswer}}(\textcolor{keywordtype}{int}\ index,\ \textcolor{keywordtype}{int}\ correctAnswer);}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00115}\mbox{\hyperlink{class_question_editor_ab05021f00eb6e7b0b434e9daaf9905bf}{00115}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_question_editor_ab05021f00eb6e7b0b434e9daaf9905bf}{currentIndex}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ currentIndex\_;\ \}}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00121}00121\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_question_editor_a1658f4d28ea7d661ae55f4a4d6c583ec}{setCurrentIndex}}(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00123}00123\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00125}00125\ \ \ \ \ std::string\ password\_;}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00128}00128\ \ \ \ \ std::vector<Question>\ questions\_;}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00131}00131\ \ \ \ \ \textcolor{keywordtype}{int}\ currentIndex\_\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_question_editor_8h_source_l00132}00132\ \};}
+
+\end{DoxyCode}

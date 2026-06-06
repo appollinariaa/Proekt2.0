@@ -1,0 +1,38 @@
+\doxysection{Data.\+h File Reference}
+\hypertarget{_data_8h}{}\label{_data_8h}\index{Data.h@{Data.h}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$optional$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_question}{Question}}
+\begin{DoxyCompactList}\small\item\em Хранит один вопрос викторины и данные, необходимые для его проверки. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_question_filters}{Question\+Filters}}
+\begin{DoxyCompactList}\small\item\em Необязательные критерии для выбора части вопросов. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_player_result}{Player\+Result}}
+\begin{DoxyCompactList}\small\item\em Один сохраненный результат викторины, отображаемый в рейтинге. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_data_store}{Data\+Store}}
+\begin{DoxyCompactList}\small\item\em Вспомогательные функции для работы с файлами, вопросами, фильтрами и результатами. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \mbox{\hyperlink{namespace_data_store_ab65294327a3d957885ea4eb16ed9f79f}{Data\+Store\+::default\+Questions}} ()
+\begin{DoxyCompactList}\small\item\em Создает встроенный набор вопросов по умолчанию. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespace_data_store_a3c432e64af0a21b00aa0f889e77a9afd}{Data\+Store\+::load\+Questions}} (const std\+::string \&filename, std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&questions)
+\begin{DoxyCompactList}\small\item\em Загружает вопросы из текстового файла. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespace_data_store_abed74e95cad89016b053248ce1dd7839}{Data\+Store\+::save\+Questions}} (const std\+::string \&filename, const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&questions)
+\begin{DoxyCompactList}\small\item\em Сохраняет вопросы в текстовый файл. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \mbox{\hyperlink{namespace_data_store_a085b013cdbe46aed8baad46cb4160a8e}{Data\+Store\+::filter\+Questions}} (const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&questions, const \mbox{\hyperlink{struct_question_filters}{Question\+Filters}} \&filters)
+\begin{DoxyCompactList}\small\item\em Возвращает вопросы, подходящие под заданные фильтры. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespace_data_store_a4e696441e3211c0c3cb48ab9a53a363c}{Data\+Store\+::get\+Unique\+Topics}} (const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&questions)
+\begin{DoxyCompactList}\small\item\em Извлекает отсортированные уникальные названия тем из вопросов. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespace_data_store_a698dbfa9d626db877df05bc82982ce66}{Data\+Store\+::get\+Unique\+Difficulties}} (const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&questions)
+\begin{DoxyCompactList}\small\item\em Извлекает уникальные названия сложностей из вопросов. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespace_data_store_a5fe535b0e1ea1dd0f4403d0851478095}{Data\+Store\+::save\+Result}} (const std\+::string \&filename, const \mbox{\hyperlink{struct_player_result}{Player\+Result}} \&result)
+\begin{DoxyCompactList}\small\item\em Добавляет один результат игрока в файл рейтинга. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_player_result}{Player\+Result}} $>$ \mbox{\hyperlink{namespace_data_store_a793b7683453d75697eb6c32d9fef5dcf}{Data\+Store\+::load\+Ranking}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Загружает и сортирует результаты игроков из файла рейтинга. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -1,0 +1,88 @@
+\doxysection{Quiz\+Engine.\+cpp}
+\hypertarget{_quiz_engine_8cpp_source}{}\label{_quiz_engine_8cpp_source}\mbox{\hyperlink{_quiz_engine_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_quiz_engine_8h}{QuizEngine.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00003}\mbox{\hyperlink{class_quiz_engine_a3972106dba0f9e9c5810dbb343b01f05}{00003}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_quiz_engine_a3972106dba0f9e9c5810dbb343b01f05}{QuizEngine::setQuestions}}(\textcolor{keyword}{const}\ std::vector<Question>\&\ questions)\ \{}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00004}00004\ \ \ \ \ questions\_\ =\ questions;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00005}00005\ \ \ \ \ \mbox{\hyperlink{class_quiz_engine_a09378bd2cd09a5518e78a060c38fd7b4}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00006}00006\ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00008}\mbox{\hyperlink{class_quiz_engine_a29d050f4dccd9297b5766f17879844ec}{00008}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_quiz_engine_a29d050f4dccd9297b5766f17879844ec}{QuizEngine::setQuestionsWithFilter}}(\textcolor{keyword}{const}\ std::vector<Question>\&\ allQuestions,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_question_filters}{QuestionFilters}}\&\ filters)\ \{}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00009}00009\ \ \ \ \ questions\_\ =\ \mbox{\hyperlink{namespace_data_store_a085b013cdbe46aed8baad46cb4160a8e}{DataStore::filterQuestions}}(allQuestions,\ filters);}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{class_quiz_engine_a09378bd2cd09a5518e78a060c38fd7b4}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00011}00011\ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00013}\mbox{\hyperlink{class_quiz_engine_a98ad2cf42218eddf9dbb5536fb7e801b}{00013}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_quiz_engine_a98ad2cf42218eddf9dbb5536fb7e801b}{QuizEngine::setDifficulty}}(\textcolor{keyword}{const}\ std::string\&\ diff)\ \{}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00014}00014\ \ \ \ \ difficulty\_\ =\ diff;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00017}\mbox{\hyperlink{class_quiz_engine_a09378bd2cd09a5518e78a060c38fd7b4}{00017}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_quiz_engine_a09378bd2cd09a5518e78a060c38fd7b4}{QuizEngine::reset}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00018}00018\ \ \ \ \ currentIndex\_\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00019}00019\ \ \ \ \ score\_\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00020}00020\ \ \ \ \ maxScore\_\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00021}00021\ \ \ \ \ timeLeft\_\ =\ questions\_.empty()\ ?\ 0\ :\ questions\_[0].timeLimitSec;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00022}00022\ \ \ \ \ lastTick\_\ =\ std::chrono::steady\_clock::now();}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00025}\mbox{\hyperlink{class_quiz_engine_a577c499079b8f298138166034c21ee41}{00025}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_question}{Question}}*\ \mbox{\hyperlink{class_quiz_engine_a577c499079b8f298138166034c21ee41}{QuizEngine::currentQuestion}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_quiz_engine_addee0bb0a091b28e7af48963c131fe73}{finished}}())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{return}\ \&questions\_[currentIndex\_];}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00030}\mbox{\hyperlink{class_quiz_engine_adec33865d8f2396d7219a66f73c70c49}{00030}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_quiz_engine_adec33865d8f2396d7219a66f73c70c49}{QuizEngine::answer}}(\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ index)\ \{}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_question}{Question}}*\ q\ =\ \mbox{\hyperlink{class_quiz_engine_a577c499079b8f298138166034c21ee41}{currentQuestion}}();}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (!q)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00033}00033\ \ \ \ \ maxScore\_\ +=\ q-\/>\mbox{\hyperlink{struct_question_a2b3eb226f5b979cac450710a453d3006}{points}};}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ ==\ q-\/>\mbox{\hyperlink{struct_question_a5d7284577f5b576fb248379ca95fa14b}{correctIndex}})\ \{}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ score\_\ +=\ q-\/>\mbox{\hyperlink{struct_question_a2b3eb226f5b979cac450710a453d3006}{points}};}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00041}\mbox{\hyperlink{class_quiz_engine_a80b749da321263eaaa8b854732805d64}{00041}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_quiz_engine_a80b749da321263eaaa8b854732805d64}{QuizEngine::nextQuestion}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentIndex\_\ +\ 1\ <\ questions\_.size())\ \{}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ ++currentIndex\_;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ timeLeft\_\ =\ questions\_[currentIndex\_].timeLimitSec;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ lastTick\_\ =\ std::chrono::steady\_clock::now();}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00048}00048\ \ \ \ \ currentIndex\_\ =\ questions\_.size();}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00050}00050\ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00052}\mbox{\hyperlink{class_quiz_engine_addee0bb0a091b28e7af48963c131fe73}{00052}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_quiz_engine_addee0bb0a091b28e7af48963c131fe73}{QuizEngine::finished}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{return}\ questions\_.empty()\ ||\ currentIndex\_\ >=\ questions\_.size();}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00056}\mbox{\hyperlink{class_quiz_engine_a25263f6faf463a231e55fa25b9819ec7}{00056}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_quiz_engine_a25263f6faf463a231e55fa25b9819ec7}{QuizEngine::score}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ score\_;\ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00057}\mbox{\hyperlink{class_quiz_engine_a22a7b7d22fae8acc5049a793f42215e7}{00057}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_quiz_engine_a22a7b7d22fae8acc5049a793f42215e7}{QuizEngine::maxScore}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ maxScore\_;\ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00058}\mbox{\hyperlink{class_quiz_engine_afe0ece91968b6b29006e03c1827dd718}{00058}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_quiz_engine_afe0ece91968b6b29006e03c1827dd718}{QuizEngine::timeLeft}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ timeLeft\_;\ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00060}\mbox{\hyperlink{class_quiz_engine_aa72ac8faf05e4cd7580f4a2c1dbdda47}{00060}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_quiz_engine_aa72ac8faf05e4cd7580f4a2c1dbdda47}{QuizEngine::tick}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }std::chrono;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{auto}\ now\ =\ steady\_clock::now();}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{auto}\ sec\ =\ duration\_cast<seconds>(now\ -\/\ lastTick\_).count();}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (sec\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ timeLeft\_\ -\/=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(sec);}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ lastTick\_\ =\ now;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timeLeft\_\ <\ 0)\ timeLeft\_\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00069}00069\ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00071}\mbox{\hyperlink{class_quiz_engine_a0de35b455121384091f0b2c1eb5006f7}{00071}}\ \mbox{\hyperlink{struct_player_result}{PlayerResult}}\ \mbox{\hyperlink{class_quiz_engine_a0de35b455121384091f0b2c1eb5006f7}{QuizEngine::buildResult}}(\textcolor{keyword}{const}\ std::string\&\ playerName)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00072}00072\ \ \ \ \ \mbox{\hyperlink{struct_player_result}{PlayerResult}}\ r;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00073}00073\ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_a90e6a1338e4ccb7b4d2bb6611241d902}{playerName}}\ =\ playerName;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00074}00074\ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_a6c7b9611ad2ca3d50f09d9cb60ce94fb}{score}}\ =\ score\_;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00075}00075\ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_a5620cbd5446a1283b82b960946e17a0d}{maxScore}}\ =\ maxScore\_;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00076}00076\ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_acab5e22f0333d3575972780dd5ac1516}{difficulty}}\ =\ difficulty\_;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00077}00077\ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_aa6277499131f6228d94a9a48de06fdbb}{timestamp}}\ =\ \textcolor{stringliteral}{"{}2026-\/06-\/03"{}};}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00081}\mbox{\hyperlink{class_quiz_engine_a74cce23f8c29ad37040f0aad655a8ab1}{00081}}\ \mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ \mbox{\hyperlink{class_quiz_engine_a74cce23f8c29ad37040f0aad655a8ab1}{QuizEngine::totalQuestions}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{return}\ questions\_.size();}
+\DoxyCodeLine{\Hypertarget{_quiz_engine_8cpp_source_l00083}00083\ \}}
+
+\end{DoxyCode}

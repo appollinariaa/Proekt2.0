@@ -1,0 +1,195 @@
+\doxysection{App.\+h}
+\hypertarget{_app_8h_source}{}\label{_app_8h_source}\mbox{\hyperlink{_app_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_data_8h}{Data.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_quiz_engine_8h}{QuizEngine.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_question_editor_8h}{QuestionEditor.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_ranking_view_8h}{RankingView.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_button_8h}{Button.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00017}\mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9b}{00017}}\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9b}{ScreenState}}\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9bab61541208db7fa7dba42c85224405911}{Menu}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba1547b5c15a800a6e43fff139f30ba8a9}{NameInput}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba3fefcf2a639893e3ac9168f772f4d09d}{TopicSelect}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba823021ca06a2d18b807cb00d7cc10e44}{DifficultySelect}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00027}00027\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9baab458f4b361834dd802e4f40d31b5ebc}{Quiz}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8eea62084ca7e541d918e823422bd82e}{Result}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00031}00031\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba37ae66f03261bd62844188f7e28092ff}{Ranking}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00033}00033\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba9ddb6c49bc47d6412aed87762fecaf16}{PasswordInput}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba344a7f427fb765610ef96eb7bce95257}{Editor}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}{MultiplayerNameInput1}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8d06cdca5b59a722bf38c842125a22e2}{MultiplayerNameInput2}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00041}00041\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba09908026c7f96c1c1ce54ee80deb8910}{MultiplayerTopicSelect}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba08b34babd1430dab609ab91996ee3a53}{MultiplayerDifficultySelect}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba836ccbe6c108aa045e961818a68321a5}{MultiplayerQuiz}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00047}00047\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba860bbc9dc1f71826fb32ce26a3b2638e}{MultiplayerResult}}}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00048}00048\ \};}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00053}\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5}{00053}}\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5}{EditorField}}\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00055}00055\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{None}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00057}00057\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa97ea56b0e00b2379736ae60869ff66a}{Question}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a3779706d050437e0ce3ac709b5048525}{Answer0}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00061}00061\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a94bfe6a0489461ebd70898c04c9d3ece}{Answer1}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00063}00063\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6db0fc92c65cf8b6b71199084f41c9a1}{Answer2}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00065}00065\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a32b48eac71a1d5fff78511407ef66a03}{Answer3}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00067}00067\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa76d4ef5f3f6a672bbfab2865563e530}{Time}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00069}00069\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a25812bf456959aa5f28dc570f341a3ba}{Topic}},}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00071}00071\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a7b29ca96ada2afa3aadbcf55cd61a1ed}{Difficulty}}}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00072}00072\ \};}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00077}\mbox{\hyperlink{class_app}{00077}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_app}{App}}\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00078}00078\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00082}00082\ \ \ \ \ \mbox{\hyperlink{class_app_acb8cbf3e285b91d0170ffe87df5989c5}{App}}();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00087}00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_ae09dc71078b64c56c673b1ad1d25b5d1}{run}}();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00089}00089\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00091}00091\ \ \ \ \ sf::RenderWindow\ window;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00094}00094\ \ \ \ \ sf::Font\ font;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00097}00097\ \ \ \ \ \mbox{\hyperlink{class_quiz_engine}{QuizEngine}}\ engine;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00100}00100\ \ \ \ \ std::optional<QuestionEditor>\ editor;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00103}00103\ \ \ \ \ \mbox{\hyperlink{class_ranking_view}{RankingView}}\ rankingView;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00106}00106\ \ \ \ \ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9b}{ScreenState}}\ state\{\mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9bab61541208db7fa7dba42c85224405911}{ScreenState::Menu}}\};}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00109}00109\ \ \ \ \ \mbox{\hyperlink{struct_question_filters}{QuestionFilters}}\ currentFilters;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00112}00112\ \ \ \ \ std::vector<Question>\ questions;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00115}00115\ \ \ \ \ std::vector<Question>\ multiplayerQuestions;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00118}00118\ \ \ \ \ std::vector<Button>\ menuButtons;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00121}00121\ \ \ \ \ std::vector<Button>\ topicButtons;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00124}00124\ \ \ \ \ std::vector<Button>\ difficultyButtons;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00127}00127\ \ \ \ \ std::vector<Button>\ answerButtons;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00130}00130\ \ \ \ \ std::vector<Button>\ rankingButtons;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00133}00133\ \ \ \ \ std::vector<Button>\ editorButtons;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00136}00136\ \ \ \ \ std::optional<Button>\ nextButton;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00139}00139\ \ \ \ \ std::optional<Button>\ restartButton;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00142}00142\ \ \ \ \ std::optional<Button>\ backButton;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00145}00145\ \ \ \ \ std::optional<Button>\ submitButton;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00148}00148\ \ \ \ \ std::optional<Button>\ scrollUpButton;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00151}00151\ \ \ \ \ std::optional<Button>\ scrollDownButton;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00154}00154\ \ \ \ \ std::optional<Button>\ editorSaveButton;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00157}00157\ \ \ \ \ std::optional<Button>\ editorBackButton;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00160}00160\ \ \ \ \ std::optional<sf::Text>\ titleText;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00163}00163\ \ \ \ \ std::optional<sf::Text>\ questionText;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00166}00166\ \ \ \ \ std::optional<sf::Text>\ infoText;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00169}00169\ \ \ \ \ std::optional<sf::Text>\ scoreText;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00172}00172\ \ \ \ \ std::optional<sf::Text>\ timerText;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00175}00175\ \ \ \ \ std::optional<sf::Text>\ rankingText;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00178}00178\ \ \ \ \ std::optional<sf::Text>\ inputText;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00181}00181\ \ \ \ \ sf::String\ typedInput;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00184}00184\ \ \ \ \ sf::String\ typedName;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00187}00187\ \ \ \ \ sf::String\ editorInput;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00190}00190\ \ \ \ \ sf::String\ multiplayerInput;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00193}00193\ \ \ \ \ std::string\ currentPlayerName;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00196}00196\ \ \ \ \ std::string\ password\{\textcolor{stringliteral}{"{}1234"{}}\};}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00199}00199\ \ \ \ \ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5}{EditorField}}\ editorField\{\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{EditorField::None}}\};}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00202}00202\ \ \ \ \ std::vector<std::string>\ playerNames\{\textcolor{stringliteral}{"{}Игрок\ 1"{}},\ \textcolor{stringliteral}{"{}Игрок\ 2"{}}\};}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00205}00205\ \ \ \ \ std::array<int,\ 2>\ playerScores\{0,\ 0\};}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00208}00208\ \ \ \ \ \mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ currentQuizPlayer\{0\};}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00211}00211\ \ \ \ \ \mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ multiplayerQuestionIndex\{0\};}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00214}00214\ \ \ \ \ \textcolor{keywordtype}{bool}\ multiplayerMode\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00217}00217\ \ \ \ \ sf::Clock\ multiplayerClock;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00220}00220\ \ \ \ \ \textcolor{keywordtype}{int}\ multiplayerTimeLeft\{0\};}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00223}00223\ \ \ \ \ std::vector<PlayerResult>\ ranking;}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00228}00228\ \ \ \ \ \textcolor{keywordtype}{void}\ loadResources();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00233}00233\ \ \ \ \ \textcolor{keywordtype}{void}\ setupUI();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00238}00238\ \ \ \ \ \textcolor{keywordtype}{void}\ processEvents();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00243}00243\ \ \ \ \ \textcolor{keywordtype}{void}\ update();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00248}00248\ \ \ \ \ \textcolor{keywordtype}{void}\ render();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00253}00253\ \ \ \ \ \textcolor{keywordtype}{void}\ refreshTexts();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00258}00258\ \ \ \ \ \textcolor{keywordtype}{void}\ refreshAnswerButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00263}00263\ \ \ \ \ \textcolor{keywordtype}{void}\ refreshTopicButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00268}00268\ \ \ \ \ \textcolor{keywordtype}{void}\ refreshDifficultyButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00273}00273\ \ \ \ \ \textcolor{keywordtype}{void}\ refreshEditorButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00278}00278\ \ \ \ \ \textcolor{keywordtype}{void}\ resetQuiz();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00283}00283\ \ \ \ \ \textcolor{keywordtype}{void}\ saveCurrentResult();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00288}00288\ \ \ \ \ \textcolor{keywordtype}{void}\ loadRankingData();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00293}00293\ \ \ \ \ \textcolor{keywordtype}{void}\ switchToMenu();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00298}00298\ \ \ \ \ \textcolor{keywordtype}{void}\ openEditorIfAllowed();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00303}00303\ \ \ \ \ \textcolor{keywordtype}{void}\ startMultiplayer();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00304}00304\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00309}00309\ \ \ \ \ \textcolor{keywordtype}{void}\ advanceMultiplayerTurn(\textcolor{keywordtype}{bool}\ answeredCorrectly);}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00316}00316\ \ \ \ \ sf::String\ toSf(\textcolor{keyword}{const}\ std::string\&\ s)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00323}00323\ \ \ \ \ sf::String\ toSfUtf8(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ s)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00330}00330\ \ \ \ \ std::string\ getEditorFieldValue(\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5}{EditorField}}\ field)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00331}00331\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00337}00337\ \ \ \ \ \textcolor{keywordtype}{void}\ setEditorFieldValue(\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5}{EditorField}}\ field,\ \textcolor{keyword}{const}\ std::string\&\ value);}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00343}00343\ \ \ \ \ \textcolor{keywordtype}{void}\ setCorrectAnswer(\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ index);}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00349}00349\ \ \ \ \ \textcolor{keywordtype}{void}\ selectEditorField(\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5}{EditorField}}\ field);}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00350}00350\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00354}00354\ \ \ \ \ \textcolor{keywordtype}{void}\ applyEditorInput();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00355}00355\ }
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00359}00359\ \ \ \ \ \textcolor{keywordtype}{void}\ placeEditorInput();}
+\DoxyCodeLine{\Hypertarget{_app_8h_source_l00360}00360\ \};}
+
+\end{DoxyCode}

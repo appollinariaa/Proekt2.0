@@ -1,0 +1,156 @@
+\doxysection{Question Struct Reference}
+\hypertarget{struct_question}{}\label{struct_question}\index{Question@{Question}}
+
+
+Хранит один вопрос викторины и данные, необходимые для его проверки.  
+
+
+
+
+{\ttfamily \#include $<$Data.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{struct_question_a74c9df52f7df8e5386a79e93419105e8}{text}}
+\begin{DoxyCompactList}\small\item\em Текст вопроса, который показывается игроку. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}
+\begin{DoxyCompactList}\small\item\em Список вариантов ответа; приложение ожидает ровно четыре элемента. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std\+::size\+\_\+t}} \mbox{\hyperlink{struct_question_a5d7284577f5b576fb248379ca95fa14b}{correct\+Index}} \{0\}
+\begin{DoxyCompactList}\small\item\em Индекс правильного ответа в answers, начиная с нуля. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_question_aab348c5c0fb74e7d703cb0c7fa34ad9e}{topic}}
+\begin{DoxyCompactList}\small\item\em Тема или категория, используемая для фильтрации вопросов. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_question_aa661d6d96bfe7e98902014f6b8276136}{difficulty}}
+\begin{DoxyCompactList}\small\item\em Метка сложности, используемая для фильтрации и сохранения результата. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_question_a9cc916e2133d597fffbefe82c34c7196}{time\+Limit\+Sec}} \{30\}
+\begin{DoxyCompactList}\small\item\em Ограничение времени на вопрос в секундах. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_question_a2b3eb226f5b979cac450710a453d3006}{points}} \{1\}
+\begin{DoxyCompactList}\small\item\em Количество баллов за правильный ответ. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Хранит один вопрос викторины и данные, необходимые для его проверки. 
+
+Definition at line \mbox{\hyperlink{_data_8h_source_l00010}{10}} of file \mbox{\hyperlink{_data_8h_source}{Data.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_question_a682005904ea6c36eef9d1990b4da89c7}\label{struct_question_a682005904ea6c36eef9d1990b4da89c7} 
+\index{Question@{Question}!answers@{answers}}
+\index{answers@{answers}!Question@{Question}}
+\doxysubsubsection{\texorpdfstring{answers}{answers}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Question\+::answers}
+
+
+
+Список вариантов ответа; приложение ожидает ровно четыре элемента. 
+
+
+
+Definition at line \mbox{\hyperlink{_data_8h_source_l00015}{15}} of file \mbox{\hyperlink{_data_8h_source}{Data.\+h}}.
+
+\Hypertarget{struct_question_a5d7284577f5b576fb248379ca95fa14b}\label{struct_question_a5d7284577f5b576fb248379ca95fa14b} 
+\index{Question@{Question}!correctIndex@{correctIndex}}
+\index{correctIndex@{correctIndex}!Question@{Question}}
+\doxysubsubsection{\texorpdfstring{correctIndex}{correctIndex}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std\+::size\+\_\+t}} Question\+::correct\+Index \{0\}}
+
+
+
+Индекс правильного ответа в answers, начиная с нуля. 
+
+
+
+Definition at line \mbox{\hyperlink{_data_8h_source_l00018}{18}} of file \mbox{\hyperlink{_data_8h_source}{Data.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \{0\};}
+
+\end{DoxyCode}
+\Hypertarget{struct_question_aa661d6d96bfe7e98902014f6b8276136}\label{struct_question_aa661d6d96bfe7e98902014f6b8276136} 
+\index{Question@{Question}!difficulty@{difficulty}}
+\index{difficulty@{difficulty}!Question@{Question}}
+\doxysubsubsection{\texorpdfstring{difficulty}{difficulty}}
+{\footnotesize\ttfamily std\+::string Question\+::difficulty}
+
+
+
+Метка сложности, используемая для фильтрации и сохранения результата. 
+
+
+
+Definition at line \mbox{\hyperlink{_data_8h_source_l00024}{24}} of file \mbox{\hyperlink{_data_8h_source}{Data.\+h}}.
+
+\Hypertarget{struct_question_a2b3eb226f5b979cac450710a453d3006}\label{struct_question_a2b3eb226f5b979cac450710a453d3006} 
+\index{Question@{Question}!points@{points}}
+\index{points@{points}!Question@{Question}}
+\doxysubsubsection{\texorpdfstring{points}{points}}
+{\footnotesize\ttfamily int Question\+::points \{1\}}
+
+
+
+Количество баллов за правильный ответ. 
+
+
+
+Definition at line \mbox{\hyperlink{_data_8h_source_l00030}{30}} of file \mbox{\hyperlink{_data_8h_source}{Data.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \{1\};}
+
+\end{DoxyCode}
+\Hypertarget{struct_question_a74c9df52f7df8e5386a79e93419105e8}\label{struct_question_a74c9df52f7df8e5386a79e93419105e8} 
+\index{Question@{Question}!text@{text}}
+\index{text@{text}!Question@{Question}}
+\doxysubsubsection{\texorpdfstring{text}{text}}
+{\footnotesize\ttfamily std\+::string Question\+::text}
+
+
+
+Текст вопроса, который показывается игроку. 
+
+
+
+Definition at line \mbox{\hyperlink{_data_8h_source_l00012}{12}} of file \mbox{\hyperlink{_data_8h_source}{Data.\+h}}.
+
+\Hypertarget{struct_question_a9cc916e2133d597fffbefe82c34c7196}\label{struct_question_a9cc916e2133d597fffbefe82c34c7196} 
+\index{Question@{Question}!timeLimitSec@{timeLimitSec}}
+\index{timeLimitSec@{timeLimitSec}!Question@{Question}}
+\doxysubsubsection{\texorpdfstring{timeLimitSec}{timeLimitSec}}
+{\footnotesize\ttfamily int Question\+::time\+Limit\+Sec \{30\}}
+
+
+
+Ограничение времени на вопрос в секундах. 
+
+
+
+Definition at line \mbox{\hyperlink{_data_8h_source_l00027}{27}} of file \mbox{\hyperlink{_data_8h_source}{Data.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \{30\};}
+
+\end{DoxyCode}
+\Hypertarget{struct_question_aab348c5c0fb74e7d703cb0c7fa34ad9e}\label{struct_question_aab348c5c0fb74e7d703cb0c7fa34ad9e} 
+\index{Question@{Question}!topic@{topic}}
+\index{topic@{topic}!Question@{Question}}
+\doxysubsubsection{\texorpdfstring{topic}{topic}}
+{\footnotesize\ttfamily std\+::string Question\+::topic}
+
+
+
+Тема или категория, используемая для фильтрации вопросов. 
+
+
+
+Definition at line \mbox{\hyperlink{_data_8h_source_l00021}{21}} of file \mbox{\hyperlink{_data_8h_source}{Data.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_data_8h}{Data.\+h}}\end{DoxyCompactItemize}

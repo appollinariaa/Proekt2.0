@@ -1,0 +1,401 @@
+\doxysection{Data\+Store Namespace Reference}
+\hypertarget{namespace_data_store}{}\label{namespace_data_store}\index{DataStore@{DataStore}}
+
+
+Вспомогательные функции для работы с файлами, вопросами, фильтрами и результатами.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \mbox{\hyperlink{namespace_data_store_ab65294327a3d957885ea4eb16ed9f79f}{default\+Questions}} ()
+\begin{DoxyCompactList}\small\item\em Создает встроенный набор вопросов по умолчанию. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespace_data_store_a3c432e64af0a21b00aa0f889e77a9afd}{load\+Questions}} (const std\+::string \&filename, std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&questions)
+\begin{DoxyCompactList}\small\item\em Загружает вопросы из текстового файла. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespace_data_store_abed74e95cad89016b053248ce1dd7839}{save\+Questions}} (const std\+::string \&filename, const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&questions)
+\begin{DoxyCompactList}\small\item\em Сохраняет вопросы в текстовый файл. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \mbox{\hyperlink{namespace_data_store_a085b013cdbe46aed8baad46cb4160a8e}{filter\+Questions}} (const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&questions, const \mbox{\hyperlink{struct_question_filters}{Question\+Filters}} \&filters)
+\begin{DoxyCompactList}\small\item\em Возвращает вопросы, подходящие под заданные фильтры. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespace_data_store_a4e696441e3211c0c3cb48ab9a53a363c}{get\+Unique\+Topics}} (const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&questions)
+\begin{DoxyCompactList}\small\item\em Извлекает отсортированные уникальные названия тем из вопросов. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespace_data_store_a698dbfa9d626db877df05bc82982ce66}{get\+Unique\+Difficulties}} (const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&questions)
+\begin{DoxyCompactList}\small\item\em Извлекает уникальные названия сложностей из вопросов. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespace_data_store_a5fe535b0e1ea1dd0f4403d0851478095}{save\+Result}} (const std\+::string \&filename, const \mbox{\hyperlink{struct_player_result}{Player\+Result}} \&result)
+\begin{DoxyCompactList}\small\item\em Добавляет один результат игрока в файл рейтинга. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_player_result}{Player\+Result}} $>$ \mbox{\hyperlink{namespace_data_store_a793b7683453d75697eb6c32d9fef5dcf}{load\+Ranking}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Загружает и сортирует результаты игроков из файла рейтинга. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Вспомогательные функции для работы с файлами, вопросами, фильтрами и результатами. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_data_store_ab65294327a3d957885ea4eb16ed9f79f}\label{namespace_data_store_ab65294327a3d957885ea4eb16ed9f79f} 
+\index{DataStore@{DataStore}!defaultQuestions@{defaultQuestions}}
+\index{defaultQuestions@{defaultQuestions}!DataStore@{DataStore}}
+\doxysubsubsection{\texorpdfstring{defaultQuestions()}{defaultQuestions()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ Data\+Store\+::default\+Questions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Создает встроенный набор вопросов по умолчанию. 
+
+\begin{DoxyReturn}{Returns}
+Вектор с вопросами по умолчанию. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_data_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_data_8cpp_source}{Data.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{return}\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Столица\ Франции?"{}},\ \{\textcolor{stringliteral}{"{}Париж"{}},\ \textcolor{stringliteral}{"{}Берлин"{}},\ \textcolor{stringliteral}{"{}Рим"{}},\ \textcolor{stringliteral}{"{}Мадрид"{}}\},\ 0,\ \textcolor{stringliteral}{"{}География"{}},\ \textcolor{stringliteral}{"{}easy"{}},\ 20,\ 1\},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}2\ +\ 2\ *\ 2\ =\ ?"{}},\ \{\textcolor{stringliteral}{"{}4"{}},\ \textcolor{stringliteral}{"{}6"{}},\ \textcolor{stringliteral}{"{}8"{}},\ \textcolor{stringliteral}{"{}10"{}}\},\ 1,\ \textcolor{stringliteral}{"{}Математика"{}},\ \textcolor{stringliteral}{"{}easy"{}},\ 15,\ 1\},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Какая\ планета\ известна\ как\ Красная?"{}},\ \{\textcolor{stringliteral}{"{}Венера"{}},\ \textcolor{stringliteral}{"{}Марс"{}},\ \textcolor{stringliteral}{"{}Юпитер"{}},\ \textcolor{stringliteral}{"{}Меркурий"{}}\},\ 1,\ \textcolor{stringliteral}{"{}Астрономия"{}},\ \textcolor{stringliteral}{"{}normal"{}},\ 20,\ 1\},}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Кто\ написал\ 'Войну\ и\ мир'?"{}},\ \{\textcolor{stringliteral}{"{}Пушкин"{}},\ \textcolor{stringliteral}{"{}Толстой"{}},\ \textcolor{stringliteral}{"{}Достоевский"{}},\ \textcolor{stringliteral}{"{}Гоголь"{}}\},\ 1,\ \textcolor{stringliteral}{"{}Литература"{}},\ \textcolor{stringliteral}{"{}normal"{}},\ 25,\ 1\},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Что\ такое\ SFML?"{}},\ \{\textcolor{stringliteral}{"{}Язык"{}},\ \textcolor{stringliteral}{"{}Библиотека"{}},\ \textcolor{stringliteral}{"{}ОС"{}},\ \textcolor{stringliteral}{"{}Компилятор"{}}\},\ 1,\ \textcolor{stringliteral}{"{}Программирование"{}},\ \textcolor{stringliteral}{"{}easy"{}},\ 20,\ 1\},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Какой\ тип\ памяти\ используется\ для\ локальных\ переменных?"{}},\ \{\textcolor{stringliteral}{"{}Heap"{}},\ \textcolor{stringliteral}{"{}Stack"{}},\ \textcolor{stringliteral}{"{}ROM"{}},\ \textcolor{stringliteral}{"{}Cache"{}}\},\ 1,\ \textcolor{stringliteral}{"{}Программирование"{}},\ \textcolor{stringliteral}{"{}hard"{}},\ 25,\ 2\}}
+\DoxyCodeLine{00045\ \ \ \ \ \};}
+\DoxyCodeLine{00046\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespace_data_store_a085b013cdbe46aed8baad46cb4160a8e}\label{namespace_data_store_a085b013cdbe46aed8baad46cb4160a8e} 
+\index{DataStore@{DataStore}!filterQuestions@{filterQuestions}}
+\index{filterQuestions@{filterQuestions}!DataStore@{DataStore}}
+\doxysubsubsection{\texorpdfstring{filterQuestions()}{filterQuestions()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ Data\+Store\+::filter\+Questions (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&}]{questions,  }\item[{const \mbox{\hyperlink{struct_question_filters}{Question\+Filters}} \&}]{filters }\end{DoxyParamCaption})}
+
+
+
+Возвращает вопросы, подходящие под заданные фильтры. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em questions} & Исходная коллекция вопросов. \\
+\hline
+{\em filters} & Необязательные фильтры по теме и сложности. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Вектор со всеми подходящими вопросами в исходном порядке. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_data_8cpp_source_l00122}{122}} of file \mbox{\hyperlink{_data_8cpp_source}{Data.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ std::vector<Question>\ result;}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ q\ :\ questions)\ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (filters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}.has\_value()\ \&\&\ q.topic\ !=\ filters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}.value())\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (filters.\mbox{\hyperlink{struct_question_filters_aac123945cd0d2ea8c77187a1f5aa16e5}{difficulty}}.has\_value()\ \&\&\ q.difficulty\ !=\ filters.\mbox{\hyperlink{struct_question_filters_aac123945cd0d2ea8c77187a1f5aa16e5}{difficulty}}.value())\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ result.push\_back(q);}
+\DoxyCodeLine{00128\ \ \ \ \ \}}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00130\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespace_data_store_a698dbfa9d626db877df05bc82982ce66}\label{namespace_data_store_a698dbfa9d626db877df05bc82982ce66} 
+\index{DataStore@{DataStore}!getUniqueDifficulties@{getUniqueDifficulties}}
+\index{getUniqueDifficulties@{getUniqueDifficulties}!DataStore@{DataStore}}
+\doxysubsubsection{\texorpdfstring{getUniqueDifficulties()}{getUniqueDifficulties()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Data\+Store\+::get\+Unique\+Difficulties (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&}]{questions }\end{DoxyParamCaption})}
+
+
+
+Извлекает уникальные названия сложностей из вопросов. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em questions} & Исходная коллекция вопросов. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Вектор уникальных строк со сложностями в порядке первого появления. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_data_8cpp_source_l00143}{143}} of file \mbox{\hyperlink{_data_8cpp_source}{Data.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ std::vector<std::string>\ diffs;}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ q\ :\ questions)\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(diffs.begin(),\ diffs.end(),\ q.difficulty)\ ==\ diffs.end())\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ diffs.push\_back(q.difficulty);}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordflow}{return}\ diffs;}
+\DoxyCodeLine{00151\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespace_data_store_a4e696441e3211c0c3cb48ab9a53a363c}\label{namespace_data_store_a4e696441e3211c0c3cb48ab9a53a363c} 
+\index{DataStore@{DataStore}!getUniqueTopics@{getUniqueTopics}}
+\index{getUniqueTopics@{getUniqueTopics}!DataStore@{DataStore}}
+\doxysubsubsection{\texorpdfstring{getUniqueTopics()}{getUniqueTopics()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Data\+Store\+::get\+Unique\+Topics (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&}]{questions }\end{DoxyParamCaption})}
+
+
+
+Извлекает отсортированные уникальные названия тем из вопросов. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em questions} & Исходная коллекция вопросов. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Отсортированный вектор уникальных строк с темами. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_data_8cpp_source_l00132}{132}} of file \mbox{\hyperlink{_data_8cpp_source}{Data.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00133\ \ \ \ \ std::vector<std::string>\ topics;}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ q\ :\ questions)\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(topics.begin(),\ topics.end(),\ q.topic)\ ==\ topics.end())\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ topics.push\_back(q.topic);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ std::sort(topics.begin(),\ topics.end());}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordflow}{return}\ topics;}
+\DoxyCodeLine{00141\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespace_data_store_a3c432e64af0a21b00aa0f889e77a9afd}\label{namespace_data_store_a3c432e64af0a21b00aa0f889e77a9afd} 
+\index{DataStore@{DataStore}!loadQuestions@{loadQuestions}}
+\index{loadQuestions@{loadQuestions}!DataStore@{DataStore}}
+\doxysubsubsection{\texorpdfstring{loadQuestions()}{loadQuestions()}}
+{\footnotesize\ttfamily bool Data\+Store\+::load\+Questions (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&}]{questions }\end{DoxyParamCaption})}
+
+
+
+Загружает вопросы из текстового файла. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Путь к файлу с сохраненными вопросами. \\
+\hline
+{\em questions} & Выходной вектор, который заполняется загруженными вопросами при успешном чтении. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, если загружен хотя бы один корректный вопрос; false, если файл отсутствует или некорректен. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_data_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{_data_8cpp_source}{Data.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ std::ifstream\ in(filename);}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (!in.is\_open())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ questions.clear();}
+\DoxyCodeLine{00071\ \ \ \ \ std::string\ line;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(in,\ line))\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (line.empty()\ ||\ line\ ==\ \textcolor{stringliteral}{"{}-\/-\/-\/"{}})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_question}{Question}}\ q;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ q.\mbox{\hyperlink{struct_question_a74c9df52f7df8e5386a79e93419105e8}{text}}\ =\ line;}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::getline(in,\ line))\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ q.\mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}\ =\ split(line,\ \textcolor{charliteral}{'|'});}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::getline(in,\ line))\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ q.\mbox{\hyperlink{struct_question_a5d7284577f5b576fb248379ca95fa14b}{correctIndex}}\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\textcolor{keyword}{>}(std::stoul(line));}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ std::getline(in,\ line);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::getline(in,\ line))\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ q.\mbox{\hyperlink{struct_question_aab348c5c0fb74e7d703cb0c7fa34ad9e}{topic}}\ =\ line;}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::getline(in,\ line))\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ q.\mbox{\hyperlink{struct_question_aa661d6d96bfe7e98902014f6b8276136}{difficulty}}\ =\ line;}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::getline(in,\ line))\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ q.\mbox{\hyperlink{struct_question_a9cc916e2133d597fffbefe82c34c7196}{timeLimitSec}}\ =\ std::stoi(line);}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ std::getline(in,\ line);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::getline(in,\ line))\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ q.\mbox{\hyperlink{struct_question_a2b3eb226f5b979cac450710a453d3006}{points}}\ =\ std::stoi(line);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ std::getline(in,\ line);}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ std::getline(in,\ line);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (q.\mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}.size()\ ==\ 4)\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ questions.push\_back(q);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordflow}{return}\ !questions.empty();}
+\DoxyCodeLine{00120\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespace_data_store_a793b7683453d75697eb6c32d9fef5dcf}\label{namespace_data_store_a793b7683453d75697eb6c32d9fef5dcf} 
+\index{DataStore@{DataStore}!loadRanking@{loadRanking}}
+\index{loadRanking@{loadRanking}!DataStore@{DataStore}}
+\doxysubsubsection{\texorpdfstring{loadRanking()}{loadRanking()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{struct_player_result}{Player\+Result}} $>$ Data\+Store\+::load\+Ranking (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Загружает и сортирует результаты игроков из файла рейтинга. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Путь к файлу рейтинга. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Распознанные результаты, отсортированные по убыванию score, затем по убыванию max\+Score. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_data_8cpp_source_l00167}{167}} of file \mbox{\hyperlink{_data_8cpp_source}{Data.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00168\ \ \ \ \ std::vector<PlayerResult>\ results;}
+\DoxyCodeLine{00169\ \ \ \ \ std::ifstream\ in(filename);}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordflow}{if}\ (!in.is\_open())\ \textcolor{keywordflow}{return}\ results;}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ std::string\ line;}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(in,\ line))\ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (line.empty())\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ parts\ =\ split(line,\ \textcolor{charliteral}{'|'});}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (parts.size()\ <\ 6)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_player_result}{PlayerResult}}\ r;}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_a90e6a1338e4ccb7b4d2bb6611241d902}{playerName}}\ =\ parts[0];}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_a6c7b9611ad2ca3d50f09d9cb60ce94fb}{score}}\ =\ std::stoi(parts[1]);}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_a5620cbd5446a1283b82b960946e17a0d}{maxScore}}\ =\ std::stoi(parts[2]);}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_aa6277499131f6228d94a9a48de06fdbb}{timestamp}}\ =\ parts[3];}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_acab5e22f0333d3575972780dd5ac1516}{difficulty}}\ =\ parts[4];}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_player_result_a7637e99e0ba921f5e8deebc93455c443}{mode}}\ =\ parts[5];}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ results.push\_back(r);}
+\DoxyCodeLine{00193\ \ \ \ \ \}}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ std::sort(results.begin(),\ results.end(),\ [](\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_player_result}{PlayerResult}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_player_result}{PlayerResult}}\&\ b)\ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ if\ (a.score\ !=\ b.score)\ return\ a.score\ >\ b.score;}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ return\ a.maxScore\ >\ b.maxScore;}
+\DoxyCodeLine{00198\ \ \ \ \ \});}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keywordflow}{return}\ results;}
+\DoxyCodeLine{00201\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespace_data_store_abed74e95cad89016b053248ce1dd7839}\label{namespace_data_store_abed74e95cad89016b053248ce1dd7839} 
+\index{DataStore@{DataStore}!saveQuestions@{saveQuestions}}
+\index{saveQuestions@{saveQuestions}!DataStore@{DataStore}}
+\doxysubsubsection{\texorpdfstring{saveQuestions()}{saveQuestions()}}
+{\footnotesize\ttfamily bool Data\+Store\+::save\+Questions (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \&}]{questions }\end{DoxyParamCaption})}
+
+
+
+Сохраняет вопросы в текстовый файл. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Путь к файлу назначения. \\
+\hline
+{\em questions} & Вопросы, которые нужно записать. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, если файл удалось открыть и записать; иначе false. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_data_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{_data_8cpp_source}{Data.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ std::ofstream\ out(filename);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (!out.is\_open())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ q\ :\ questions)\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ out\ <<\ q.text\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ out\ <<\ join(q.answers,\ \textcolor{charliteral}{'|'})\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ out\ <<\ q.correctIndex\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ out\ <<\ q.topic\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ out\ <<\ q.difficulty\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ out\ <<\ q.timeLimitSec\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ out\ <<\ q.points\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ out\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/\(\backslash\)n"{}};}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00064\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespace_data_store_a5fe535b0e1ea1dd0f4403d0851478095}\label{namespace_data_store_a5fe535b0e1ea1dd0f4403d0851478095} 
+\index{DataStore@{DataStore}!saveResult@{saveResult}}
+\index{saveResult@{saveResult}!DataStore@{DataStore}}
+\doxysubsubsection{\texorpdfstring{saveResult()}{saveResult()}}
+{\footnotesize\ttfamily bool Data\+Store\+::save\+Result (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{const \mbox{\hyperlink{struct_player_result}{Player\+Result}} \&}]{result }\end{DoxyParamCaption})}
+
+
+
+Добавляет один результат игрока в файл рейтинга. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Путь к файлу рейтинга. \\
+\hline
+{\em result} & Запись результата, которую нужно добавить. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, если файл удалось открыть и записать; иначе false. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_data_8cpp_source_l00153}{153}} of file \mbox{\hyperlink{_data_8cpp_source}{Data.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00154\ \ \ \ \ std::ofstream\ out(filename,\ std::ios::app);}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordflow}{if}\ (!out.is\_open())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ out\ <<\ result.\mbox{\hyperlink{struct_player_result_a90e6a1338e4ccb7b4d2bb6611241d902}{playerName}}\ <<\ \textcolor{charliteral}{'|'}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ <<\ result.\mbox{\hyperlink{struct_player_result_a6c7b9611ad2ca3d50f09d9cb60ce94fb}{score}}\ <<\ \textcolor{charliteral}{'|'}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ <<\ result.\mbox{\hyperlink{struct_player_result_a5620cbd5446a1283b82b960946e17a0d}{maxScore}}\ <<\ \textcolor{charliteral}{'|'}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ <<\ result.\mbox{\hyperlink{struct_player_result_aa6277499131f6228d94a9a48de06fdbb}{timestamp}}\ <<\ \textcolor{charliteral}{'|'}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ <<\ result.\mbox{\hyperlink{struct_player_result_acab5e22f0333d3575972780dd5ac1516}{difficulty}}\ <<\ \textcolor{charliteral}{'|'}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ <<\ result.\mbox{\hyperlink{struct_player_result_a7637e99e0ba921f5e8deebc93455c443}{mode}}\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00165\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,2 @@
+C:\Users\Polina_\Downloads\winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3\mingw64\bin\ar.exe qc libquiz_core.a CMakeFiles/quiz_core.dir/Data.cpp.obj CMakeFiles/quiz_core.dir/QuizEngine.cpp.obj CMakeFiles/quiz_core.dir/PlayerManager.cpp.obj CMakeFiles/quiz_core.dir/QuestionEditor.cpp.obj CMakeFiles/quiz_core.dir/RankingView.cpp.obj
+C:\Users\Polina_\Downloads\winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.1-r3\mingw64\bin\ranlib.exe libquiz_core.a

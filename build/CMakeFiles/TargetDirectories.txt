@@ -1,0 +1,7 @@
+C:/Users/Polina_/Desktop/MIEM/AiP/Proekt2.0/build/CMakeFiles/quiz_core.dir
+C:/Users/Polina_/Desktop/MIEM/AiP/Proekt2.0/build/CMakeFiles/quiz_sfml.dir
+C:/Users/Polina_/Desktop/MIEM/AiP/Proekt2.0/build/CMakeFiles/quiz_tests.dir
+C:/Users/Polina_/Desktop/MIEM/AiP/Proekt2.0/build/CMakeFiles/docs.dir
+C:/Users/Polina_/Desktop/MIEM/AiP/Proekt2.0/build/CMakeFiles/test.dir
+C:/Users/Polina_/Desktop/MIEM/AiP/Proekt2.0/build/CMakeFiles/edit_cache.dir
+C:/Users/Polina_/Desktop/MIEM/AiP/Proekt2.0/build/CMakeFiles/rebuild_cache.dir

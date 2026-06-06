@@ -1,0 +1,24 @@
+Start testing: Jun 06 00:10 RTZ 2 (çèìà)
+----------------------------------------------------------
+1/1 Testing: quiz_core_tests
+1/1 Test: quiz_core_tests
+Command: "C:/Users/Polina_/Desktop/MIEM/AiP/Proekt2.0/build/quiz_tests.exe"
+Directory: C:/Users/Polina_/Desktop/MIEM/AiP/Proekt2.0/build
+"quiz_core_tests" start time: Jun 06 00:10 RTZ 2 (çèìà)
+Output:
+----------------------------------------------------------
+[doctest] doctest version is "2.5.0"
+[doctest] run with "--help" for options
+===============================================================================
+[doctest] test cases:  14 |  14 passed | 0 failed | 0 skipped
+[doctest] assertions: 179 | 179 passed | 0 failed |
+[doctest] Status: SUCCESS!
+<end of output>
+Test time =   2.44 sec
+----------------------------------------------------------
+Test Passed.
+"quiz_core_tests" end time: Jun 06 00:10 RTZ 2 (çèìà)
+"quiz_core_tests" time elapsed: 00:00:02
+----------------------------------------------------------
+
+End testing: Jun 06 00:10 RTZ 2 (çèìà)

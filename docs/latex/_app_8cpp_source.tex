@@ -1,0 +1,1089 @@
+\doxysection{App.\+cpp}
+\hypertarget{_app_8cpp_source}{}\label{_app_8cpp_source}\mbox{\hyperlink{_app_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_app_8h}{App.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00012}00012\ \textcolor{keyword}{static}\ std::string\ wrapText(\textcolor{keyword}{const}\ std::string\&\ text,\ \mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ maxLineLen\ =\ 120)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00013}00013\ \ \ \ \ std::string\ out;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00014}00014\ \ \ \ \ std::string\ line;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00015}00015\ \ \ \ \ std::istringstream\ iss(text);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00016}00016\ \ \ \ \ std::string\ word;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{while}\ (iss\ >>\ word)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (line.size()\ +\ word.size()\ +\ 1\ >\ maxLineLen)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ out\ +=\ line\ +\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ line\ =\ word;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!line.empty())\ line\ +=\ \textcolor{charliteral}{'\ '};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ line\ +=\ word;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (!line.empty())\ out\ +=\ line;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{return}\ out;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00033}00033\ \textcolor{keyword}{static}\ std::string\ nowDate()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}2026-\/06-\/06"{}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00037}\mbox{\hyperlink{class_app_acb8cbf3e285b91d0170ffe87df5989c5}{00037}}\ \mbox{\hyperlink{class_app_acb8cbf3e285b91d0170ffe87df5989c5}{App::App}}()}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00038}00038\ \ \ \ \ :\ window(sf::VideoMode(\{1200u,\ 800u\}),\ \textcolor{stringliteral}{"{}Mini\ Quiz\ SFML"{}})}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00040}00040\ \ \ \ \ window.setVerticalSyncEnabled(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00041}00041\ \ \ \ \ currentFilters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}\ =\ std::nullopt;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00042}00042\ \ \ \ \ currentFilters.\mbox{\hyperlink{struct_question_filters_aac123945cd0d2ea8c77187a1f5aa16e5}{difficulty}}\ =\ std::nullopt;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00043}00043\ \ \ \ \ loadResources();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00044}00044\ \ \ \ \ editor.emplace(password);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00045}00045\ \ \ \ \ setupUI();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00046}00046\ \ \ \ \ loadRankingData();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00049}00049\ sf::String\ App::toSf(\textcolor{keyword}{const}\ std::string\&\ s)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{return}\ sf::String::fromUtf8(s.begin(),\ s.end());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00053}00053\ sf::String\ App::toSfUtf8(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ s)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ str\ =\ s\ ?\ std::string(s)\ :\ \mbox{\hyperlink{namespacestd}{std}}::string();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{return}\ sf::String::fromUtf8(str.begin(),\ str.end());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00058}00058\ \textcolor{keywordtype}{void}\ App::loadResources()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{if}\ (!font.openFromFile(\textcolor{stringliteral}{"{}C:/Windows/Fonts/tahoma.ttf"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}[ERROR]\ Failed\ to\ load\ font\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00064}00064\ \ \ \ \ titleText.emplace(font,\ toSf(\textcolor{stringliteral}{"{}Мини-\/викторина"{}}),\ 66);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00065}00065\ \ \ \ \ questionText.emplace(font,\ sf::String(),\ 32);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00066}00066\ \ \ \ \ infoText.emplace(font,\ sf::String(),\ 28);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00067}00067\ \ \ \ \ scoreText.emplace(font,\ sf::String(),\ 28);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00068}00068\ \ \ \ \ timerText.emplace(font,\ sf::String(),\ 28);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00069}00069\ \ \ \ \ rankingText.emplace(font,\ sf::String(),\ 22);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00070}00070\ \ \ \ \ inputText.emplace(font,\ sf::String(),\ 28);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00072}00072\ \ \ \ \ titleText-\/>setPosition(sf::Vector2f(40.f,\ 20.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00073}00073\ \ \ \ \ questionText-\/>setPosition(sf::Vector2f(40.f,\ 120.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00074}00074\ \ \ \ \ infoText-\/>setPosition(sf::Vector2f(40.f,\ 650.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00075}00075\ \ \ \ \ scoreText-\/>setPosition(sf::Vector2f(850.f,\ 20.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00076}00076\ \ \ \ \ timerText-\/>setPosition(sf::Vector2f(850.f,\ 60.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00077}00077\ \ \ \ \ rankingText-\/>setPosition(sf::Vector2f(40.f,\ 120.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00078}00078\ \ \ \ \ inputText-\/>setPosition(sf::Vector2f(40.f,\ 40.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00081}00081\ \textcolor{keywordtype}{void}\ App::setupUI()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00082}00082\ \ \ \ \ answerButtons.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00083}00083\ \ \ \ \ answerButtons.emplace\_back(font,\ sf::String(),\ sf::Vector2f(50.f,\ 250.f),\ sf::Vector2f(1100.f,\ 60.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00084}00084\ \ \ \ \ answerButtons.emplace\_back(font,\ sf::String(),\ sf::Vector2f(50.f,\ 330.f),\ sf::Vector2f(1100.f,\ 60.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00085}00085\ \ \ \ \ answerButtons.emplace\_back(font,\ sf::String(),\ sf::Vector2f(50.f,\ 410.f),\ sf::Vector2f(1100.f,\ 60.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00086}00086\ \ \ \ \ answerButtons.emplace\_back(font,\ sf::String(),\ sf::Vector2f(50.f,\ 490.f),\ sf::Vector2f(1100.f,\ 60.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00088}00088\ \ \ \ \ menuButtons.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00089}00089\ \ \ \ \ menuButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Начать\ игру"{}}),\ sf::Vector2f(475.f,\ 220.f),\ sf::Vector2f(250.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00090}00090\ \ \ \ \ menuButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}2\ игрока"{}}),\ sf::Vector2f(475.f,\ 290.f),\ sf::Vector2f(250.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00091}00091\ \ \ \ \ menuButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Рейтинг"{}}),\ sf::Vector2f(475.f,\ 360.f),\ sf::Vector2f(250.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00092}00092\ \ \ \ \ menuButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Редактор"{}}),\ sf::Vector2f(475.f,\ 430.f),\ sf::Vector2f(250.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00093}00093\ \ \ \ \ menuButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Выход"{}}),\ sf::Vector2f(475.f,\ 500.f),\ sf::Vector2f(250.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00095}00095\ \ \ \ \ rankingButtons.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00096}00096\ \ \ \ \ rankingButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Назад"{}}),\ sf::Vector2f(1000.f,\ 700.f),\ sf::Vector2f(180.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00098}00098\ \ \ \ \ scrollUpButton.emplace(font,\ toSf(\textcolor{stringliteral}{"{}Вверх"{}}),\ sf::Vector2f(950.f,\ 200.f),\ sf::Vector2f(180.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00099}00099\ \ \ \ \ scrollDownButton.emplace(font,\ toSf(\textcolor{stringliteral}{"{}Вниз"{}}),\ sf::Vector2f(950.f,\ 260.f),\ sf::Vector2f(180.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00101}00101\ \ \ \ \ nextButton.emplace(font,\ toSf(\textcolor{stringliteral}{"{}Далее"{}}),\ sf::Vector2f(950.f,\ 700.f),\ sf::Vector2f(180.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00102}00102\ \ \ \ \ restartButton.emplace(font,\ toSf(\textcolor{stringliteral}{"{}Сначала"{}}),\ sf::Vector2f(730.f,\ 700.f),\ sf::Vector2f(180.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00103}00103\ \ \ \ \ backButton.emplace(font,\ toSf(\textcolor{stringliteral}{"{}Назад"{}}),\ sf::Vector2f(40.f,\ 700.f),\ sf::Vector2f(180.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00104}00104\ \ \ \ \ submitButton.emplace(font,\ toSf(\textcolor{stringliteral}{"{}Войти"{}}),\ sf::Vector2f(320.f,\ 700.f),\ sf::Vector2f(180.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00106}00106\ \ \ \ \ editorSaveButton.emplace(font,\ toSf(\textcolor{stringliteral}{"{}Сохранить\ всё"{}}),\ sf::Vector2f(960.f,\ 710.f),\ sf::Vector2f(180.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00107}00107\ \ \ \ \ editorBackButton.emplace(font,\ toSf(\textcolor{stringliteral}{"{}Назад\ в\ меню"{}}),\ sf::Vector2f(760.f,\ 710.f),\ sf::Vector2f(180.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00109}00109\ \ \ \ \ questions\ =\ \mbox{\hyperlink{namespace_data_store_ab65294327a3d957885ea4eb16ed9f79f}{DataStore::defaultQuestions}}();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{namespace_data_store_a3c432e64af0a21b00aa0f889e77a9afd}{DataStore::loadQuestions}}(\textcolor{stringliteral}{"{}questions.txt"{}},\ questions))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_data_store_abed74e95cad89016b053248ce1dd7839}{DataStore::saveQuestions}}(\textcolor{stringliteral}{"{}questions.txt"{}},\ questions);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00112}00112\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00114}00114\ \ \ \ \ refreshTopicButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00115}00115\ \ \ \ \ refreshDifficultyButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00116}00116\ \ \ \ \ engine.\mbox{\hyperlink{class_quiz_engine_a3972106dba0f9e9c5810dbb343b01f05}{setQuestions}}(questions);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{if}\ (editor)\ editor-\/>setQuestions(questions);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00118}00118\ \ \ \ \ refreshAnswerButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00119}00119\ \ \ \ \ refreshEditorButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00120}00120\ \ \ \ \ refreshTexts();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00121}00121\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00123}00123\ std::string\ App::getEditorFieldValue(\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5}{EditorField}}\ field)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{if}\ (!editor\ ||\ editor-\/>questions().empty())\ \textcolor{keywordflow}{return}\ \{\};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00125}00125\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_question}{Question}}\&\ q\ =\ editor-\/>currentQuestion();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{switch}\ (field)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa97ea56b0e00b2379736ae60869ff66a}{EditorField::Question}}:\ \textcolor{keywordflow}{return}\ q.\mbox{\hyperlink{struct_question_a74c9df52f7df8e5386a79e93419105e8}{text}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a3779706d050437e0ce3ac709b5048525}{EditorField::Answer0}}:\ \textcolor{keywordflow}{return}\ q.\mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}[0];}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a94bfe6a0489461ebd70898c04c9d3ece}{EditorField::Answer1}}:\ \textcolor{keywordflow}{return}\ q.\mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}[1];}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6db0fc92c65cf8b6b71199084f41c9a1}{EditorField::Answer2}}:\ \textcolor{keywordflow}{return}\ q.\mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}[2];}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a32b48eac71a1d5fff78511407ef66a03}{EditorField::Answer3}}:\ \textcolor{keywordflow}{return}\ q.\mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}[3];}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa76d4ef5f3f6a672bbfab2865563e530}{EditorField::Time}}:\ \textcolor{keywordflow}{return}\ std::to\_string(q.\mbox{\hyperlink{struct_question_a9cc916e2133d597fffbefe82c34c7196}{timeLimitSec}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a25812bf456959aa5f28dc570f341a3ba}{EditorField::Topic}}:\ \textcolor{keywordflow}{return}\ q.\mbox{\hyperlink{struct_question_aab348c5c0fb74e7d703cb0c7fa34ad9e}{topic}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a7b29ca96ada2afa3aadbcf55cd61a1ed}{EditorField::Difficulty}}:\ \textcolor{keywordflow}{return}\ q.\mbox{\hyperlink{struct_question_aa661d6d96bfe7e98902014f6b8276136}{difficulty}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ \{\};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00138}00138\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00140}00140\ \textcolor{keywordtype}{void}\ App::setEditorFieldValue(\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5}{EditorField}}\ field,\ \textcolor{keyword}{const}\ std::string\&\ value)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00141}00141\ \ \ \ \ \textcolor{keywordflow}{if}\ (!editor\ ||\ editor-\/>questions().empty())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00142}00142\ \ \ \ \ \mbox{\hyperlink{struct_question}{Question}}\&\ q\ =\ editor-\/>currentQuestion();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{keywordflow}{switch}\ (field)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa97ea56b0e00b2379736ae60869ff66a}{EditorField::Question}}:\ q.\mbox{\hyperlink{struct_question_a74c9df52f7df8e5386a79e93419105e8}{text}}\ =\ value;\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a3779706d050437e0ce3ac709b5048525}{EditorField::Answer0}}:\ q.\mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}[0]\ =\ value;\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a94bfe6a0489461ebd70898c04c9d3ece}{EditorField::Answer1}}:\ q.\mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}[1]\ =\ value;\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6db0fc92c65cf8b6b71199084f41c9a1}{EditorField::Answer2}}:\ q.\mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}[2]\ =\ value;\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a32b48eac71a1d5fff78511407ef66a03}{EditorField::Answer3}}:\ q.\mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}[3]\ =\ value;\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa76d4ef5f3f6a672bbfab2865563e530}{EditorField::Time}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ q.\mbox{\hyperlink{struct_question_a9cc916e2133d597fffbefe82c34c7196}{timeLimitSec}}\ =\ std::stoi(value);\ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{\}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a25812bf456959aa5f28dc570f341a3ba}{EditorField::Topic}}:\ q.\mbox{\hyperlink{struct_question_aab348c5c0fb74e7d703cb0c7fa34ad9e}{topic}}\ =\ value;\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a7b29ca96ada2afa3aadbcf55cd61a1ed}{EditorField::Difficulty}}:\ q.\mbox{\hyperlink{struct_question_aa661d6d96bfe7e98902014f6b8276136}{difficulty}}\ =\ value;\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00156}00156\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00158}00158\ \ \ \ \ questions\ =\ editor-\/>questions();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00159}00159\ \ \ \ \ engine.\mbox{\hyperlink{class_quiz_engine_a3972106dba0f9e9c5810dbb343b01f05}{setQuestions}}(questions);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00160}00160\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00162}00162\ \textcolor{keywordtype}{void}\ App::setCorrectAnswer(\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ index)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00163}00163\ \ \ \ \ \textcolor{keywordflow}{if}\ (!editor\ ||\ editor-\/>questions().empty())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00164}00164\ \ \ \ \ \mbox{\hyperlink{struct_question}{Question}}\&\ q\ =\ editor-\/>currentQuestion();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00165}00165\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ q.\mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}.size())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00167}00167\ \ \ \ \ q.\mbox{\hyperlink{struct_question_a5d7284577f5b576fb248379ca95fa14b}{correctIndex}}\ =\ index;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00168}00168\ \ \ \ \ questions\ =\ editor-\/>questions();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00169}00169\ \ \ \ \ engine.\mbox{\hyperlink{class_quiz_engine_a3972106dba0f9e9c5810dbb343b01f05}{setQuestions}}(questions);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00170}00170\ \ \ \ \ refreshEditorButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00171}00171\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00173}00173\ \textcolor{keywordtype}{void}\ App::placeEditorInput()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00174}00174\ \ \ \ \ \textcolor{keywordflow}{if}\ (!inputText)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00175}00175\ \ \ \ \ inputText-\/>setOrigin(\{0.f,\ 0.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00176}00176\ \ \ \ \ inputText-\/>setPosition(\{600.f,\ 600.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00177}00177\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00179}00179\ \textcolor{keywordtype}{void}\ App::selectEditorField(\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5}{EditorField}}\ field)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00180}00180\ \ \ \ \ editorField\ =\ field;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00181}00181\ \ \ \ \ editorInput\ =\ toSf(getEditorFieldValue(field));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00182}00182\ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ inputText-\/>setString(editorInput);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ placeEditorInput();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00185}00185\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00186}00186\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00188}00188\ \textcolor{keywordtype}{void}\ App::applyEditorInput()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00189}00189\ \ \ \ \ \textcolor{keywordflow}{if}\ (editorField\ ==\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{EditorField::None}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00190}00190\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ utf8\ =\ editorInput.toUtf8();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00191}00191\ \ \ \ \ setEditorFieldValue(editorField,\ std::string(utf8.begin(),\ utf8.end()));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00192}00192\ \ \ \ \ refreshEditorButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00193}00193\ \ \ \ \ editorField\ =\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{EditorField::None}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00194}00194\ \ \ \ \ editorInput.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00195}00195\ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Ввод:\ "{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00196}00196\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00198}00198\ \textcolor{keywordtype}{void}\ App::refreshEditorButtons()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00199}00199\ \ \ \ \ editorButtons.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00201}00201\ \ \ \ \ \textcolor{keywordflow}{if}\ (!editor\ ||\ editor-\/>questions().empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Нет\ вопросов"{}}),\ sf::Vector2f(400.f,\ 300.f),\ sf::Vector2f(200.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00204}00204\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00206}00206\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_question}{Question}}\&\ q\ =\ editor-\/>currentQuestion();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00208}00208\ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}<Назад"{}}),\ sf::Vector2f(40.f,\ 100.f),\ sf::Vector2f(120.f,\ 45.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00209}00209\ \ \ \ \ editorButtons.emplace\_back(font,\ sf::String(std::to\_string(editor-\/>currentIndex()\ +\ 1)\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ std::to\_string(editor-\/>questions().size())),\ sf::Vector2f(170.f,\ 100.f),\ sf::Vector2f(160.f,\ 45.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00210}00210\ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Вперед>"{}}),\ sf::Vector2f(340.f,\ 100.f),\ sf::Vector2f(120.f,\ 45.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00211}00211\ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Добавить"{}}),\ sf::Vector2f(470.f,\ 100.f),\ sf::Vector2f(120.f,\ 45.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00212}00212\ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Удалить"{}}),\ sf::Vector2f(600.f,\ 100.f),\ sf::Vector2f(120.f,\ 45.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00214}00214\ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Вопрос:"{}}),\ sf::Vector2f(40.f,\ 170.f),\ sf::Vector2f(110.f,\ 40.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00215}00215\ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(q.\mbox{\hyperlink{struct_question_a74c9df52f7df8e5386a79e93419105e8}{text}}),\ sf::Vector2f(180.f,\ 170.f),\ sf::Vector2f(790.f,\ 40.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00217}00217\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ y\ =\ 230.f\ +\ i\ *\ 55.f;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Ответ\ "{}}\ +\ std::to\_string(i\ +\ 1)\ +\ \textcolor{stringliteral}{"{}:"{}}),\ sf::Vector2f(40.f,\ y),\ sf::Vector2f(110.f,\ 40.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(q.\mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}[i]),\ sf::Vector2f(180.f,\ y),\ sf::Vector2f(630.f,\ 40.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(i\ ==\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(q.\mbox{\hyperlink{struct_question_a5d7284577f5b576fb248379ca95fa14b}{correctIndex}})\ ?\ \textcolor{stringliteral}{"{}Верно"{}}\ :\ \textcolor{stringliteral}{"{}"{}}),\ sf::Vector2f(830.f,\ y),\ sf::Vector2f(90.f,\ 40.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00222}00222\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00224}00224\ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Время:"{}}),\ sf::Vector2f(40.f,\ 460.f),\ sf::Vector2f(130.f,\ 40.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00225}00225\ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(std::to\_string(q.\mbox{\hyperlink{struct_question_a9cc916e2133d597fffbefe82c34c7196}{timeLimitSec}})),\ sf::Vector2f(180.f,\ 460.f),\ sf::Vector2f(130.f,\ 40.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00227}00227\ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Предмет:"{}}),\ sf::Vector2f(40.f,\ 515.f),\ sf::Vector2f(130.f,\ 40.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00228}00228\ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(q.\mbox{\hyperlink{struct_question_aab348c5c0fb74e7d703cb0c7fa34ad9e}{topic}}),\ sf::Vector2f(180.f,\ 515.f),\ sf::Vector2f(300.f,\ 40.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00230}00230\ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Сложность"{}}),\ sf::Vector2f(40.f,\ 570.f),\ sf::Vector2f(130.f,\ 40.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00231}00231\ \ \ \ \ editorButtons.emplace\_back(font,\ toSf(q.\mbox{\hyperlink{struct_question_aa661d6d96bfe7e98902014f6b8276136}{difficulty}}),\ sf::Vector2f(180.f,\ 570.f),\ sf::Vector2f(300.f,\ 40.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00232}00232\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00234}00234\ \textcolor{keywordtype}{void}\ App::refreshTopicButtons()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00235}00235\ \ \ \ \ topicButtons.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00236}00236\ \ \ \ \ \textcolor{keyword}{auto}\ topics\ =\ \mbox{\hyperlink{namespace_data_store_a4e696441e3211c0c3cb48ab9a53a363c}{DataStore::getUniqueTopics}}(questions);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00237}00237\ \ \ \ \ topicButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Все\ темы\ ("{}}\ +\ std::to\_string(questions.size())\ +\ \textcolor{stringliteral}{"{}\ вопросов)"{}}),\ sf::Vector2f(340.f,\ 150.f),\ sf::Vector2f(520.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00238}00238\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ i\ =\ 0;\ i\ <\ topics.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_question_filters}{QuestionFilters}}\ filter;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ filter.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}\ =\ topics[i];}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ filtered\ =\ \mbox{\hyperlink{namespace_data_store_a085b013cdbe46aed8baad46cb4160a8e}{DataStore::filterQuestions}}(questions,\ filter);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ topicButtons.emplace\_back(font,\ toSf(topics[i]\ +\ \textcolor{stringliteral}{"{}\ ("{}}\ +\ std::to\_string(filtered.size())\ +\ \textcolor{stringliteral}{"{})"{}}),\ sf::Vector2f(340.f,\ 220.f\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(i)\ *\ 60.f),\ sf::Vector2f(520.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00243}00243\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00244}00244\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00246}00246\ \textcolor{keywordtype}{void}\ App::refreshDifficultyButtons()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00247}00247\ \ \ \ \ difficultyButtons.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00249}00249\ \ \ \ \ std::vector<Question>\ questionsToShow\ =\ questions;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00250}00250\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentFilters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}.has\_value())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_question_filters}{QuestionFilters}}\ tempFilter;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ tempFilter.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}\ =\ currentFilters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}.value();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ questionsToShow\ =\ \mbox{\hyperlink{namespace_data_store_a085b013cdbe46aed8baad46cb4160a8e}{DataStore::filterQuestions}}(questions,\ tempFilter);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00254}00254\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00256}00256\ \ \ \ \ \textcolor{keyword}{auto}\ difficulties\ =\ \mbox{\hyperlink{namespace_data_store_a698dbfa9d626db877df05bc82982ce66}{DataStore::getUniqueDifficulties}}(questionsToShow);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00258}00258\ \ \ \ \ std::vector<std::string>\ sortedDifficulties;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00259}00259\ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(difficulties.begin(),\ difficulties.end(),\ \textcolor{stringliteral}{"{}easy"{}})\ !=\ difficulties.end())\ sortedDifficulties.push\_back(\textcolor{stringliteral}{"{}easy"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00260}00260\ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(difficulties.begin(),\ difficulties.end(),\ \textcolor{stringliteral}{"{}normal"{}})\ !=\ difficulties.end())\ sortedDifficulties.push\_back(\textcolor{stringliteral}{"{}normal"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00261}00261\ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(difficulties.begin(),\ difficulties.end(),\ \textcolor{stringliteral}{"{}hard"{}})\ !=\ difficulties.end())\ sortedDifficulties.push\_back(\textcolor{stringliteral}{"{}hard"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00262}00262\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00263}00263\ \ \ \ \ difficultyButtons.emplace\_back(font,\ toSf(\textcolor{stringliteral}{"{}Все\ сложности\ ("{}}\ +\ std::to\_string(questionsToShow.size())\ +\ \textcolor{stringliteral}{"{}\ вопросов)"{}}),\ sf::Vector2f(400.f,\ 250.f),\ sf::Vector2f(450.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00265}00265\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ i\ =\ 0;\ i\ <\ sortedDifficulties.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_question_filters}{QuestionFilters}}\ filter;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ filter.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}\ =\ currentFilters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ filter.\mbox{\hyperlink{struct_question_filters_aac123945cd0d2ea8c77187a1f5aa16e5}{difficulty}}\ =\ sortedDifficulties[i];}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ filtered\ =\ \mbox{\hyperlink{namespace_data_store_a085b013cdbe46aed8baad46cb4160a8e}{DataStore::filterQuestions}}(questions,\ filter);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ difficultyButtons.emplace\_back(font,\ toSf(sortedDifficulties[i]\ +\ \textcolor{stringliteral}{"{}\ ("{}}\ +\ std::to\_string(filtered.size())\ +\ \textcolor{stringliteral}{"{})"{}}),\ sf::Vector2f(500.f,\ 320.f\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(i)\ *\ 70.f),\ sf::Vector2f(250.f,\ 50.f));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00271}00271\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00272}00272\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00274}00274\ \textcolor{keywordtype}{void}\ App::resetQuiz()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00275}00275\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9baab458f4b361834dd802e4f40d31b5ebc}{ScreenState::Quiz}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ filtered\ =\ \mbox{\hyperlink{namespace_data_store_a085b013cdbe46aed8baad46cb4160a8e}{DataStore::filterQuestions}}(questions,\ currentFilters);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ engine.\mbox{\hyperlink{class_quiz_engine_a3972106dba0f9e9c5810dbb343b01f05}{setQuestions}}(filtered);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ engine.\mbox{\hyperlink{class_quiz_engine_a09378bd2cd09a5518e78a060c38fd7b4}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ refreshTexts();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ refreshAnswerButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00281}00281\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00282}00282\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00283}00283\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00284}00284\ \textcolor{keywordtype}{void}\ App::refreshTexts()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00285}00285\ \ \ \ \ titleText-\/>setString(toSf(\textcolor{stringliteral}{"{}Мини-\/викторина"{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00286}00286\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00287}00287\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba1547b5c15a800a6e43fff139f30ba8a9}{ScreenState::NameInput}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Нажмите\ Enter\ после\ ввода\ имени"{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Имя:\ "{}})\ +\ typedName);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setOrigin(\{0.f,\ 0.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setPosition(\{40.f,\ 200.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00295}00295\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00297}00297\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba3fefcf2a639893e3ac9168f772f4d09d}{ScreenState::TopicSelect}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Нажмите\ на\ предмет\ или\ 'Все\ предметы'"{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00300}00300\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00301}00301\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00302}00302\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba823021ca06a2d18b807cb00d7cc10e44}{ScreenState::DifficultySelect}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ std::string\ topicName\ =\ currentFilters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}.value\_or(\textcolor{stringliteral}{"{}Все\ предметы"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ filteredCount\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{namespace_data_store_a085b013cdbe46aed8baad46cb4160a8e}{DataStore::filterQuestions}}(questions,\ currentFilters).size());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Предмет:\ "{}}\ +\ topicName\ +\ \textcolor{stringliteral}{"{}\(\backslash\)nВопросов\ после\ фильтра:\ "{}}\ +\ std::to\_string(filteredCount)));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00307}00307\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00309}00309\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9baab458f4b361834dd802e4f40d31b5ebc}{ScreenState::Quiz}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_question}{Question}}*\ q\ =\ engine.\mbox{\hyperlink{class_quiz_engine_a577c499079b8f298138166034c21ee41}{currentQuestion}}())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ questionText-\/>setString(toSf(wrapText(q-\/>\mbox{\hyperlink{struct_question_a74c9df52f7df8e5386a79e93419105e8}{text}})));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ scoreText-\/>setString(toSf(\textcolor{stringliteral}{"{}Счёт:\ "{}}\ +\ std::to\_string(engine.\mbox{\hyperlink{class_quiz_engine_a25263f6faf463a231e55fa25b9819ec7}{score}}())\ +\ \textcolor{stringliteral}{"{}\ /\ "{}}\ +\ std::to\_string(engine.\mbox{\hyperlink{class_quiz_engine_a22a7b7d22fae8acc5049a793f42215e7}{maxScore}}())));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ timerText-\/>setString(toSf(\textcolor{stringliteral}{"{}Время:\ "{}}\ +\ std::to\_string(engine.\mbox{\hyperlink{class_quiz_engine_afe0ece91968b6b29006e03c1827dd718}{timeLeft}}())));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ infoText-\/>setString(sf::String());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00316}00316\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8eea62084ca7e541d918e823422bd82e}{ScreenState::Result}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ scoreText-\/>setString(toSf(\textcolor{stringliteral}{"{}Финальный\ счёт:\ "{}}\ +\ std::to\_string(engine.\mbox{\hyperlink{class_quiz_engine_a25263f6faf463a231e55fa25b9819ec7}{score}}())\ +\ \textcolor{stringliteral}{"{}\ /\ "{}}\ +\ std::to\_string(engine.\mbox{\hyperlink{class_quiz_engine_a22a7b7d22fae8acc5049a793f42215e7}{maxScore}}())));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ timerText-\/>setString(sf::String());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Игра\ завершена."{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00320}00320\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba37ae66f03261bd62844188f7e28092ff}{ScreenState::Ranking}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ rankingText-\/>setString(toSf(rankingView.\mbox{\hyperlink{class_ranking_view_abbeee77645ca510719694e84310aa3db}{buildText}}()));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00322}00322\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba344a7f427fb765610ef96eb7bce95257}{ScreenState::Editor}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (editor\ \&\&\ !editor-\/>questions().empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_question}{Question}}\&\ q\ =\ editor-\/>currentQuestion();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ info\ =\ \textcolor{stringliteral}{"{}Вопрос\ "{}}\ +\ std::to\_string(editor-\/>currentIndex()\ +\ 1)\ +\ \textcolor{stringliteral}{"{}\ из\ "{}}\ +\ std::to\_string(editor-\/>questions().size())\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ info\ +=\ \textcolor{stringliteral}{"{}Предмет:\ "{}}\ +\ q.\mbox{\hyperlink{struct_question_aab348c5c0fb74e7d703cb0c7fa34ad9e}{topic}}\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ info\ +=\ \textcolor{stringliteral}{"{}Сложность:\ "{}}\ +\ q.\mbox{\hyperlink{struct_question_aa661d6d96bfe7e98902014f6b8276136}{difficulty}}\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ info\ +=\ \textcolor{stringliteral}{"{}Кликни\ по\ полю\ и\ печатай."{}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(info));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ infoText-\/>setPosition(\{40.f,\ 650.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Нет\ вопросов\ для\ редактирования."{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00334}00334\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba9ddb6c49bc47d6412aed87762fecaf16}{ScreenState::PasswordInput}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Введите\ пароль\ и\ нажмите\ Enter\ или\ кнопку\ Войти."{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setString(typedInput);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setOrigin(\{0.f,\ 0.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setPosition(\{40.f,\ 200.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00341}00341\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}{ScreenState::MultiplayerNameInput1}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Игрок\ 1,\ введите\ имя"{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Игрок\ 1:\ "{}})\ +\ multiplayerInput);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setOrigin(\{0.f,\ 0.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setPosition(\{40.f,\ 200.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00348}00348\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8d06cdca5b59a722bf38c842125a22e2}{ScreenState::MultiplayerNameInput2}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00349}00349\ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Игрок\ 2,\ введите\ имя"{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Игрок\ 2:\ "{}})\ +\ multiplayerInput);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setOrigin(\{0.f,\ 0.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setPosition(\{40.f,\ 200.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00355}00355\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba09908026c7f96c1c1ce54ee80deb8910}{ScreenState::MultiplayerTopicSelect}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00356}00356\ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Выберите\ предмет\ для\ дуэли"{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00357}00357\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba08b34babd1430dab609ab91996ee3a53}{ScreenState::MultiplayerDifficultySelect}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00358}00358\ \ \ \ \ \ \ \ \ std::string\ topicName\ =\ currentFilters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}.value\_or(\textcolor{stringliteral}{"{}Все\ предметы"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ filteredCount\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{namespace_data_store_a085b013cdbe46aed8baad46cb4160a8e}{DataStore::filterQuestions}}(questions,\ currentFilters).size());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00360}00360\ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Предмет:\ "{}}\ +\ topicName\ +\ \textcolor{stringliteral}{"{}\(\backslash\)nВопросов\ после\ фильтра:\ "{}}\ +\ std::to\_string(filteredCount)));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00361}00361\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba836ccbe6c108aa045e961818a68321a5}{ScreenState::MultiplayerQuiz}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00362}00362\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!multiplayerQuestions.empty()\ \&\&\ multiplayerQuestionIndex\ <\ multiplayerQuestions.size())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_question}{Question}}\&\ q\ =\ multiplayerQuestions[multiplayerQuestionIndex];}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ questionText-\/>setString(toSf(q.\mbox{\hyperlink{struct_question_a74c9df52f7df8e5386a79e93419105e8}{text}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ scoreText-\/>setString(sf::String());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ timerText-\/>setString(toSf(\textcolor{stringliteral}{"{}Ход:\ "{}}\ +\ playerNames[currentQuizPlayer]\ +\ \textcolor{stringliteral}{"{}\(\backslash\)nВремя:\ "{}}\ +\ std::to\_string(multiplayerTimeLeft)));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Вопрос\ "{}}\ +\ std::to\_string(multiplayerQuestionIndex\ +\ 1)\ +\ \textcolor{stringliteral}{"{}\ из\ "{}}\ +\ std::to\_string(multiplayerQuestions.size())));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00368}00368\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00369}00369\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba860bbc9dc1f71826fb32ce26a3b2638e}{ScreenState::MultiplayerResult}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00370}00370\ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Результаты\ игроков"{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00371}00371\ \ \ \ \ \ \ \ \ std::string\ resultLine;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00372}00372\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerScores[0]\ ==\ playerScores[1])\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ resultLine\ =\ \textcolor{stringliteral}{"{}Ничья!"{}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00374}00374\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (playerScores[0]\ >\ playerScores[1])\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ resultLine\ =\ \textcolor{stringliteral}{"{}Победил\ "{}}\ +\ playerNames[0]\ +\ \textcolor{stringliteral}{"{}!"{}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00376}00376\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ resultLine\ =\ \textcolor{stringliteral}{"{}Победил\ "{}}\ +\ playerNames[1]\ +\ \textcolor{stringliteral}{"{}!"{}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00378}00378\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ scoreText-\/>setString(toSf(}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ playerNames[0]\ +\ \textcolor{stringliteral}{"{}:\ "{}}\ +\ std::to\_string(playerScores[0])\ +}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}\ +}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ playerNames[1]\ +\ \textcolor{stringliteral}{"{}:\ "{}}\ +\ std::to\_string(playerScores[1])\ +}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n"{}}\ +}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ resultLine}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ ));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ timerText-\/>setString(sf::String());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00387}00387\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Выберите\ действие."{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00389}00389\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00390}00390\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00391}00391\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba9ddb6c49bc47d6412aed87762fecaf16}{ScreenState::PasswordInput}}\ ||\ state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}{ScreenState::MultiplayerNameInput1}}\ ||\ state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8d06cdca5b59a722bf38c842125a22e2}{ScreenState::MultiplayerNameInput2}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00392}00392\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00393}00393\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00394}00394\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00395}00395\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ !=\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba344a7f427fb765610ef96eb7bce95257}{ScreenState::Editor}}\ ||\ editorField\ ==\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{EditorField::None}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00396}00396\ \ \ \ \ \ \ \ \ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Ввод:\ "{}})\ +\ typedInput);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00397}00397\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ bounds\ =\ inputText-\/>getLocalBounds();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ inputText-\/>setOrigin(\{bounds.position.x\ +\ bounds.size.x\ /\ 2.f,\ bounds.position.y\ +\ bounds.size.y\ /\ 2.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ inputText-\/>setPosition(\{40.f,\ 100.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00400}00400\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00401}00401\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00402}00402\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00403}00403\ \textcolor{keywordtype}{void}\ App::refreshAnswerButtons()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00404}00404\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_question}{Question}}*\ q\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00405}00405\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00406}00406\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9baab458f4b361834dd802e4f40d31b5ebc}{ScreenState::Quiz}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00407}00407\ \ \ \ \ \ \ \ \ q\ =\ engine.\mbox{\hyperlink{class_quiz_engine_a577c499079b8f298138166034c21ee41}{currentQuestion}}();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00408}00408\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba836ccbe6c108aa045e961818a68321a5}{ScreenState::MultiplayerQuiz}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00409}00409\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!multiplayerQuestions.empty()\ \&\&\ multiplayerQuestionIndex\ <\ multiplayerQuestions.size())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ q\ =\ \&multiplayerQuestions[multiplayerQuestionIndex];}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00411}00411\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00412}00412\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00413}00413\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00414}00414\ \ \ \ \ \textcolor{keywordflow}{if}\ (!q)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00415}00415\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ b\ :\ answerButtons)\ b.setLabel(sf::String());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00416}00416\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00417}00417\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00418}00418\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00419}00419\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ i\ =\ 0;\ i\ <\ answerButtons.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00420}00420\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ q-\/>answers.size())\ answerButtons[i].setLabel(toSf(q-\/>\mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}[i]));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00421}00421\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ answerButtons[i].setLabel(sf::String());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00422}00422\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00423}00423\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00424}00424\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00425}00425\ \textcolor{keywordtype}{void}\ App::saveCurrentResult()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00426}00426\ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ engine.\mbox{\hyperlink{class_quiz_engine_a0de35b455121384091f0b2c1eb5006f7}{buildResult}}(currentPlayerName);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00427}00427\ \ \ \ \ result.\mbox{\hyperlink{struct_player_result_aa6277499131f6228d94a9a48de06fdbb}{timestamp}}\ =\ nowDate();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00428}00428\ \ \ \ \ result.mode\ =\ \textcolor{stringliteral}{"{}одиночная\ игра"{}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00429}00429\ \ \ \ \ \mbox{\hyperlink{namespace_data_store_a5fe535b0e1ea1dd0f4403d0851478095}{DataStore::saveResult}}(\textcolor{stringliteral}{"{}results.txt"{}},\ result);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00430}00430\ \ \ \ \ loadRankingData();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00431}00431\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00432}00432\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00433}00433\ \textcolor{keywordtype}{void}\ App::loadRankingData()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00434}00434\ \ \ \ \ ranking\ =\ \mbox{\hyperlink{namespace_data_store_a793b7683453d75697eb6c32d9fef5dcf}{DataStore::loadRanking}}(\textcolor{stringliteral}{"{}results.txt"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00435}00435\ \ \ \ \ rankingView.\mbox{\hyperlink{class_ranking_view_a6741050702c8a25011ae4aefb0023f73}{setRanking}}(ranking);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00436}00436\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00437}00437\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00438}00438\ \textcolor{keywordtype}{void}\ App::switchToMenu()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00439}00439\ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9bab61541208db7fa7dba42c85224405911}{ScreenState::Menu}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00440}00440\ \ \ \ \ typedInput.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00441}00441\ \ \ \ \ typedName.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00442}00442\ \ \ \ \ editorInput.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00443}00443\ \ \ \ \ multiplayerInput.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00444}00444\ \ \ \ \ editorField\ =\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{EditorField::None}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00445}00445\ \ \ \ \ refreshTexts();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00446}00446\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00447}00447\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00448}00448\ \textcolor{keywordtype}{void}\ App::openEditorIfAllowed()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00449}00449\ \ \ \ \ \textcolor{keywordflow}{if}\ (!editor)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00450}00450\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00451}00451\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ utf8\ =\ typedInput.toUtf8();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00452}00452\ \ \ \ \ \textcolor{keywordflow}{if}\ (editor-\/>login(std::string(utf8.begin(),\ utf8.end())))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00453}00453\ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba344a7f427fb765610ef96eb7bce95257}{ScreenState::Editor}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Пароль\ верный.\ Редактор\ открыт."{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00455}00455\ \ \ \ \ \ \ \ \ refreshEditorButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00456}00456\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00457}00457\ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Неверный\ пароль."{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00458}00458\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00459}00459\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00460}00460\ \ \ \ \ typedInput.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00461}00461\ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Ввод:\ "{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00462}00462\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00463}00463\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00464}00464\ \textcolor{keywordtype}{void}\ App::startMultiplayer()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00465}00465\ \ \ \ \ multiplayerMode\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00466}00466\ \ \ \ \ playerNames\ =\ \{\textcolor{stringliteral}{"{}Игрок\ 1"{}},\ \textcolor{stringliteral}{"{}Игрок\ 2"{}}\};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00467}00467\ \ \ \ \ playerScores\ =\ \{0,\ 0\};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00468}00468\ \ \ \ \ currentQuizPlayer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00469}00469\ \ \ \ \ multiplayerQuestionIndex\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00470}00470\ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}{ScreenState::MultiplayerNameInput1}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00471}00471\ \ \ \ \ multiplayerInput.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00472}00472\ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00473}00473\ \ \ \ \ \ \ \ \ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Игрок\ 1:\ "{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00474}00474\ \ \ \ \ \ \ \ \ inputText-\/>setOrigin(\{0.f,\ 0.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00475}00475\ \ \ \ \ \ \ \ \ inputText-\/>setPosition(\{60.f,\ 100.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00476}00476\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00477}00477\ \ \ \ \ titleText-\/>setString(toSf(\textcolor{stringliteral}{"{}Мини-\/викторина"{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00478}00478\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00479}00479\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00480}00480\ \textcolor{keywordtype}{void}\ App::advanceMultiplayerTurn(\textcolor{keywordtype}{bool}\ answeredCorrectly)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00481}00481\ \ \ \ \ \textcolor{keywordflow}{if}\ (answeredCorrectly)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00482}00482\ \ \ \ \ \ \ \ \ playerScores[currentQuizPlayer]++;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00483}00483\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00484}00484\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00485}00485\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentQuizPlayer\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00486}00486\ \ \ \ \ \ \ \ \ currentQuizPlayer\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00487}00487\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00488}00488\ \ \ \ \ \ \ \ \ currentQuizPlayer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00489}00489\ \ \ \ \ \ \ \ \ ++multiplayerQuestionIndex;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00490}00490\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00491}00491\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (multiplayerQuestionIndex\ >=\ multiplayerQuestions.size())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00492}00492\ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba860bbc9dc1f71826fb32ce26a3b2638e}{ScreenState::MultiplayerResult}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00493}00493\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00494}00494\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_player_result}{PlayerResult}}\ result;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00495}00495\ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{struct_player_result_a90e6a1338e4ccb7b4d2bb6611241d902}{playerName}}\ =\ playerNames[0]\ +\ \textcolor{stringliteral}{"{}\ \&\ "{}}\ +\ playerNames[1];}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00496}00496\ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{struct_player_result_a6c7b9611ad2ca3d50f09d9cb60ce94fb}{score}}\ =\ playerScores[0]\ +\ playerScores[1];}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00497}00497\ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{struct_player_result_a5620cbd5446a1283b82b960946e17a0d}{maxScore}}\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(multiplayerQuestions.size()\ *\ 2);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00498}00498\ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{struct_player_result_aa6277499131f6228d94a9a48de06fdbb}{timestamp}}\ =\ nowDate();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{struct_player_result_acab5e22f0333d3575972780dd5ac1516}{difficulty}}\ =\ currentFilters.\mbox{\hyperlink{struct_question_filters_aac123945cd0d2ea8c77187a1f5aa16e5}{difficulty}}.value\_or(\textcolor{stringliteral}{"{}any"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{struct_player_result_a7637e99e0ba921f5e8deebc93455c443}{mode}}\ =\ \textcolor{stringliteral}{"{}дуэль"{}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_data_store_a5fe535b0e1ea1dd0f4403d0851478095}{DataStore::saveResult}}(\textcolor{stringliteral}{"{}results.txt"{}},\ result);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ loadRankingData();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00504}00504\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00505}00505\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ multiplayerClock.restart();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ multiplayerTimeLeft\ =\ multiplayerQuestions[multiplayerQuestionIndex].timeLimitSec;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00508}00508\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00509}00509\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00510}00510\ \ \ \ \ refreshTexts();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00511}00511\ \ \ \ \ refreshAnswerButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00512}00512\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00513}00513\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00514}\mbox{\hyperlink{class_app_ae09dc71078b64c56c673b1ad1d25b5d1}{00514}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_ae09dc71078b64c56c673b1ad1d25b5d1}{App::run}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00515}00515\ \ \ \ \ \textcolor{keywordflow}{while}\ (window.isOpen())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00516}00516\ \ \ \ \ \ \ \ \ processEvents();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00517}00517\ \ \ \ \ \ \ \ \ update();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00518}00518\ \ \ \ \ \ \ \ \ render();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00519}00519\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00520}00520\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00521}00521\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00522}00522\ \textcolor{keywordtype}{void}\ App::processEvents()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00523}00523\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{const}\ std::optional<sf::Event>\ event\ =\ window.pollEvent())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00524}00524\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (event-\/>is<sf::Event::Closed>())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00525}00525\ \ \ \ \ \ \ \ \ \ \ \ \ window.close();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00526}00526\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00527}00527\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00528}00528\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}*\ keyPressed\ =\ event-\/>getIf<sf::Event::KeyPressed>())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00529}00529\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (keyPressed-\/>scancode\ ==\ sf::Keyboard::Scancode::Escape)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00530}00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9baab458f4b361834dd802e4f40d31b5ebc}{ScreenState::Quiz}}\ ||\ state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba3fefcf2a639893e3ac9168f772f4d09d}{ScreenState::TopicSelect}}\ ||\ state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba823021ca06a2d18b807cb00d7cc10e44}{ScreenState::DifficultySelect}}\ ||\ state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba344a7f427fb765610ef96eb7bce95257}{ScreenState::Editor}}\ ||\ state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba9ddb6c49bc47d6412aed87762fecaf16}{ScreenState::PasswordInput}}\ ||\ state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba1547b5c15a800a6e43fff139f30ba8a9}{ScreenState::NameInput}}\ ||\ state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}{ScreenState::MultiplayerNameInput1}}\ ||\ state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8d06cdca5b59a722bf38c842125a22e2}{ScreenState::MultiplayerNameInput2}}\ ||\ state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba09908026c7f96c1c1ce54ee80deb8910}{ScreenState::MultiplayerTopicSelect}}\ ||\ state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba08b34babd1430dab609ab91996ee3a53}{ScreenState::MultiplayerDifficultySelect}}\ ||\ state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba836ccbe6c108aa045e961818a68321a5}{ScreenState::MultiplayerQuiz}}\ ||\ state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba860bbc9dc1f71826fb32ce26a3b2638e}{ScreenState::MultiplayerResult}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00531}00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ switchToMenu();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00532}00532\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00533}00533\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ window.close();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00535}00535\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00536}00536\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00537}00537\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (keyPressed-\/>scancode\ ==\ sf::Keyboard::Scancode::Enter)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00538}00538\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba9ddb6c49bc47d6412aed87762fecaf16}{ScreenState::PasswordInput}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00539}00539\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ openEditorIfAllowed();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00540}00540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba1547b5c15a800a6e43fff139f30ba8a9}{ScreenState::NameInput}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00541}00541\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ utf8\ =\ typedName.toUtf8();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00542}00542\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentPlayerName\ =\ std::string(utf8.begin(),\ utf8.end());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00543}00543\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentPlayerName.empty())\ currentPlayerName\ =\ \textcolor{stringliteral}{"{}Игрок"{}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00544}00544\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba3fefcf2a639893e3ac9168f772f4d09d}{ScreenState::TopicSelect}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00545}00545\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshTopicButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00546}00546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshTexts();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00547}00547\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba344a7f427fb765610ef96eb7bce95257}{ScreenState::Editor}}\ \&\&\ editorField\ !=\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{EditorField::None}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00548}00548\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ applyEditorInput();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00549}00549\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}{ScreenState::MultiplayerNameInput1}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ utf8\ =\ multiplayerInput.toUtf8();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00551}00551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerNames[0]\ =\ std::string(utf8.begin(),\ utf8.end());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00552}00552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerNames[0].empty())\ playerNames[0]\ =\ \textcolor{stringliteral}{"{}Игрок\ 1"{}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00553}00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ multiplayerInput.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00554}00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8d06cdca5b59a722bf38c842125a22e2}{ScreenState::MultiplayerNameInput2}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00555}00555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00556}00556\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Игрок\ 2:\ "{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00557}00557\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setOrigin(\{0.f,\ 0.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00558}00558\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setPosition(\{60.f,\ 100.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00559}00559\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00560}00560\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8d06cdca5b59a722bf38c842125a22e2}{ScreenState::MultiplayerNameInput2}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00561}00561\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ utf8\ =\ multiplayerInput.toUtf8();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00562}00562\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerNames[1]\ =\ std::string(utf8.begin(),\ utf8.end());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00563}00563\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerNames[1].empty())\ playerNames[1]\ =\ \textcolor{stringliteral}{"{}Игрок\ 2"{}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00564}00564\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba09908026c7f96c1c1ce54ee80deb8910}{ScreenState::MultiplayerTopicSelect}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00565}00565\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentFilters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}\ =\ std::nullopt;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00566}00566\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentFilters.\mbox{\hyperlink{struct_question_filters_aac123945cd0d2ea8c77187a1f5aa16e5}{difficulty}}\ =\ std::nullopt;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00567}00567\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshTopicButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00568}00568\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshTexts();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00569}00569\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00570}00570\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00571}00571\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00572}00572\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (keyPressed-\/>scancode\ ==\ sf::Keyboard::Scancode::Backspace)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00573}00573\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba9ddb6c49bc47d6412aed87762fecaf16}{ScreenState::PasswordInput}}\ \&\&\ !typedInput.isEmpty())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00574}00574\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ typedInput.erase(typedInput.getSize()\ -\/\ 1,\ 1);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00575}00575\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00576}00576\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba1547b5c15a800a6e43fff139f30ba8a9}{ScreenState::NameInput}}\ \&\&\ !typedName.isEmpty())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00577}00577\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ typedName.erase(typedName.getSize()\ -\/\ 1,\ 1);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00578}00578\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00579}00579\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba344a7f427fb765610ef96eb7bce95257}{ScreenState::Editor}}\ \&\&\ editorField\ !=\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{EditorField::None}}\ \&\&\ !editorInput.isEmpty())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00580}00580\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editorInput.erase(editorInput.getSize()\ -\/\ 1,\ 1);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00581}00581\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00582}00582\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setString(editorInput);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00583}00583\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ placeEditorInput();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00584}00584\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00585}00585\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00586}00586\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}{ScreenState::MultiplayerNameInput1}}\ ||\ state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8d06cdca5b59a722bf38c842125a22e2}{ScreenState::MultiplayerNameInput2}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00587}00587\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!multiplayerInput.isEmpty())\ multiplayerInput.erase(multiplayerInput.getSize()\ -\/\ 1,\ 1);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00588}00588\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00589}00589\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}{ScreenState::MultiplayerNameInput1}})\ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Игрок\ 1:\ "{}})\ +\ multiplayerInput);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00590}00590\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Игрок\ 2:\ "{}})\ +\ multiplayerInput);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00591}00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setOrigin(\{0.f,\ 0.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00592}00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setPosition(\{60.f,\ 100.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00593}00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00594}00594\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00595}00595\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00596}00596\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00597}00597\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba344a7f427fb765610ef96eb7bce95257}{ScreenState::Editor}}\ \&\&\ editor\ \&\&\ !editor-\/>questions().empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00598}00598\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (keyPressed-\/>scancode\ ==\ sf::Keyboard::Scancode::Left)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00599}00599\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editor-\/>setCurrentIndex(editor-\/>currentIndex()\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00600}00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editorField\ =\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{EditorField::None}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00601}00601\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editorInput.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00602}00602\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshEditorButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00603}00603\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00604}00604\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (keyPressed-\/>scancode\ ==\ sf::Keyboard::Scancode::Right)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00605}00605\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editor-\/>setCurrentIndex(editor-\/>currentIndex()\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00606}00606\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editorField\ =\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{EditorField::None}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00607}00607\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editorInput.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00608}00608\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshEditorButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00609}00609\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00610}00610\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (keyPressed-\/>scancode\ ==\ sf::Keyboard::Scancode::Equal)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00611}00611\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editor-\/>addQuestion();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00612}00612\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ questions\ =\ editor-\/>questions();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00613}00613\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ engine.\mbox{\hyperlink{class_quiz_engine_a3972106dba0f9e9c5810dbb343b01f05}{setQuestions}}(questions);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00614}00614\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshEditorButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00615}00615\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00616}00616\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (keyPressed-\/>scancode\ ==\ sf::Keyboard::Scancode::Hyphen)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00617}00617\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editor-\/>deleteQuestion(editor-\/>currentIndex());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00618}00618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ questions\ =\ editor-\/>questions();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00619}00619\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ engine.\mbox{\hyperlink{class_quiz_engine_a3972106dba0f9e9c5810dbb343b01f05}{setQuestions}}(questions);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00620}00620\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshEditorButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00621}00621\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00622}00622\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00623}00623\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00624}00624\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00625}00625\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}*\ textEntered\ =\ event-\/>getIf<sf::Event::TextEntered>())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00626}00626\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char32\_t}\ u\ =\ textEntered-\/>unicode;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00627}00627\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (u\ <\ 32\ ||\ u\ ==\ 127)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00628}00628\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00629}00629\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba9ddb6c49bc47d6412aed87762fecaf16}{ScreenState::PasswordInput}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00630}00630\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ typedInput\ +=\ u;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00631}00631\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00632}00632\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setString(typedInput);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00633}00633\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setOrigin(\{0.f,\ 0.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00634}00634\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setPosition(\{40.f,\ 100.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00635}00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00636}00636\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00637}00637\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00638}00638\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba1547b5c15a800a6e43fff139f30ba8a9}{ScreenState::NameInput}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00639}00639\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ typedName\ +=\ u;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00640}00640\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00641}00641\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Имя:\ "{}})\ +\ typedName);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00642}00642\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setOrigin(\{0.f,\ 0.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00643}00643\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setPosition(\{40.f,\ 100.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00644}00644\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00645}00645\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00646}00646\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00647}00647\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba344a7f427fb765610ef96eb7bce95257}{ScreenState::Editor}}\ \&\&\ editorField\ !=\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{EditorField::None}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00648}00648\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editorInput\ +=\ u;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00649}00649\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00650}00650\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setString(editorInput);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00651}00651\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ placeEditorInput();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00652}00652\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00653}00653\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00654}00654\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00655}00655\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}{ScreenState::MultiplayerNameInput1}}\ ||\ state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8d06cdca5b59a722bf38c842125a22e2}{ScreenState::MultiplayerNameInput2}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00656}00656\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ multiplayerInput\ +=\ u;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00657}00657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00658}00658\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}{ScreenState::MultiplayerNameInput1}})\ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Игрок\ 1:\ "{}})\ +\ multiplayerInput);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00659}00659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Игрок\ 2:\ "{}})\ +\ multiplayerInput);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00660}00660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setOrigin(\{0.f,\ 0.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00661}00661\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setPosition(\{60.f,\ 100.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00662}00662\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00663}00663\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00664}00664\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00665}00665\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00666}00666\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}*\ mousePressed\ =\ event-\/>getIf<sf::Event::MouseButtonPressed>())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00667}00667\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mousePressed-\/>button\ !=\ sf::Mouse::Button::Left)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00668}00668\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00669}00669\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ mousePos(}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00670}00670\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(mousePressed-\/>position.x),}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00671}00671\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(mousePressed-\/>position.y)}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00672}00672\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00673}00673\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00674}00674\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9bab61541208db7fa7dba42c85224405911}{ScreenState::Menu}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00675}00675\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (menuButtons[0].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00676}00676\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba1547b5c15a800a6e43fff139f30ba8a9}{ScreenState::NameInput}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00677}00677\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ typedName.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00678}00678\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00679}00679\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Имя:\ "{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00680}00680\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setOrigin(\{0.f,\ 0.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00681}00681\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setPosition(\{40.f,\ 70.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00682}00682\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00683}00683\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (menuButtons[1].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00684}00684\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ startMultiplayer();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00685}00685\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (menuButtons[2].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00686}00686\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba37ae66f03261bd62844188f7e28092ff}{ScreenState::Ranking}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00687}00687\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ loadRankingData();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00688}00688\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (menuButtons[3].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00689}00689\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba9ddb6c49bc47d6412aed87762fecaf16}{ScreenState::PasswordInput}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00690}00690\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ typedInput.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00691}00691\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00692}00692\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Ввод:\ "{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00693}00693\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setOrigin(\{0.f,\ 0.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00694}00694\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setPosition(\{40.f,\ 70.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00695}00695\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00696}00696\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (menuButtons[4].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00697}00697\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ window.close();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00698}00698\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00699}00699\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba3fefcf2a639893e3ac9168f772f4d09d}{ScreenState::TopicSelect}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00700}00700\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ found\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00701}00701\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ i\ =\ 0;\ i\ <\ topicButtons.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00702}00702\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (topicButtons[i].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00703}00703\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentFilters.\mbox{\hyperlink{struct_question_filters_aac123945cd0d2ea8c77187a1f5aa16e5}{difficulty}}\ =\ std::nullopt;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00704}00704\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)\ currentFilters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}\ =\ std::nullopt;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00705}00705\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ currentFilters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}\ =\ \mbox{\hyperlink{namespace_data_store_a4e696441e3211c0c3cb48ab9a53a363c}{DataStore::getUniqueTopics}}(questions)[i\ -\/\ 1];}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00706}00706\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshDifficultyButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00707}00707\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba823021ca06a2d18b807cb00d7cc10e44}{ScreenState::DifficultySelect}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00708}00708\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00709}00709\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00710}00710\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00711}00711\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00712}00712\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!found\ \&\&\ backButton\ \&\&\ backButton-\/>contains(mousePos))\ switchToMenu();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00713}00713\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba823021ca06a2d18b807cb00d7cc10e44}{ScreenState::DifficultySelect}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00714}00714\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ found\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00715}00715\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ sortedDifficulties;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00716}00716\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ difficulties\ =\ \mbox{\hyperlink{namespace_data_store_a698dbfa9d626db877df05bc82982ce66}{DataStore::getUniqueDifficulties}}(questions);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00717}00717\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(difficulties.begin(),\ difficulties.end(),\ \textcolor{stringliteral}{"{}easy"{}})\ !=\ difficulties.end())\ sortedDifficulties.push\_back(\textcolor{stringliteral}{"{}easy"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00718}00718\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(difficulties.begin(),\ difficulties.end(),\ \textcolor{stringliteral}{"{}normal"{}})\ !=\ difficulties.end())\ sortedDifficulties.push\_back(\textcolor{stringliteral}{"{}normal"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00719}00719\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(difficulties.begin(),\ difficulties.end(),\ \textcolor{stringliteral}{"{}hard"{}})\ !=\ difficulties.end())\ sortedDifficulties.push\_back(\textcolor{stringliteral}{"{}hard"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00720}00720\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00721}00721\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentFilters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}.has\_value())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00722}00722\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Question>\ topicQuestions;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00723}00723\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ q\ :\ questions)\ if\ (q.topic\ ==\ currentFilters.topic.value())\ topicQuestions.push\_back(q);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00724}00724\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ topicDifficulties\ =\ \mbox{\hyperlink{namespace_data_store_a698dbfa9d626db877df05bc82982ce66}{DataStore::getUniqueDifficulties}}(topicQuestions);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00725}00725\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sortedDifficulties.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00726}00726\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(topicDifficulties.begin(),\ topicDifficulties.end(),\ \textcolor{stringliteral}{"{}easy"{}})\ !=\ topicDifficulties.end())\ sortedDifficulties.push\_back(\textcolor{stringliteral}{"{}easy"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00727}00727\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(topicDifficulties.begin(),\ topicDifficulties.end(),\ \textcolor{stringliteral}{"{}normal"{}})\ !=\ topicDifficulties.end())\ sortedDifficulties.push\_back(\textcolor{stringliteral}{"{}normal"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00728}00728\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(topicDifficulties.begin(),\ topicDifficulties.end(),\ \textcolor{stringliteral}{"{}hard"{}})\ !=\ topicDifficulties.end())\ sortedDifficulties.push\_back(\textcolor{stringliteral}{"{}hard"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00729}00729\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00730}00730\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00731}00731\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ i\ =\ 0;\ i\ <\ difficultyButtons.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00732}00732\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (difficultyButtons[i].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00733}00733\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)\ currentFilters.\mbox{\hyperlink{struct_question_filters_aac123945cd0d2ea8c77187a1f5aa16e5}{difficulty}}\ =\ std::nullopt;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00734}00734\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (i\ -\/\ 1\ <\ sortedDifficulties.size())\ currentFilters.\mbox{\hyperlink{struct_question_filters_aac123945cd0d2ea8c77187a1f5aa16e5}{difficulty}}\ =\ sortedDifficulties[i\ -\/\ 1];}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00735}00735\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ filtered\ =\ \mbox{\hyperlink{namespace_data_store_a085b013cdbe46aed8baad46cb4160a8e}{DataStore::filterQuestions}}(questions,\ currentFilters);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00736}00736\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (filtered.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00737}00737\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}По\ этому\ фильтру\ нет\ вопросов."{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00738}00738\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshTexts();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00739}00739\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00740}00740\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00741}00741\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00742}00742\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ engine.\mbox{\hyperlink{class_quiz_engine_a3972106dba0f9e9c5810dbb343b01f05}{setQuestions}}(filtered);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00743}00743\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ engine.\mbox{\hyperlink{class_quiz_engine_a98ad2cf42218eddf9dbb5536fb7e801b}{setDifficulty}}(currentFilters.\mbox{\hyperlink{struct_question_filters_aac123945cd0d2ea8c77187a1f5aa16e5}{difficulty}}.value\_or(\textcolor{stringliteral}{"{}any"{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00744}00744\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ engine.\mbox{\hyperlink{class_quiz_engine_a09378bd2cd09a5518e78a060c38fd7b4}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00745}00745\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9baab458f4b361834dd802e4f40d31b5ebc}{ScreenState::Quiz}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00746}00746\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshTexts();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00747}00747\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshAnswerButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00748}00748\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00749}00749\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00750}00750\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00751}00751\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00752}00752\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!found\ \&\&\ backButton\ \&\&\ backButton-\/>contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00753}00753\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentFilters.\mbox{\hyperlink{struct_question_filters_aac123945cd0d2ea8c77187a1f5aa16e5}{difficulty}}\ =\ std::nullopt;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00754}00754\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba3fefcf2a639893e3ac9168f772f4d09d}{ScreenState::TopicSelect}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00755}00755\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00756}00756\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba37ae66f03261bd62844188f7e28092ff}{ScreenState::Ranking}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00757}00757\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (scrollUpButton\ \&\&\ scrollUpButton-\/>contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00758}00758\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rankingView.\mbox{\hyperlink{class_ranking_view_ac9dac18f614fbf1a2a7fddea59b14efe}{scrollUp}}();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00759}00759\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshTexts();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00760}00760\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (scrollDownButton\ \&\&\ scrollDownButton-\/>contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00761}00761\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rankingView.\mbox{\hyperlink{class_ranking_view_ac14196e5b6841a52ce2a4beabc0f3b9c}{scrollDown}}();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00762}00762\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshTexts();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00763}00763\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!rankingButtons.empty()\ \&\&\ rankingButtons[0].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00764}00764\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rankingView.\mbox{\hyperlink{class_ranking_view_a4ee230f23a88b0049b5d17f02b015316}{resetScroll}}();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00765}00765\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ switchToMenu();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00766}00766\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00767}00767\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba9ddb6c49bc47d6412aed87762fecaf16}{ScreenState::PasswordInput}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00768}00768\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (submitButton\ \&\&\ submitButton-\/>contains(mousePos))\ openEditorIfAllowed();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00769}00769\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (backButton\ \&\&\ backButton-\/>contains(mousePos))\ switchToMenu();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00770}00770\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba1547b5c15a800a6e43fff139f30ba8a9}{ScreenState::NameInput}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00771}00771\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton\ \&\&\ backButton-\/>contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00772}00772\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ switchToMenu();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00773}00773\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00774}00774\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba344a7f427fb765610ef96eb7bce95257}{ScreenState::Editor}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00775}00775\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!editor\ ||\ editor-\/>questions().empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00776}00776\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (editorBackButton\ \&\&\ editorBackButton-\/>contains(mousePos))\ switchToMenu();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00777}00777\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00778}00778\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00779}00779\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00780}00780\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (editorButtons.size()\ >=\ 1\ \&\&\ editorButtons[0].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00781}00781\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (editor-\/>currentIndex()\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00782}00782\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editor-\/>setCurrentIndex(editor-\/>currentIndex()\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00783}00783\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editorField\ =\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{EditorField::None}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00784}00784\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editorInput.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00785}00785\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshEditorButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00786}00786\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00787}00787\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (editorButtons.size()\ >=\ 3\ \&\&\ editorButtons[2].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00788}00788\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editor-\/>setCurrentIndex(editor-\/>currentIndex()\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00789}00789\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editorField\ =\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{EditorField::None}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00790}00790\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editorInput.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00791}00791\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshEditorButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00792}00792\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (editorButtons.size()\ >=\ 4\ \&\&\ editorButtons[3].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00793}00793\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editor-\/>addQuestion();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00794}00794\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ questions\ =\ editor-\/>questions();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00795}00795\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ engine.\mbox{\hyperlink{class_quiz_engine_a3972106dba0f9e9c5810dbb343b01f05}{setQuestions}}(questions);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00796}00796\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshEditorButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00797}00797\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (editorButtons.size()\ >=\ 5\ \&\&\ editorButtons[4].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00798}00798\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editor-\/>deleteQuestion(editor-\/>currentIndex());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00799}00799\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ questions\ =\ editor-\/>questions();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00800}00800\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ engine.\mbox{\hyperlink{class_quiz_engine_a3972106dba0f9e9c5810dbb343b01f05}{setQuestions}}(questions);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00801}00801\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshEditorButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00802}00802\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00803}00803\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00804}00804\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }HitField\ \{\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5}{EditorField}}\ field;\ sf::FloatRect\ rect;\ \};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00805}00805\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<HitField>\ fields\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00806}00806\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa97ea56b0e00b2379736ae60869ff66a}{EditorField::Question}},\ sf::FloatRect(\{160.f,\ 170.f\},\ \{760.f,\ 40.f\})\},}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00807}00807\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a3779706d050437e0ce3ac709b5048525}{EditorField::Answer0}},\ sf::FloatRect(\{160.f,\ 230.f\},\ \{600.f,\ 40.f\})\},}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00808}00808\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a94bfe6a0489461ebd70898c04c9d3ece}{EditorField::Answer1}},\ sf::FloatRect(\{160.f,\ 285.f\},\ \{600.f,\ 40.f\})\},}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00809}00809\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6db0fc92c65cf8b6b71199084f41c9a1}{EditorField::Answer2}},\ sf::FloatRect(\{160.f,\ 340.f\},\ \{600.f,\ 40.f\})\},}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00810}00810\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a32b48eac71a1d5fff78511407ef66a03}{EditorField::Answer3}},\ sf::FloatRect(\{160.f,\ 395.f\},\ \{600.f,\ 40.f\})\},}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00811}00811\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5aa76d4ef5f3f6a672bbfab2865563e530}{EditorField::Time}},\ sf::FloatRect(\{160.f,\ 460.f\},\ \{120.f,\ 40.f\})\},}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00812}00812\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a25812bf456959aa5f28dc570f341a3ba}{EditorField::Topic}},\ sf::FloatRect(\{160.f,\ 515.f\},\ \{220.f,\ 40.f\})\},}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00813}00813\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a7b29ca96ada2afa3aadbcf55cd61a1ed}{EditorField::Difficulty}},\ sf::FloatRect(\{160.f,\ 570.f\},\ \{220.f,\ 40.f\})\}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00814}00814\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00815}00815\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00816}00816\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ hf\ :\ fields)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00817}00817\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hf.rect.contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00818}00818\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ selectEditorField(hf.field);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00819}00819\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00820}00820\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00821}00821\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00822}00822\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00823}00823\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00824}00824\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ y\ =\ 230.f\ +\ i\ *\ 55.f;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00825}00825\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sf::FloatRect\ markRect(\{800.f,\ y\},\ \{80.f,\ 40.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00826}00826\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (markRect.contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00827}00827\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ setCorrectAnswer(\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\textcolor{keyword}{>}(i));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00828}00828\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshEditorButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00829}00829\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00830}00830\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00831}00831\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00832}00832\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00833}00833\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (editorSaveButton\ \&\&\ editorSaveButton-\/>contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00834}00834\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (editor-\/>save(\textcolor{stringliteral}{"{}questions.txt"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00835}00835\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Вопросы\ сохранены!"{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00836}00836\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ questions\ =\ editor-\/>questions();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00837}00837\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ engine.\mbox{\hyperlink{class_quiz_engine_a3972106dba0f9e9c5810dbb343b01f05}{setQuestions}}(questions);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00838}00838\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00839}00839\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ infoText-\/>setString(toSf(\textcolor{stringliteral}{"{}Ошибка\ сохранения!"{}}));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00840}00840\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00841}00841\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00842}00842\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00843}00843\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (editorBackButton\ \&\&\ editorBackButton-\/>contains(mousePos))\ switchToMenu();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00844}00844\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9baab458f4b361834dd802e4f40d31b5ebc}{ScreenState::Quiz}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00845}00845\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nextButton\ \&\&\ nextButton-\/>contains(mousePos)\ \&\&\ !engine.\mbox{\hyperlink{class_quiz_engine_addee0bb0a091b28e7af48963c131fe73}{finished}}())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00846}00846\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (engine.\mbox{\hyperlink{class_quiz_engine_a80b749da321263eaaa8b854732805d64}{nextQuestion}}())\ refreshAnswerButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00847}00847\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8eea62084ca7e541d918e823422bd82e}{ScreenState::Result}};\ saveCurrentResult();\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00848}00848\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00849}00849\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00850}00850\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (restartButton\ \&\&\ restartButton-\/>contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00851}00851\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ resetQuiz();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00852}00852\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9baab458f4b361834dd802e4f40d31b5ebc}{ScreenState::Quiz}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00853}00853\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00854}00854\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00855}00855\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!engine.\mbox{\hyperlink{class_quiz_engine_addee0bb0a091b28e7af48963c131fe73}{finished}}())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00856}00856\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ i\ =\ 0;\ i\ <\ answerButtons.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00857}00857\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (answerButtons[i].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00858}00858\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ engine.\mbox{\hyperlink{class_quiz_engine_adec33865d8f2396d7219a66f73c70c49}{answer}}(i);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00859}00859\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (engine.\mbox{\hyperlink{class_quiz_engine_a80b749da321263eaaa8b854732805d64}{nextQuestion}}())\ refreshAnswerButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00860}00860\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8eea62084ca7e541d918e823422bd82e}{ScreenState::Result}};\ saveCurrentResult();\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00861}00861\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00862}00862\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00863}00863\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00864}00864\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00865}00865\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}{ScreenState::MultiplayerNameInput1}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00866}00866\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton\ \&\&\ backButton-\/>contains(mousePos))\ switchToMenu();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00867}00867\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8d06cdca5b59a722bf38c842125a22e2}{ScreenState::MultiplayerNameInput2}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00868}00868\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton\ \&\&\ backButton-\/>contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00869}00869\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}{ScreenState::MultiplayerNameInput1}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00870}00870\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ multiplayerInput\ =\ toSf(playerNames[0]);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00871}00871\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00872}00872\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setString(toSf(\textcolor{stringliteral}{"{}Игрок\ 1:\ "{}})\ +\ multiplayerInput);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00873}00873\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setOrigin(\{0.f,\ 0.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00874}00874\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputText-\/>setPosition(\{60.f,\ 100.f\});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00875}00875\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00876}00876\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00877}00877\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba09908026c7f96c1c1ce54ee80deb8910}{ScreenState::MultiplayerTopicSelect}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00878}00878\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ found\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00879}00879\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ i\ =\ 0;\ i\ <\ topicButtons.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00880}00880\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (topicButtons[i].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00881}00881\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentFilters.\mbox{\hyperlink{struct_question_filters_aac123945cd0d2ea8c77187a1f5aa16e5}{difficulty}}\ =\ std::nullopt;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00882}00882\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)\ currentFilters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}\ =\ std::nullopt;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00883}00883\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ currentFilters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}\ =\ \mbox{\hyperlink{namespace_data_store_a4e696441e3211c0c3cb48ab9a53a363c}{DataStore::getUniqueTopics}}(questions)[i\ -\/\ 1];}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00884}00884\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshDifficultyButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00885}00885\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba08b34babd1430dab609ab91996ee3a53}{ScreenState::MultiplayerDifficultySelect}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00886}00886\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00887}00887\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00888}00888\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00889}00889\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00890}00890\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!found\ \&\&\ backButton\ \&\&\ backButton-\/>contains(mousePos))\ switchToMenu();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00891}00891\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba08b34babd1430dab609ab91996ee3a53}{ScreenState::MultiplayerDifficultySelect}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00892}00892\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ found\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00893}00893\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ sortedDifficulties;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00894}00894\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ difficulties\ =\ \mbox{\hyperlink{namespace_data_store_a698dbfa9d626db877df05bc82982ce66}{DataStore::getUniqueDifficulties}}(questions);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00895}00895\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(difficulties.begin(),\ difficulties.end(),\ \textcolor{stringliteral}{"{}easy"{}})\ !=\ difficulties.end())\ sortedDifficulties.push\_back(\textcolor{stringliteral}{"{}easy"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00896}00896\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(difficulties.begin(),\ difficulties.end(),\ \textcolor{stringliteral}{"{}normal"{}})\ !=\ difficulties.end())\ sortedDifficulties.push\_back(\textcolor{stringliteral}{"{}normal"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00897}00897\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(difficulties.begin(),\ difficulties.end(),\ \textcolor{stringliteral}{"{}hard"{}})\ !=\ difficulties.end())\ sortedDifficulties.push\_back(\textcolor{stringliteral}{"{}hard"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00898}00898\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00899}00899\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentFilters.\mbox{\hyperlink{struct_question_filters_aaf5d21e2a2fd6634a12f75c9d3a37cda}{topic}}.has\_value())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00900}00900\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Question>\ topicQuestions;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00901}00901\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ q\ :\ questions)\ if\ (q.topic\ ==\ currentFilters.topic.value())\ topicQuestions.push\_back(q);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00902}00902\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ topicDifficulties\ =\ \mbox{\hyperlink{namespace_data_store_a698dbfa9d626db877df05bc82982ce66}{DataStore::getUniqueDifficulties}}(topicQuestions);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00903}00903\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sortedDifficulties.clear();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00904}00904\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(topicDifficulties.begin(),\ topicDifficulties.end(),\ \textcolor{stringliteral}{"{}easy"{}})\ !=\ topicDifficulties.end())\ sortedDifficulties.push\_back(\textcolor{stringliteral}{"{}easy"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00905}00905\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(topicDifficulties.begin(),\ topicDifficulties.end(),\ \textcolor{stringliteral}{"{}normal"{}})\ !=\ topicDifficulties.end())\ sortedDifficulties.push\_back(\textcolor{stringliteral}{"{}normal"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00906}00906\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(topicDifficulties.begin(),\ topicDifficulties.end(),\ \textcolor{stringliteral}{"{}hard"{}})\ !=\ topicDifficulties.end())\ sortedDifficulties.push\_back(\textcolor{stringliteral}{"{}hard"{}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00907}00907\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00908}00908\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00909}00909\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ i\ =\ 0;\ i\ <\ difficultyButtons.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00910}00910\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (difficultyButtons[i].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00911}00911\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)\ currentFilters.\mbox{\hyperlink{struct_question_filters_aac123945cd0d2ea8c77187a1f5aa16e5}{difficulty}}\ =\ std::nullopt;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00912}00912\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (i\ -\/\ 1\ <\ sortedDifficulties.size())\ currentFilters.\mbox{\hyperlink{struct_question_filters_aac123945cd0d2ea8c77187a1f5aa16e5}{difficulty}}\ =\ sortedDifficulties[i\ -\/\ 1];}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00913}00913\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00914}00914\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ multiplayerQuestions\ =\ \mbox{\hyperlink{namespace_data_store_a085b013cdbe46aed8baad46cb4160a8e}{DataStore::filterQuestions}}(questions,\ currentFilters);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00915}00915\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (multiplayerQuestions.empty())\ multiplayerQuestions\ =\ questions;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00916}00916\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ multiplayerQuestionIndex\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00917}00917\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentQuizPlayer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00918}00918\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerScores\ =\ \{0,\ 0\};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00919}00919\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ multiplayerClock.restart();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00920}00920\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ multiplayerTimeLeft\ =\ multiplayerQuestions[0].timeLimitSec;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00921}00921\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba836ccbe6c108aa045e961818a68321a5}{ScreenState::MultiplayerQuiz}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00922}00922\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshAnswerButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00923}00923\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshTexts();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00924}00924\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00925}00925\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00926}00926\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00927}00927\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00928}00928\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!found\ \&\&\ backButton\ \&\&\ backButton-\/>contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00929}00929\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba09908026c7f96c1c1ce54ee80deb8910}{ScreenState::MultiplayerTopicSelect}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00930}00930\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00931}00931\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba836ccbe6c108aa045e961818a68321a5}{ScreenState::MultiplayerQuiz}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00932}00932\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!multiplayerQuestions.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00933}00933\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{namespacestd_a95af2365d145db04b79b915a5ff0658b}{std::size\_t}}\ i\ =\ 0;\ i\ <\ answerButtons.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00934}00934\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (answerButtons[i].contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00935}00935\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_question}{Question}}\&\ q\ =\ multiplayerQuestions[multiplayerQuestionIndex];}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00936}00936\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ correct\ =\ (i\ <\ q.\mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}.size()\ \&\&\ i\ ==\ q.\mbox{\hyperlink{struct_question_a5d7284577f5b576fb248379ca95fa14b}{correctIndex}});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00937}00937\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ advanceMultiplayerTurn(correct);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00938}00938\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00939}00939\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00940}00940\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00941}00941\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00942}00942\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton\ \&\&\ backButton-\/>contains(mousePos))\ switchToMenu();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00943}00943\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba860bbc9dc1f71826fb32ce26a3b2638e}{ScreenState::MultiplayerResult}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00944}00944\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (restartButton\ \&\&\ restartButton-\/>contains(mousePos))\ switchToMenu();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00945}00945\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton\ \&\&\ backButton-\/>contains(mousePos))\ switchToMenu();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00946}00946\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8eea62084ca7e541d918e823422bd82e}{ScreenState::Result}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00947}00947\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (restartButton\ \&\&\ restartButton-\/>contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00948}00948\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ resetQuiz();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00949}00949\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9baab458f4b361834dd802e4f40d31b5ebc}{ScreenState::Quiz}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00950}00950\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (backButton\ \&\&\ backButton-\/>contains(mousePos))\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00951}00951\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ switchToMenu();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00952}00952\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00953}00953\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00954}00954\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00955}00955\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00956}00956\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00957}00957\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00958}00958\ \textcolor{keywordtype}{void}\ App::update()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00959}00959\ \ \ \ \ sf::Vector2f\ mousePos\ =\ window.mapPixelToCoords(sf::Mouse::getPosition(window));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00960}00960\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00961}00961\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ b\ :\ menuButtons)\ b.setHovered(b.contains(mousePos));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00962}00962\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ b\ :\ topicButtons)\ b.setHovered(b.contains(mousePos));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00963}00963\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ b\ :\ difficultyButtons)\ b.setHovered(b.contains(mousePos));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00964}00964\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ b\ :\ answerButtons)\ b.setHovered(b.contains(mousePos));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00965}00965\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ b\ :\ rankingButtons)\ b.setHovered(b.contains(mousePos));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00966}00966\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ b\ :\ editorButtons)\ b.setHovered(b.contains(mousePos));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00967}00967\ \ \ \ \ \textcolor{keywordflow}{if}\ (nextButton)\ nextButton-\/>setHovered(nextButton-\/>contains(mousePos));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00968}00968\ \ \ \ \ \textcolor{keywordflow}{if}\ (restartButton)\ restartButton-\/>setHovered(restartButton-\/>contains(mousePos));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00969}00969\ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton)\ backButton-\/>setHovered(backButton-\/>contains(mousePos));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00970}00970\ \ \ \ \ \textcolor{keywordflow}{if}\ (submitButton)\ submitButton-\/>setHovered(submitButton-\/>contains(mousePos));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00971}00971\ \ \ \ \ \textcolor{keywordflow}{if}\ (scrollUpButton)\ scrollUpButton-\/>setHovered(scrollUpButton-\/>contains(mousePos));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00972}00972\ \ \ \ \ \textcolor{keywordflow}{if}\ (scrollDownButton)\ scrollDownButton-\/>setHovered(scrollDownButton-\/>contains(mousePos));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00973}00973\ \ \ \ \ \textcolor{keywordflow}{if}\ (editorSaveButton)\ editorSaveButton-\/>setHovered(editorSaveButton-\/>contains(mousePos));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00974}00974\ \ \ \ \ \textcolor{keywordflow}{if}\ (editorBackButton)\ editorBackButton-\/>setHovered(editorBackButton-\/>contains(mousePos));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00975}00975\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9baab458f4b361834dd802e4f40d31b5ebc}{ScreenState::Quiz}})\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00976}00976\ \ \ \ \ \ \ \ \ engine.\mbox{\hyperlink{class_quiz_engine_aa72ac8faf05e4cd7580f4a2c1dbdda47}{tick}}();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00977}00977\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (engine.\mbox{\hyperlink{class_quiz_engine_afe0ece91968b6b29006e03c1827dd718}{timeLeft}}()\ ==\ 0\ \&\&\ !engine.\mbox{\hyperlink{class_quiz_engine_addee0bb0a091b28e7af48963c131fe73}{finished}}())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00978}00978\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!engine.\mbox{\hyperlink{class_quiz_engine_a80b749da321263eaaa8b854732805d64}{nextQuestion}}())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00979}00979\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8eea62084ca7e541d918e823422bd82e}{ScreenState::Result}};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00980}00980\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ saveCurrentResult();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00981}00981\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00982}00982\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refreshAnswerButtons();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00983}00983\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00984}00984\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00985}00985\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00986}00986\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00987}00987\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba836ccbe6c108aa045e961818a68321a5}{ScreenState::MultiplayerQuiz}}\ \&\&\ !multiplayerQuestions.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00988}00988\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ elapsed\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(multiplayerClock.getElapsedTime().asSeconds());}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00989}00989\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ limit\ =\ multiplayerQuestions[multiplayerQuestionIndex].timeLimitSec;}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00990}00990\ \ \ \ \ \ \ \ \ multiplayerTimeLeft\ =\ std::max(0,\ limit\ -\/\ elapsed);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00991}00991\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00992}00992\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (multiplayerTimeLeft\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00993}00993\ \ \ \ \ \ \ \ \ \ \ \ \ advanceMultiplayerTurn(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00994}00994\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00995}00995\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00996}00996\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00997}00997\ \ \ \ \ refreshTexts();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00998}00998\ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l00999}00999\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01000}01000\ \textcolor{keywordtype}{void}\ App::render()\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01001}01001\ \ \ \ \ window.clear(sf::Color(10,\ 18,\ 40));}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01002}01002\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01003}01003\ \ \ \ \ \textcolor{keywordflow}{if}\ (titleText)\ window.draw(*titleText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01004}01004\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01005}01005\ \ \ \ \ \textcolor{keywordflow}{switch}\ (state)\ \{}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01006}01006\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9bab61541208db7fa7dba42c85224405911}{ScreenState::Menu}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01007}01007\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ b\ :\ menuButtons)\ b.draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01008}01008\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01009}01009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba1547b5c15a800a6e43fff139f30ba8a9}{ScreenState::NameInput}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01010}01010\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (infoText)\ window.draw(*infoText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01011}01011\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ window.draw(*inputText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01012}01012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton)\ backButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01013}01013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01014}01014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba3fefcf2a639893e3ac9168f772f4d09d}{ScreenState::TopicSelect}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01015}01015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ b\ :\ topicButtons)\ b.draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01016}01016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton)\ backButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01017}01017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01018}01018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba823021ca06a2d18b807cb00d7cc10e44}{ScreenState::DifficultySelect}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01019}01019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ b\ :\ difficultyButtons)\ b.draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01020}01020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton)\ backButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01021}01021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01022}01022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9baab458f4b361834dd802e4f40d31b5ebc}{ScreenState::Quiz}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01023}01023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (questionText)\ window.draw(*questionText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01024}01024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (infoText)\ window.draw(*infoText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01025}01025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (scoreText)\ window.draw(*scoreText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01026}01026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timerText)\ window.draw(*timerText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01027}01027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ b\ :\ answerButtons)\ b.draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01028}01028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nextButton)\ nextButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01029}01029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (restartButton)\ restartButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01030}01030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01031}01031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8eea62084ca7e541d918e823422bd82e}{ScreenState::Result}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01032}01032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (infoText)\ window.draw(*infoText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01033}01033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (scoreText)\ window.draw(*scoreText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01034}01034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (restartButton)\ restartButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01035}01035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton)\ backButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01036}01036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01037}01037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba37ae66f03261bd62844188f7e28092ff}{ScreenState::Ranking}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01038}01038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rankingText)\ window.draw(*rankingText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01039}01039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!rankingButtons.empty())\ rankingButtons[0].draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01040}01040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (scrollUpButton)\ scrollUpButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01041}01041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (scrollDownButton)\ scrollDownButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01042}01042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01043}01043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba344a7f427fb765610ef96eb7bce95257}{ScreenState::Editor}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01044}01044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (infoText)\ window.draw(*infoText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01045}01045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ b\ :\ editorButtons)\ b.draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01046}01046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (editorSaveButton)\ editorSaveButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01047}01047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (editorBackButton)\ editorBackButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01048}01048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (editorField\ !=\ \mbox{\hyperlink{_app_8h_a63d32dd7cd9628aaa6f112931521a9d5a6adf97f83acf6453d4a6a4b1070f3754}{EditorField::None}}\ \&\&\ inputText)\ window.draw(*inputText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01049}01049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01050}01050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba9ddb6c49bc47d6412aed87762fecaf16}{ScreenState::PasswordInput}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01051}01051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (infoText)\ window.draw(*infoText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01052}01052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ window.draw(*inputText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01053}01053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (submitButton)\ submitButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01054}01054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton)\ backButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01055}01055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01056}01056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9babe8c041a27f6cd532b29c738eff6b8d4}{ScreenState::MultiplayerNameInput1}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01057}01057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba8d06cdca5b59a722bf38c842125a22e2}{ScreenState::MultiplayerNameInput2}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01058}01058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (infoText)\ window.draw(*infoText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01059}01059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputText)\ window.draw(*inputText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01060}01060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton)\ backButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01061}01061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01062}01062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba09908026c7f96c1c1ce54ee80deb8910}{ScreenState::MultiplayerTopicSelect}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01063}01063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ b\ :\ topicButtons)\ b.draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01064}01064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton)\ backButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01065}01065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01066}01066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba08b34babd1430dab609ab91996ee3a53}{ScreenState::MultiplayerDifficultySelect}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01067}01067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ b\ :\ difficultyButtons)\ b.draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01068}01068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton)\ backButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01069}01069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01070}01070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba836ccbe6c108aa045e961818a68321a5}{ScreenState::MultiplayerQuiz}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01071}01071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (questionText)\ window.draw(*questionText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01072}01072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (infoText)\ window.draw(*infoText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01073}01073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timerText)\ window.draw(*timerText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01074}01074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ b\ :\ answerButtons)\ b.draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01075}01075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton)\ backButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01076}01076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01077}01077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_app_8h_a5fc5d61fa8521ce5476183998579fa9ba860bbc9dc1f71826fb32ce26a3b2638e}{ScreenState::MultiplayerResult}}:}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01078}01078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (infoText)\ window.draw(*infoText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01079}01079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (scoreText)\ window.draw(*scoreText);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01080}01080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (restartButton)\ restartButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01081}01081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (backButton)\ backButton-\/>draw(window);}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01082}01082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01083}01083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01084}01084\ }
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01085}01085\ \ \ \ \ window.display();}
+\DoxyCodeLine{\Hypertarget{_app_8cpp_source_l01086}01086\ \}}
+
+\end{DoxyCode}

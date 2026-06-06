@@ -1,0 +1,215 @@
+\doxysection{Button Class Reference}
+\hypertarget{class_button}{}\label{class_button}\index{Button@{Button}}
+
+
+Нажимаемая кнопка SFML с подсветкой при наведении и центрированным текстом.  
+
+
+
+
+{\ttfamily \#include $<$Button.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_button_a8a98595f64fac75a8a01c6231047e15a}{Button}} ()=delete
+\begin{DoxyCompactList}\small\item\em Удаленный конструктор по умолчанию, потому что кнопке нужны графические ресурсы. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_button_aed1a8d18913bdb1a82205e6cb9544043}{Button}} (const sf\+::\+Font \&font, const sf\+::\+String \&label, sf\+::\+Vector2f position, sf\+::\+Vector2f size)
+\begin{DoxyCompactList}\small\item\em Создает кнопку с подписью, позицией и размером. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_button_ae3dae186f250e889e4012587c1f2ec24}{set\+Label}} (const sf\+::\+String \&label)
+\begin{DoxyCompactList}\small\item\em Изменяет подпись кнопки и заново центрирует ее. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_button_afa680a101be074b8a8cdbbfb8c203847}{set\+Hovered}} (bool hovered)
+\begin{DoxyCompactList}\small\item\em Устанавливает, находится ли кнопка в состоянии наведения. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_button_a068d5ec296caa51364a42572d815d3d8}{contains}} (sf\+::\+Vector2f point) const
+\begin{DoxyCompactList}\small\item\em Проверяет, находится ли точка внутри прямоугольника кнопки. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_button_a95773eb0a0b33ac29517eac844d23dd9}{draw}} (sf\+::\+Render\+Window \&window) const
+\begin{DoxyCompactList}\small\item\em Рисует форму кнопки и ее текст. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Нажимаемая кнопка SFML с подсветкой при наведении и центрированным текстом. 
+
+Definition at line \mbox{\hyperlink{_button_8h_source_l00008}{8}} of file \mbox{\hyperlink{_button_8h_source}{Button.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_button_a8a98595f64fac75a8a01c6231047e15a}\label{class_button_a8a98595f64fac75a8a01c6231047e15a} 
+\index{Button@{Button}!Button@{Button}}
+\index{Button@{Button}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{Button()}{Button()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Button\+::\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Удаленный конструктор по умолчанию, потому что кнопке нужны графические ресурсы. 
+
+\Hypertarget{class_button_aed1a8d18913bdb1a82205e6cb9544043}\label{class_button_aed1a8d18913bdb1a82205e6cb9544043} 
+\index{Button@{Button}!Button@{Button}}
+\index{Button@{Button}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{Button()}{Button()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Button\+::\+Button (\begin{DoxyParamCaption}\item[{const sf\+::\+Font \&}]{font,  }\item[{const sf\+::\+String \&}]{label,  }\item[{sf\+::\+Vector2f}]{position,  }\item[{sf\+::\+Vector2f}]{size }\end{DoxyParamCaption})}
+
+
+
+Создает кнопку с подписью, позицией и размером. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & Шрифт, используемый для подписи кнопки. \\
+\hline
+{\em label} & Текст, отображаемый на кнопке. \\
+\hline
+{\em position} & Позиция левого верхнего угла кнопки в координатах окна. \\
+\hline
+{\em size} & Размер кнопки в пикселях. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_button_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_button_8cpp_source}{Button.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004\ \ \ \ \ :\ text\_(font,\ label,\ 26) }
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ shape\_.setPosition(position);}
+\DoxyCodeLine{00007\ \ \ \ \ shape\_.setSize(size);}
+\DoxyCodeLine{00008\ \ \ \ \ shape\_.setFillColor(sf::Color(24,\ 36,\ 68));}
+\DoxyCodeLine{00009\ \ \ \ \ shape\_.setOutlineThickness(2.f);}
+\DoxyCodeLine{00010\ \ \ \ \ shape\_.setOutlineColor(sf::Color::White);}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ text\_.setFillColor(sf::Color::White);}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{auto}\ bounds\ =\ text\_.getLocalBounds();}
+\DoxyCodeLine{00015\ \ \ \ \ text\_.setOrigin(\{bounds.position.x\ +\ bounds.size.x\ /\ 2.f,\ bounds.position.y\ +\ bounds.size.y\ /\ 2.f\});}
+\DoxyCodeLine{00016\ \ \ \ \ text\_.setPosition(\{position.x\ +\ size.x\ /\ 2.f,\ position.y\ +\ size.y\ /\ 2.f\});}
+\DoxyCodeLine{00017\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_button_a068d5ec296caa51364a42572d815d3d8}\label{class_button_a068d5ec296caa51364a42572d815d3d8} 
+\index{Button@{Button}!contains@{contains}}
+\index{contains@{contains}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily bool Button\+::contains (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{point }\end{DoxyParamCaption}) const}
+
+
+
+Проверяет, находится ли точка внутри прямоугольника кнопки. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & Точка в той же системе координат, что и кнопка. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, если точка находится внутри границ кнопки; иначе false. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_button_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{_button_8cpp_source}{Button.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_.getGlobalBounds().contains(point);}
+\DoxyCodeLine{00036\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_button_a95773eb0a0b33ac29517eac844d23dd9}\label{class_button_a95773eb0a0b33ac29517eac844d23dd9} 
+\index{Button@{Button}!draw@{draw}}
+\index{draw@{draw}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Button\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption}) const}
+
+
+
+Рисует форму кнопки и ее текст. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Окно отрисовки, используемое для вывода. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_button_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{_button_8cpp_source}{Button.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{auto}\ color\ =\ hovered\_\ ?\ sf::Color(45,\ 78,\ 140)\ :\ sf::Color(24,\ 36,\ 68);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{const\_cast<}sf::RectangleShape\&\textcolor{keyword}{>}(shape\_).setFillColor(color);}
+\DoxyCodeLine{00041\ \ \ \ \ window.draw(shape\_);}
+\DoxyCodeLine{00042\ \ \ \ \ window.draw(text\_);}
+\DoxyCodeLine{00043\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_button_afa680a101be074b8a8cdbbfb8c203847}\label{class_button_afa680a101be074b8a8cdbbfb8c203847} 
+\index{Button@{Button}!setHovered@{setHovered}}
+\index{setHovered@{setHovered}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{setHovered()}{setHovered()}}
+{\footnotesize\ttfamily void Button\+::set\+Hovered (\begin{DoxyParamCaption}\item[{bool}]{hovered }\end{DoxyParamCaption})}
+
+
+
+Устанавливает, находится ли кнопка в состоянии наведения. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hovered} & true для цвета наведения; false для обычного цвета. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_button_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{_button_8cpp_source}{Button.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ hovered\_\ =\ hovered;}
+\DoxyCodeLine{00032\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_button_ae3dae186f250e889e4012587c1f2ec24}\label{class_button_ae3dae186f250e889e4012587c1f2ec24} 
+\index{Button@{Button}!setLabel@{setLabel}}
+\index{setLabel@{setLabel}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{setLabel()}{setLabel()}}
+{\footnotesize\ttfamily void Button\+::set\+Label (\begin{DoxyParamCaption}\item[{const sf\+::\+String \&}]{label }\end{DoxyParamCaption})}
+
+
+
+Изменяет подпись кнопки и заново центрирует ее. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em label} & Новый текст, отображаемый на кнопке. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_button_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_button_8cpp_source}{Button.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ text\_.setString(label);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{auto}\ bounds\ =\ text\_.getLocalBounds();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{auto}\ pos\ =\ shape\_.getPosition();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{auto}\ size\ =\ shape\_.getSize();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ text\_.setOrigin(\{bounds.position.x\ +\ bounds.size.x\ /\ 2.f,\ bounds.position.y\ +\ bounds.size.y\ /\ 2.f\});}
+\DoxyCodeLine{00027\ \ \ \ \ text\_.setPosition(\{pos.x\ +\ size.x\ /\ 2.f,\ pos.y\ +\ size.y\ /\ 2.f\});}
+\DoxyCodeLine{00028\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_button_8h}{Button.\+h}}\item 
+\mbox{\hyperlink{_button_8cpp}{Button.\+cpp}}\end{DoxyCompactItemize}

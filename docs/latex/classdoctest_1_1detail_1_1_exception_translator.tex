@@ -1,0 +1,86 @@
+\doxysection{doctest\+::detail\+::Exception\+Translator\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classdoctest_1_1detail_1_1_exception_translator}{}\label{classdoctest_1_1detail_1_1_exception_translator}\index{doctest::detail::ExceptionTranslator$<$ T $>$@{doctest::detail::ExceptionTranslator$<$ T $>$}}
+
+
+{\ttfamily \#include $<$doctest.\+h$>$}
+
+Inheritance diagram for doctest\+::detail\+::Exception\+Translator\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classdoctest_1_1detail_1_1_exception_translator}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdoctest_1_1detail_1_1_exception_translator_aa1acef933ae700f12c2b5d14edb53aaf}{Exception\+Translator}} (\mbox{\hyperlink{classdoctest_1_1_string}{String}}(\texorpdfstring{$\ast$}{*}translate\+Function)(T)) noexcept
+\item 
+bool \mbox{\hyperlink{classdoctest_1_1detail_1_1_exception_translator_a56484c4218a06bbbd1548335a8b64110}{translate}} (\mbox{\hyperlink{classdoctest_1_1_string}{String}} \&res) const override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class doctest\+::detail\+::\+Exception\+Translator$<$ T $>$}
+
+
+Definition at line \mbox{\hyperlink{doctest_8h_source_l02340}{2340}} of file \mbox{\hyperlink{doctest_8h_source}{doctest.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classdoctest_1_1detail_1_1_exception_translator_aa1acef933ae700f12c2b5d14edb53aaf}\label{classdoctest_1_1detail_1_1_exception_translator_aa1acef933ae700f12c2b5d14edb53aaf} 
+\index{doctest::detail::ExceptionTranslator$<$ T $>$@{doctest::detail::ExceptionTranslator$<$ T $>$}!ExceptionTranslator@{ExceptionTranslator}}
+\index{ExceptionTranslator@{ExceptionTranslator}!doctest::detail::ExceptionTranslator$<$ T $>$@{doctest::detail::ExceptionTranslator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ExceptionTranslator()}{ExceptionTranslator()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classdoctest_1_1detail_1_1_exception_translator}{doctest\+::detail\+::\+Exception\+Translator}}$<$ T $>$\+::\+Exception\+Translator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdoctest_1_1_string}{String}}(\texorpdfstring{$\ast$}{*})(T)}]{translate\+Function }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{doctest_8h_source_l02342}{2342}} of file \mbox{\hyperlink{doctest_8h_source}{doctest.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{02343\ \ \ \ \ \ \ \ \ :\ m\_translateFunction(translateFunction)\ \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classdoctest_1_1detail_1_1_exception_translator_a56484c4218a06bbbd1548335a8b64110}\label{classdoctest_1_1detail_1_1_exception_translator_a56484c4218a06bbbd1548335a8b64110} 
+\index{doctest::detail::ExceptionTranslator$<$ T $>$@{doctest::detail::ExceptionTranslator$<$ T $>$}!translate@{translate}}
+\index{translate@{translate}!doctest::detail::ExceptionTranslator$<$ T $>$@{doctest::detail::ExceptionTranslator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{translate()}{translate()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classdoctest_1_1detail_1_1_exception_translator}{doctest\+::detail\+::\+Exception\+Translator}}$<$ T $>$\+::translate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdoctest_1_1_string}{String}} \&}]{res }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{structdoctest_1_1detail_1_1_i_exception_translator_a9c56005e4c83c13b859cc2e31102bfbc}{doctest\+::detail\+::\+IException\+Translator}}.
+
+
+
+Definition at line \mbox{\hyperlink{doctest_8h_source_l02345}{2345}} of file \mbox{\hyperlink{doctest_8h_source}{doctest.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{02345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{02346\ \textcolor{preprocessor}{\#ifndef\ DOCTEST\_CONFIG\_NO\_EXCEPTIONS }}
+\DoxyCodeLine{02347\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{02348\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{02349\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ T\ \&ex)\ \{}
+\DoxyCodeLine{02350\ \ \ \ \ \ \ \ \ \ \ \ \ res\ =\ m\_translateFunction(ex);}
+\DoxyCodeLine{02351\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{02352\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{\}\ \ \ \ \ \ \ \ \textcolor{comment}{//\ NOLINT(bugprone-\/empty-\/catch)}}
+\DoxyCodeLine{02353\ \textcolor{preprocessor}{\#endif\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ DOCTEST\_CONFIG\_NO\_EXCEPTIONS}}
+\DoxyCodeLine{02354\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}\textcolor{keyword}{>}(res);\ \textcolor{comment}{//\ to\ silence\ -\/Wunused-\/parameter}}
+\DoxyCodeLine{02355\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{02356\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{doctest_8h}{doctest.\+h}}\end{DoxyCompactItemize}

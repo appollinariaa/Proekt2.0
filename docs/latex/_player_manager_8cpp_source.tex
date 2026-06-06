@@ -1,0 +1,35 @@
+\doxysection{Player\+Manager.\+cpp}
+\hypertarget{_player_manager_8cpp_source}{}\label{_player_manager_8cpp_source}\mbox{\hyperlink{_player_manager_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_player_manager_8h}{PlayerManager.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00003}\mbox{\hyperlink{class_player_manager_a45bccb35ec14cfa67ef2073e10ce52e3}{00003}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_manager_a45bccb35ec14cfa67ef2073e10ce52e3}{PlayerManager::addPlayer}}(\textcolor{keyword}{const}\ std::string\&\ name)\ \{}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00004}00004\ \ \ \ \ players\_.push\_back(\{name,\ 0\});}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00005}00005\ \}}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00007}\mbox{\hyperlink{class_player_manager_a89207bedbf219a9c26bf0cb27b593e74}{00007}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_manager_a89207bedbf219a9c26bf0cb27b593e74}{PlayerManager::clear}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00008}00008\ \ \ \ \ players\_.clear();}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00009}00009\ \ \ \ \ currentIndex\_\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00010}00010\ \}}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00012}\mbox{\hyperlink{class_player_manager_a54e7dbe23a7ac92e85c5d6d945a762aa}{00012}}\ \textcolor{keyword}{const}\ std::vector<Player>\&\ \mbox{\hyperlink{class_player_manager_a54e7dbe23a7ac92e85c5d6d945a762aa}{PlayerManager::players}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{keywordflow}{return}\ players\_;}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00014}00014\ \}}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00016}\mbox{\hyperlink{class_player_manager_acdb1e8be7b08fdaa0be324beabf1e859}{00016}}\ \mbox{\hyperlink{struct_player}{Player}}\&\ \mbox{\hyperlink{class_player_manager_acdb1e8be7b08fdaa0be324beabf1e859}{PlayerManager::current}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{return}\ players\_.at(currentIndex\_);}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00020}\mbox{\hyperlink{class_player_manager_a39f48f24099736a4074783f4d77805b0}{00020}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_player_manager_a39f48f24099736a4074783f4d77805b0}{PlayerManager::next}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentIndex\_\ +\ 1\ <\ players\_.size())\ \{}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ ++currentIndex\_;}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00028}\mbox{\hyperlink{class_player_manager_ae9c8da4889ffd37f864efb46cf500873}{00028}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_player_manager_ae9c8da4889ffd37f864efb46cf500873}{PlayerManager::empty}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{return}\ players\_.empty();}
+\DoxyCodeLine{\Hypertarget{_player_manager_8cpp_source_l00030}00030\ \}}
+
+\end{DoxyCode}

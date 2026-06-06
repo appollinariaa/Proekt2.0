@@ -1,0 +1,560 @@
+\doxysection{Question\+Editor Class Reference}
+\hypertarget{class_question_editor}{}\label{class_question_editor}\index{QuestionEditor@{QuestionEditor}}
+
+
+Предоставляет защищенные паролем операции редактирования вопросов викторины.  
+
+
+
+
+{\ttfamily \#include $<$Question\+Editor.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_question_editor_a1ac940d502eb280c1efbbc116393c587}{Question\+Editor}} (const std\+::string \&password)
+\begin{DoxyCompactList}\small\item\em Создает редактор с заданным паролем. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_question_editor_a664767c85419a9150cc61c27bf484bb2}{login}} (const std\+::string \&input) const
+\begin{DoxyCompactList}\small\item\em Проверяет корректность пароля, введенного пользователем. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_question_editor_ad79e6d90f94474eee5aa3ce2a7c7021c}{set\+Questions}} (std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \mbox{\hyperlink{class_question_editor_a58ddd7a7f969c1e152c843297e017dc1}{questions}})
+\begin{DoxyCompactList}\small\item\em Заменяет редактируемую коллекцию вопросов. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \& \mbox{\hyperlink{class_question_editor_a58ddd7a7f969c1e152c843297e017dc1}{questions}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает все редактируемые вопросы. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_question}{Question}} \& \mbox{\hyperlink{class_question_editor_a7922f989e4355c3af31593f2e398c25c}{current\+Question}} ()
+\begin{DoxyCompactList}\small\item\em Возвращает текущий вопрос для изменения. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{struct_question}{Question}} \& \mbox{\hyperlink{class_question_editor_a11981310d4a4d77fd556c761e864288b}{current\+Question}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает текущий вопрос без возможности изменения. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_question_editor_a2fe490a209c58ac2fc8199e867d8c3bc}{save}} (const std\+::string \&path) const
+\begin{DoxyCompactList}\small\item\em Сохраняет текущую коллекцию вопросов в файл. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_question_editor_af5e1c66648e648ef0779d6128b660804}{add\+Question}} ()
+\begin{DoxyCompactList}\small\item\em Добавляет новый вопрос по умолчанию и делает его текущим. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_question_editor_a1717476961f3bcc5c9b4b2a92aa3d2b1}{delete\+Question}} (int index)
+\begin{DoxyCompactList}\small\item\em Удаляет вопрос по индексу, если индекс корректен. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_question_editor_a6ca5ad09f2522c96d7c7d00917415c39}{update\+Question\+Text}} (int index, const std\+::string \&text)
+\begin{DoxyCompactList}\small\item\em Обновляет текст вопроса, если индекс вопроса корректен. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_question_editor_a6e08bf1dbbfdccedb1723b1c26c83d6b}{update\+Answer}} (int index, int answer\+Index, const std\+::string \&answer)
+\begin{DoxyCompactList}\small\item\em Обновляет один ответ, если оба индекса корректны. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_question_editor_a9539c71766284565e70517dcaba3c7fa}{set\+Time}} (int index, int time)
+\begin{DoxyCompactList}\small\item\em Обновляет ограничение времени вопроса, если индекс вопроса корректен. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_question_editor_a7287d82f36399edd3bd2c95cdbacb410}{set\+Topic}} (int index, const std\+::string \&topic)
+\begin{DoxyCompactList}\small\item\em Обновляет тему вопроса, если индекс вопроса корректен. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_question_editor_acec321a88bc311d1fe854ad141a3462c}{set\+Difficulty}} (int index, const std\+::string \&difficulty)
+\begin{DoxyCompactList}\small\item\em Обновляет сложность вопроса, если индекс вопроса корректен. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_question_editor_a60f1249dc1ba1d8579c9268ab0df2e2d}{set\+Correct\+Answer}} (int index, int correct\+Answer)
+\begin{DoxyCompactList}\small\item\em Обновляет индекс правильного ответа, если индекс вопроса корректен. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_question_editor_ab05021f00eb6e7b0b434e9daaf9905bf}{current\+Index}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает индекс текущего вопроса. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_question_editor_a1658f4d28ea7d661ae55f4a4d6c583ec}{set\+Current\+Index}} (int index)
+\begin{DoxyCompactList}\small\item\em Изменяет индекс текущего вопроса, если переданный индекс корректен. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Предоставляет защищенные паролем операции редактирования вопросов викторины. 
+
+Definition at line \mbox{\hyperlink{_question_editor_8h_source_l00009}{9}} of file \mbox{\hyperlink{_question_editor_8h_source}{Question\+Editor.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_question_editor_a1ac940d502eb280c1efbbc116393c587}\label{class_question_editor_a1ac940d502eb280c1efbbc116393c587} 
+\index{QuestionEditor@{QuestionEditor}!QuestionEditor@{QuestionEditor}}
+\index{QuestionEditor@{QuestionEditor}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{QuestionEditor()}{QuestionEditor()}}
+{\footnotesize\ttfamily Question\+Editor\+::\+Question\+Editor (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{password }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Создает редактор с заданным паролем. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em password} & Пароль, который должен быть передан в \doxylink{class_question_editor_a664767c85419a9150cc61c27bf484bb2}{login()}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00006\ \ \ \ \ :\ password\_(password)\ \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_question_editor_af5e1c66648e648ef0779d6128b660804}\label{class_question_editor_af5e1c66648e648ef0779d6128b660804} 
+\index{QuestionEditor@{QuestionEditor}!addQuestion@{addQuestion}}
+\index{addQuestion@{addQuestion}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{addQuestion()}{addQuestion()}}
+{\footnotesize\ttfamily void Question\+Editor\+::add\+Question (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Добавляет новый вопрос по умолчанию и делает его текущим. 
+
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{struct_question}{Question}}\ newQ;}
+\DoxyCodeLine{00040\ \ \ \ \ newQ.\mbox{\hyperlink{struct_question_a74c9df52f7df8e5386a79e93419105e8}{text}}\ =\ \textcolor{stringliteral}{"{}Новый\ вопрос"{}};}
+\DoxyCodeLine{00041\ \ \ \ \ newQ.\mbox{\hyperlink{struct_question_a682005904ea6c36eef9d1990b4da89c7}{answers}}\ =\ \{\textcolor{stringliteral}{"{}Ответ\ 1"{}},\ \textcolor{stringliteral}{"{}Ответ\ 2"{}},\ \textcolor{stringliteral}{"{}Ответ\ 3"{}},\ \textcolor{stringliteral}{"{}Ответ\ 4"{}}\};}
+\DoxyCodeLine{00042\ \ \ \ \ newQ.\mbox{\hyperlink{struct_question_a5d7284577f5b576fb248379ca95fa14b}{correctIndex}}\ =\ 0;}
+\DoxyCodeLine{00043\ \ \ \ \ newQ.\mbox{\hyperlink{struct_question_a9cc916e2133d597fffbefe82c34c7196}{timeLimitSec}}\ =\ 30;}
+\DoxyCodeLine{00044\ \ \ \ \ newQ.\mbox{\hyperlink{struct_question_aab348c5c0fb74e7d703cb0c7fa34ad9e}{topic}}\ =\ \textcolor{stringliteral}{"{}Общее"{}};}
+\DoxyCodeLine{00045\ \ \ \ \ newQ.\mbox{\hyperlink{struct_question_aa661d6d96bfe7e98902014f6b8276136}{difficulty}}\ =\ \textcolor{stringliteral}{"{}easy"{}};}
+\DoxyCodeLine{00046\ \ \ \ \ questions\_.push\_back(newQ);}
+\DoxyCodeLine{00047\ \ \ \ \ currentIndex\_\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(questions\_.size())\ -\/\ 1;}
+\DoxyCodeLine{00048\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_question_editor_ab05021f00eb6e7b0b434e9daaf9905bf}\label{class_question_editor_ab05021f00eb6e7b0b434e9daaf9905bf} 
+\index{QuestionEditor@{QuestionEditor}!currentIndex@{currentIndex}}
+\index{currentIndex@{currentIndex}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{currentIndex()}{currentIndex()}}
+{\footnotesize\ttfamily int Question\+Editor\+::current\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Возвращает индекс текущего вопроса. 
+
+\begin{DoxyReturn}{Returns}
+Индекс текущего вопроса, начиная с нуля. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8h_source_l00115}{115}} of file \mbox{\hyperlink{_question_editor_8h_source}{Question\+Editor.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00115\ \{\ \textcolor{keywordflow}{return}\ currentIndex\_;\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_question_editor_a7922f989e4355c3af31593f2e398c25c}\label{class_question_editor_a7922f989e4355c3af31593f2e398c25c} 
+\index{QuestionEditor@{QuestionEditor}!currentQuestion@{currentQuestion}}
+\index{currentQuestion@{currentQuestion}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{currentQuestion()}{currentQuestion()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_question}{Question}} \& Question\+Editor\+::current\+Question (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Возвращает текущий вопрос для изменения. 
+
+\begin{DoxyReturn}{Returns}
+Ссылка на вопрос с индексом current\+Index\+\_\+. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Если список вопросов пуст. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{return}\ questions\_.at(currentIndex\_);}
+\DoxyCodeLine{00028\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_question_editor_a11981310d4a4d77fd556c761e864288b}\label{class_question_editor_a11981310d4a4d77fd556c761e864288b} 
+\index{QuestionEditor@{QuestionEditor}!currentQuestion@{currentQuestion}}
+\index{currentQuestion@{currentQuestion}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{currentQuestion()}{currentQuestion()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_question}{Question}} \& Question\+Editor\+::current\+Question (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает текущий вопрос без возможности изменения. 
+
+\begin{DoxyReturn}{Returns}
+Константная ссылка на вопрос с индексом current\+Index\+\_\+. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Если список вопросов пуст. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{return}\ questions\_.at(currentIndex\_);}
+\DoxyCodeLine{00032\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_question_editor_a1717476961f3bcc5c9b4b2a92aa3d2b1}\label{class_question_editor_a1717476961f3bcc5c9b4b2a92aa3d2b1} 
+\index{QuestionEditor@{QuestionEditor}!deleteQuestion@{deleteQuestion}}
+\index{deleteQuestion@{deleteQuestion}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{deleteQuestion()}{deleteQuestion()}}
+{\footnotesize\ttfamily void Question\+Editor\+::delete\+Question (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Удаляет вопрос по индексу, если индекс корректен. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Индекс удаляемого вопроса, начиная с нуля. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ 0\ \&\&\ index\ <\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(questions\_.size()))\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ questions\_.erase(questions\_.begin()\ +\ index);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (questions\_.empty())\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ currentIndex\_\ =\ 0;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentIndex\_\ >=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(questions\_.size()))\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ currentIndex\_\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(questions\_.size())\ -\/\ 1;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_question_editor_a664767c85419a9150cc61c27bf484bb2}\label{class_question_editor_a664767c85419a9150cc61c27bf484bb2} 
+\index{QuestionEditor@{QuestionEditor}!login@{login}}
+\index{login@{login}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily bool Question\+Editor\+::login (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input }\end{DoxyParamCaption}) const}
+
+
+
+Проверяет корректность пароля, введенного пользователем. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Пароль, введенный пользователем. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, если input совпадает с паролем редактора; иначе false. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordflow}{return}\ input\ ==\ password\_;}
+\DoxyCodeLine{00010\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_question_editor_a58ddd7a7f969c1e152c843297e017dc1}\label{class_question_editor_a58ddd7a7f969c1e152c843297e017dc1} 
+\index{QuestionEditor@{QuestionEditor}!questions@{questions}}
+\index{questions@{questions}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{questions()}{questions()}}
+{\footnotesize\ttfamily const std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$ \& Question\+Editor\+::questions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает все редактируемые вопросы. 
+
+\begin{DoxyReturn}{Returns}
+Константная ссылка на коллекцию вопросов редактора. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{return}\ questions\_;}
+\DoxyCodeLine{00024\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_question_editor_a2fe490a209c58ac2fc8199e867d8c3bc}\label{class_question_editor_a2fe490a209c58ac2fc8199e867d8c3bc} 
+\index{QuestionEditor@{QuestionEditor}!save@{save}}
+\index{save@{save}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily bool Question\+Editor\+::save (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption}) const}
+
+
+
+Сохраняет текущую коллекцию вопросов в файл. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Путь к файлу назначения. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, если сохранение прошло успешно; иначе false. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_data_store_abed74e95cad89016b053248ce1dd7839}{DataStore::saveQuestions}}(path,\ questions\_);}
+\DoxyCodeLine{00036\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_question_editor_a60f1249dc1ba1d8579c9268ab0df2e2d}\label{class_question_editor_a60f1249dc1ba1d8579c9268ab0df2e2d} 
+\index{QuestionEditor@{QuestionEditor}!setCorrectAnswer@{setCorrectAnswer}}
+\index{setCorrectAnswer@{setCorrectAnswer}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{setCorrectAnswer()}{setCorrectAnswer()}}
+{\footnotesize\ttfamily void Question\+Editor\+::set\+Correct\+Answer (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{int}]{correct\+Answer }\end{DoxyParamCaption})}
+
+
+
+Обновляет индекс правильного ответа, если индекс вопроса корректен. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Индекс вопроса, начиная с нуля. \\
+\hline
+{\em correct\+Answer} & Индекс ответа, который нужно отметить правильным, начиная с нуля. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ 0\ \&\&\ index\ <\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(questions\_.size()))\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ questions\_[index].correctIndex\ =\ correctAnswer;}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_question_editor_a1658f4d28ea7d661ae55f4a4d6c583ec}\label{class_question_editor_a1658f4d28ea7d661ae55f4a4d6c583ec} 
+\index{QuestionEditor@{QuestionEditor}!setCurrentIndex@{setCurrentIndex}}
+\index{setCurrentIndex@{setCurrentIndex}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{setCurrentIndex()}{setCurrentIndex()}}
+{\footnotesize\ttfamily void Question\+Editor\+::set\+Current\+Index (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Изменяет индекс текущего вопроса, если переданный индекс корректен. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Индекс вопроса для выбора, начиная с нуля. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00100}{100}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ 0\ \&\&\ index\ <\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(questions\_.size()))\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ currentIndex\_\ =\ index;}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_question_editor_acec321a88bc311d1fe854ad141a3462c}\label{class_question_editor_acec321a88bc311d1fe854ad141a3462c} 
+\index{QuestionEditor@{QuestionEditor}!setDifficulty@{setDifficulty}}
+\index{setDifficulty@{setDifficulty}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{setDifficulty()}{setDifficulty()}}
+{\footnotesize\ttfamily void Question\+Editor\+::set\+Difficulty (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{const std\+::string \&}]{difficulty }\end{DoxyParamCaption})}
+
+
+
+Обновляет сложность вопроса, если индекс вопроса корректен. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Индекс вопроса, начиная с нуля. \\
+\hline
+{\em difficulty} & Новая строка сложности. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00088}{88}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ 0\ \&\&\ index\ <\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(questions\_.size()))\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ questions\_[index].difficulty\ =\ difficulty;}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_question_editor_ad79e6d90f94474eee5aa3ce2a7c7021c}\label{class_question_editor_ad79e6d90f94474eee5aa3ce2a7c7021c} 
+\index{QuestionEditor@{QuestionEditor}!setQuestions@{setQuestions}}
+\index{setQuestions@{setQuestions}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{setQuestions()}{setQuestions()}}
+{\footnotesize\ttfamily void Question\+Editor\+::set\+Questions (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_question}{Question}} $>$}]{questions }\end{DoxyParamCaption})}
+
+
+
+Заменяет редактируемую коллекцию вопросов. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em questions} & Вопросы, которые нужно сохранить в редакторе. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ questions\_\ =\ std::move(\mbox{\hyperlink{class_question_editor_a58ddd7a7f969c1e152c843297e017dc1}{questions}});}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{if}\ (!questions\_.empty()\ \&\&\ currentIndex\_\ >=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(questions\_.size()))\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ currentIndex\_\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(questions\_.size())\ -\/\ 1;}
+\DoxyCodeLine{00016\ \ \ \ \ \}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (questions\_.empty())\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ currentIndex\_\ =\ 0;}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_question_editor_a9539c71766284565e70517dcaba3c7fa}\label{class_question_editor_a9539c71766284565e70517dcaba3c7fa} 
+\index{QuestionEditor@{QuestionEditor}!setTime@{setTime}}
+\index{setTime@{setTime}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{setTime()}{setTime()}}
+{\footnotesize\ttfamily void Question\+Editor\+::set\+Time (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{int}]{time }\end{DoxyParamCaption})}
+
+
+
+Обновляет ограничение времени вопроса, если индекс вопроса корректен. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Индекс вопроса, начиная с нуля. \\
+\hline
+{\em time} & Новое ограничение времени в секундах. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ 0\ \&\&\ index\ <\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(questions\_.size()))\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ questions\_[index].timeLimitSec\ =\ time;}
+\DoxyCodeLine{00079\ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_question_editor_a7287d82f36399edd3bd2c95cdbacb410}\label{class_question_editor_a7287d82f36399edd3bd2c95cdbacb410} 
+\index{QuestionEditor@{QuestionEditor}!setTopic@{setTopic}}
+\index{setTopic@{setTopic}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{setTopic()}{setTopic()}}
+{\footnotesize\ttfamily void Question\+Editor\+::set\+Topic (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{const std\+::string \&}]{topic }\end{DoxyParamCaption})}
+
+
+
+Обновляет тему вопроса, если индекс вопроса корректен. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Индекс вопроса, начиная с нуля. \\
+\hline
+{\em topic} & Новая строка темы. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ 0\ \&\&\ index\ <\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(questions\_.size()))\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ questions\_[index].topic\ =\ topic;}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_question_editor_a6e08bf1dbbfdccedb1723b1c26c83d6b}\label{class_question_editor_a6e08bf1dbbfdccedb1723b1c26c83d6b} 
+\index{QuestionEditor@{QuestionEditor}!updateAnswer@{updateAnswer}}
+\index{updateAnswer@{updateAnswer}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{updateAnswer()}{updateAnswer()}}
+{\footnotesize\ttfamily void Question\+Editor\+::update\+Answer (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{int}]{answer\+Index,  }\item[{const std\+::string \&}]{answer }\end{DoxyParamCaption})}
+
+
+
+Обновляет один ответ, если оба индекса корректны. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Индекс вопроса, начиная с нуля. \\
+\hline
+{\em answer\+Index} & Индекс ответа внутри выбранного вопроса, начиная с нуля. \\
+\hline
+{\em answer} & Новый текст ответа. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ 0\ \&\&\ index\ <\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(questions\_.size()))\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ q\ =\ questions\_[index];}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (answerIndex\ >=\ 0\ \&\&\ answerIndex\ <\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(q.answers.size()))\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ q.answers[answerIndex]\ =\ answer;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_question_editor_a6ca5ad09f2522c96d7c7d00917415c39}\label{class_question_editor_a6ca5ad09f2522c96d7c7d00917415c39} 
+\index{QuestionEditor@{QuestionEditor}!updateQuestionText@{updateQuestionText}}
+\index{updateQuestionText@{updateQuestionText}!QuestionEditor@{QuestionEditor}}
+\doxysubsubsection{\texorpdfstring{updateQuestionText()}{updateQuestionText()}}
+{\footnotesize\ttfamily void Question\+Editor\+::update\+Question\+Text (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{const std\+::string \&}]{text }\end{DoxyParamCaption})}
+
+
+
+Обновляет текст вопроса, если индекс вопроса корректен. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Индекс вопроса, начиная с нуля. \\
+\hline
+{\em text} & Новый текст вопроса. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_question_editor_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{_question_editor_8cpp_source}{Question\+Editor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ 0\ \&\&\ index\ <\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(questions\_.size()))\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ questions\_[index].text\ =\ text;}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_question_editor_8h}{Question\+Editor.\+h}}\item 
+\mbox{\hyperlink{_question_editor_8cpp}{Question\+Editor.\+cpp}}\end{DoxyCompactItemize}
